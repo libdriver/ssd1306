@@ -270,7 +270,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1306_interface_debug_print("ssd1306: display on failed.\n");
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -284,7 +284,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1306_interface_debug_print("ssd1306: display off failed.\n");
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -298,7 +298,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1306_interface_debug_print("ssd1306: clear screen failed.\n");
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -445,7 +445,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1306_interface_debug_print("ssd1306: clear screen failed.\n");
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -453,7 +453,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1306_interface_debug_print("ssd1306: show string failed.\n");
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -586,7 +586,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     res = ssd1306_advance_read_point(atoi(argv[4]), atoi(argv[5]), (uint8_t *)&data);
                     if (res)
                     {
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -619,7 +619,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     res = ssd1306_advance_fade_blinking(mode, atoi(argv[5]));
                     if (res)
                     {
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -746,7 +746,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                         res = ssd1306_advance_init(SSD1306_INTERFACE_IIC, addr);
                         if (res)
                         {
-                            ssd1306_basic_deinit();
+                            ssd1306_advance_deinit();
                             
                             return 1;
                         }
@@ -766,7 +766,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     res = ssd1306_advance_write_point(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]));
                     if (res)
                     {
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -829,7 +829,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     res = ssd1306_advance_rect(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), 1);
                     if (res)
                     {
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -881,7 +881,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     res = ssd1306_advance_vertical_left_horizontal_scroll(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), frames);
                     if (res)
                     {
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }
@@ -933,7 +933,7 @@ uint8_t ssd1306(uint8_t argc, char **argv)
                     res = ssd1306_advance_vertical_right_horizontal_scroll(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), frames);
                     if (res)
                     {
-                        ssd1306_basic_deinit();
+                        ssd1306_advance_deinit();
                         
                         return 1;
                     }

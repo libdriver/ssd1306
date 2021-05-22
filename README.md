@@ -97,8 +97,15 @@ return 0;
 
 #### example advance
 
+Image extraction format and every pixel stored in one byte.
+
+<div align=center>
+<img src="/doc/image/image_format.png"/>
+</div>
+
 ```C
 uint8_t res;
+uint8_t image[8192];
 
 res = ssd1306_advance_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
 if (res)
@@ -132,7 +139,7 @@ if (res)
 res = ssd1306_advance_write_point(38, 38, 1);
 if (res)
 {
-    ssd1306_basic_deinit();
+    ssd1306_advance_deinit();
 
     return 1;
 }
@@ -162,7 +169,17 @@ if (res)
 res = ssd1306_advance_vertical_left_horizontal_scroll(0, 7, 0, SSD1306_SCROLL_FRAME_2);
 if (res)
 {
-    ssd1306_basic_deinit();
+    ssd1306_advance_deinit();
+
+    return 1;
+}
+
+...
+
+res = ssd1306_advance_picture(0, 0, 0,0, image);
+if (res)
+{
+    ssd1306_advance_deinit();
 
     return 1;
 }

@@ -566,7 +566,7 @@ uint8_t ssd1306_advance_rect(int8_t left, uint8_t top, uint8_t right, uint8_t bo
  *            - 1 draw picture failed
  * @note      none
  */
-uint8_t ssd1306_advance_picture(int8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img)
+uint8_t ssd1306_advance_picture(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img)
 {
     volatile uint8_t res;
     
