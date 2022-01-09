@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver SSD1306
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/ssd1306/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 SSD1306是一個單芯片CMOS OLED/PLED驅動器，帶有用於有機/聚合物發光的控制器二極管點陣圖形顯示系統。它由128個段和64個公共區組成。這個IC是為普通陰極型OLED面板設計。 SSD1306內置對比度控制、顯示RAM和振盪器，減少了外部組件和功耗。它有256階亮度控制。數據/命令通過硬件可選的6800/8000系列兼容並行接口從通用MCU發送，I2C接口或串行外圍接口。它適用於許多小型便攜式應用，如手機分屏、MP3播放器、計算器等。
 
