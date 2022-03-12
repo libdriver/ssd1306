@@ -195,20 +195,20 @@ static uint8_t _ssd1306_gram_draw_point(ssd1306_handle_t *handle, uint8_t x, uin
     volatile uint8_t bx;
     volatile uint8_t temp = 0;
     
-    pos = y / 8;                                                     /* get y page */
-    bx = y % 8;                                                      /* get y point */
-    temp = 1 << bx;                                                  /* set data */
-    if (data)                                                        /* if 1  */
+    pos = y / 8;                              /* get y page */
+    bx = y % 8;                               /* get y point */
+    temp = 1 << bx;                           /* set data */
+    if (data)                                 /* if 1  */
     {
-        handle->gram[x][pos] |= temp;                                /* set 1 */
+        handle->gram[x][pos] |= temp;         /* set 1 */
     }
     else
     {
-        handle->gram[x][pos] &= ~temp;                               /* set 0 */
+        handle->gram[x][pos] &= ~temp;        /* set 0 */
     }
   
     return 0;
-}                                                                    /* success return 0 */
+}                                             /* success return 0 */
 
 /**
  * @brief     draw a char in gram
@@ -658,9 +658,9 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
  * @brief     fill a rectangle in the gram
  * @param[in] *handle points to a ssd1306 handle structure
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] color is the display color
  * @return    status code
  *            - 0 success
@@ -713,9 +713,9 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
  * @brief     draw a picture in the gram
  * @param[in] *handle points to a ssd1306 handle structure
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] *img points to a image buffer
  * @return    status code
  *            - 0 success

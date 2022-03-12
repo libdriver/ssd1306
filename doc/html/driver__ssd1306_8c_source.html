@@ -205,20 +205,20 @@ $(document).ready(function(){initNavTree('driver__ssd1306_8c_source.html',''); i
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">volatile</span> uint8_t bx;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keyword">volatile</span> uint8_t temp = 0;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    pos = y / 8;                                                     <span class="comment">/* get y page */</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    bx = y % 8;                                                      <span class="comment">/* get y point */</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    temp = 1 &lt;&lt; bx;                                                  <span class="comment">/* set data */</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (data)                                                        <span class="comment">/* if 1  */</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    pos = y / 8;                              <span class="comment">/* get y page */</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    bx = y % 8;                               <span class="comment">/* get y point */</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    temp = 1 &lt;&lt; bx;                           <span class="comment">/* set data */</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (data)                                 <span class="comment">/* if 1  */</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        handle-&gt;<a class="code" href="structssd1306__handle__s.html#ad69f220d63904bed9da62f9af24aaf6f">gram</a>[x][pos] |= temp;                                <span class="comment">/* set 1 */</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        handle-&gt;<a class="code" href="structssd1306__handle__s.html#ad69f220d63904bed9da62f9af24aaf6f">gram</a>[x][pos] |= temp;         <span class="comment">/* set 1 */</span></div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        handle-&gt;<a class="code" href="structssd1306__handle__s.html#ad69f220d63904bed9da62f9af24aaf6f">gram</a>[x][pos] &amp;= ~temp;                               <span class="comment">/* set 0 */</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        handle-&gt;<a class="code" href="structssd1306__handle__s.html#ad69f220d63904bed9da62f9af24aaf6f">gram</a>[x][pos] &amp;= ~temp;        <span class="comment">/* set 0 */</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  </div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}                                                                    <span class="comment">/* success return 0 */</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}                                             <span class="comment">/* success return 0 */</span></div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keyword">static</span> uint8_t _ssd1306_gram_show_char(<a class="code" href="structssd1306__handle__s.html">ssd1306_handle_t</a> *handle, uint8_t x, uint8_t y, uint8_t chr, uint8_t size, uint8_t mode)</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;{</div>
