@@ -485,6 +485,8 @@ uint8_t ssd1306_deinit(ssd1306_handle_t *handle);
  * @return    status code
  *            - 0 success
  *            - 1 clear failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_clear(ssd1306_handle_t *handle);
@@ -495,6 +497,8 @@ uint8_t ssd1306_clear(ssd1306_handle_t *handle);
  * @return    status code
  *            - 0 success
  *            - 1 gram update failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_gram_update(ssd1306_handle_t *handle);
@@ -508,6 +512,8 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle);
  * @return    status code
  *            - 0 success
  *            - 1 write point failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data);
@@ -521,6 +527,8 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
  * @return     status code
  *             - 0 success
  *             - 1 read point failed
+ *             - 2 handle is NULL
+ *             - 3 handle is not initialized
  * @note       none
  */
 uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data);
@@ -534,6 +542,8 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
  * @return    status code
  *            - 0 success
  *            - 1 gram write point failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data);
@@ -547,6 +557,8 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
  * @return     status code
  *             - 0 success
  *             - 1 gram read point failed
+ *             - 2 handle is NULL
+ *             - 3 handle is not initialized
  * @note       none
  */
 uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data);
@@ -563,6 +575,8 @@ uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, 
  * @return    status code
  *            - 0 success
  *            - 1 gram write string failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y, char *str, uint16_t len, uint8_t color, ssd1306_font_t font);
@@ -578,6 +592,8 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
  * @return    status code
  *            - 0 success
  *            - 1 gram fill rect failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color);
@@ -593,6 +609,8 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
  * @return    status code
  *            - 0 success
  *            - 1 gram draw picture failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img);
