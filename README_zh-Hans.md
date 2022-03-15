@@ -178,7 +178,7 @@ if (res)
 
 ...
 
-res = ssd1306_advance_picture(0, 0, 0,0, image);
+res = ssd1306_advance_picture(0, 0, 0, 0, image);
 if (res)
 {
     ssd1306_advance_deinit();
