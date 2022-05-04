@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _IIC_H_
-#define _IIC_H_
+#ifndef IIC_H
+#define IIC_H
 
 #include "stm32f4xx_hal.h"
 

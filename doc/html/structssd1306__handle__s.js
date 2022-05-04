@@ -1,6 +1,6 @@
 var structssd1306__handle__s =
 [
-    [ "debug_print", "structssd1306__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2", null ],
+    [ "debug_print", "structssd1306__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
     [ "delay_ms", "structssd1306__handle__s.html#a406c9433252b7366de417b7a60915c81", null ],
     [ "gram", "structssd1306__handle__s.html#ad69f220d63904bed9da62f9af24aaf6f", null ],
     [ "iic_addr", "structssd1306__handle__s.html#ae4fb63dc1b166464d5da3aa753b0805a", null ],

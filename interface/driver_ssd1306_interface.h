@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1306_INTERFACE_H_
-#define _DRIVER_SSD1306_INTERFACE_H_
+#ifndef DRIVER_SSD1306_INTERFACE_H
+#define DRIVER_SSD1306_INTERFACE_H
 
 #include "driver_ssd1306.h"
 
@@ -121,10 +121,9 @@ void ssd1306_interface_delay_ms(uint32_t ms);
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t ssd1306_interface_debug_print(char *fmt, ...);
+void ssd1306_interface_debug_print(const char *const fmt, ...);
 
 /**
  * @brief  interface command && data gpio init

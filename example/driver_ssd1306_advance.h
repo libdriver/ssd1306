@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1306_ADVANCE_H_
-#define _DRIVER_SSD1306_ADVANCE_H_
+#ifndef DRIVER_SSD1306_ADVANCE_H
+#define DRIVER_SSD1306_ADVANCE_H
 
 #include "driver_ssd1306_interface.h"
 
@@ -174,7 +174,7 @@ uint8_t ssd1306_advance_string(uint8_t x, uint8_t y, char *str, uint16_t len, ui
  *            - 1 fill rect failed
  * @note      none
  */
-uint8_t ssd1306_advance_rect(int8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color);
+uint8_t ssd1306_advance_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color);
 
 /**
  * @brief     advance example draw a picture

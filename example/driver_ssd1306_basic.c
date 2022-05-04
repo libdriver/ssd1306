@@ -50,7 +50,7 @@ static ssd1306_handle_t gs_handle;        /**< ssd1306 handle */
  */
 uint8_t ssd1306_basic_init(ssd1306_interface_t interface, ssd1306_address_t addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* link functions */
     DRIVER_SSD1306_LINK_INIT(&gs_handle, ssd1306_handle_t);
@@ -71,7 +71,7 @@ uint8_t ssd1306_basic_init(ssd1306_interface_t interface, ssd1306_address_t addr
     
     /* set interface */
     res = ssd1306_set_interface(&gs_handle, interface);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set interface failed.\n");
         
@@ -80,7 +80,7 @@ uint8_t ssd1306_basic_init(ssd1306_interface_t interface, ssd1306_address_t addr
     
     /* set addr pin */
     res = ssd1306_set_addr_pin(&gs_handle, addr);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set addr failed.\n");
         
@@ -89,7 +89,7 @@ uint8_t ssd1306_basic_init(ssd1306_interface_t interface, ssd1306_address_t addr
     
     /* ssd1306 init */
     res = ssd1306_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: init failed.\n");
         
@@ -98,240 +98,240 @@ uint8_t ssd1306_basic_init(ssd1306_interface_t interface, ssd1306_address_t addr
     
     /* close display */
     res = ssd1306_set_display(&gs_handle, SSD1306_DISPLAY_OFF);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set display failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set column address range */
     res = ssd1306_set_column_address_range(&gs_handle, SSD1306_BASIC_DEFAULT_COLUMN_ADDRESS_RANGE_START, SSD1306_BASIC_DEFAULT_COLUMN_ADDRESS_RANGE_END);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set column address range failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set page address range */
     res = ssd1306_set_page_address_range(&gs_handle, SSD1306_BASIC_DEFAULT_PAGE_ADDRESS_RANGE_START, SSD1306_BASIC_DEFAULT_PAGE_ADDRESS_RANGE_END);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set page address range failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set low column start address */
     res = ssd1306_set_low_column_start_address(&gs_handle, SSD1306_BASIC_DEFAULT_LOW_COLUMN_START_ADDRESS);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set low column start address failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set high column start address */
     res = ssd1306_set_high_column_start_address(&gs_handle, SSD1306_BASIC_DEFAULT_HIGH_COLUMN_START_ADDRESS);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set high column start address failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set display start line */
     res = ssd1306_set_display_start_line(&gs_handle, SSD1306_BASIC_DEFAULT_DISPLAY_START_LINE);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set display start line failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set fade blinking mode */
     res = ssd1306_set_fade_blinking_mode(&gs_handle, SSD1306_BASIC_DEFAULT_FADE_BLINKING_MODE, SSD1306_BASIC_DEFAULT_FADE_FRAMES);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set fade blinking failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* deactivate scroll */
     res = ssd1306_deactivate_scroll(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set deactivate scroll failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set zoom in */
     res = ssd1306_set_zoom_in(&gs_handle, SSD1306_BASIC_DEFAULT_ZOOM_IN);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set set zoom in failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set contrast */
     res = ssd1306_set_contrast(&gs_handle, SSD1306_BASIC_DEFAULT_CONTRAST);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set contrast failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set segment remap */
     res = ssd1306_set_segment_remap(&gs_handle, SSD1306_BASIC_DEFAULT_SEGMENT);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set segment remap failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set scan direction */
     res = ssd1306_set_scan_direction(&gs_handle, SSD1306_BASIC_DEFAULT_SCAN_DIRECTION);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set scan direction failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set display mode */
     res = ssd1306_set_display_mode(&gs_handle, SSD1306_BASIC_DEFAULT_DISPLAY_MODE);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set display mode failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set multiplex ratio */
     res = ssd1306_set_multiplex_ratio(&gs_handle, SSD1306_BASIC_DEFAULT_MULTIPLEX_RATIO);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set multiplex ratio failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set display offset */
     res = ssd1306_set_display_offset(&gs_handle, SSD1306_BASIC_DEFAULT_DISPLAY_OFFSET);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set display offset failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set display clock */
     res = ssd1306_set_display_clock(&gs_handle, SSD1306_BASIC_DEFAULT_OSCILLATOR_FREQUENCY, SSD1306_BASIC_DEFAULT_CLOCK_DIVIDE);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set display clock failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set precharge period */
     res = ssd1306_set_precharge_period(&gs_handle, SSD1306_BASIC_DEFAULT_PHASE1_PERIOD, SSD1306_BASIC_DEFAULT_PHASE2_PERIOD);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set pre charge period failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set hardware pins conf */
     res = ssd1306_set_com_pins_hardware_conf(&gs_handle, SSD1306_BASIC_DEFAULT_PIN_CONF, SSD1306_BASIC_DEFAULT_LEFT_RIGHT_REMAP);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set com pins hardware conf failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set deselect level 0.77 */
     res = ssd1306_set_deselect_level(&gs_handle, SSD1306_BASIC_DEFAULT_DESELECT_LEVEL);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set deselect level failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set page memory addressing mode */
     res = ssd1306_set_memory_addressing_mode(&gs_handle, SSD1306_MEMORY_ADDRESSING_MODE_PAGE);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set memory addressing level failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* enable charge pump */
     res = ssd1306_set_charge_pump(&gs_handle, SSD1306_CHARGE_PUMP_ENABLE);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set charge pump failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* entire display off */
     res = ssd1306_set_entire_display(&gs_handle, SSD1306_ENTIRE_DISPLAY_OFF);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set entire display failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* enable display */
     res = ssd1306_set_display(&gs_handle, SSD1306_DISPLAY_ON);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: set display failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
     
     /* clear screen */
     res = ssd1306_clear(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         ssd1306_interface_debug_print("ssd1306: clear failed.\n");
-        ssd1306_deinit(&gs_handle);
+        (void)ssd1306_deinit(&gs_handle);
         
         return 1;
     }
@@ -349,7 +349,7 @@ uint8_t ssd1306_basic_init(ssd1306_interface_t interface, ssd1306_address_t addr
 uint8_t ssd1306_basic_deinit(void)
 {
     /* deinit ssd1306 */
-    if (ssd1306_deinit(&gs_handle))
+    if (ssd1306_deinit(&gs_handle) != 0)
     {
         return 1;
     }
@@ -368,14 +368,12 @@ uint8_t ssd1306_basic_deinit(void)
  */
 uint8_t ssd1306_basic_display_on(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* display on */
     res = ssd1306_set_display(&gs_handle, SSD1306_DISPLAY_ON);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: set display failed.\n");
-        
         return 1;
     }
     else
@@ -393,14 +391,12 @@ uint8_t ssd1306_basic_display_on(void)
  */
 uint8_t ssd1306_basic_display_off(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* display off */
     res = ssd1306_set_display(&gs_handle, SSD1306_DISPLAY_OFF);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: set display failed.\n");
-        
         return 1;
     }
     else
@@ -419,7 +415,7 @@ uint8_t ssd1306_basic_display_off(void)
 uint8_t ssd1306_basic_clear(void)
 {
     /* clear */
-    if (ssd1306_clear(&gs_handle))
+    if (ssd1306_clear(&gs_handle) != 0)
     {
         return 1;
     }
@@ -441,14 +437,12 @@ uint8_t ssd1306_basic_clear(void)
  */
 uint8_t ssd1306_basic_write_point(uint8_t x, uint8_t y, uint8_t data)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* write point */
     res = ssd1306_write_point(&gs_handle, x, y, data);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: write point failed.\n");
-       
         return 1;
     }
     
@@ -467,14 +461,12 @@ uint8_t ssd1306_basic_write_point(uint8_t x, uint8_t y, uint8_t data)
  */
 uint8_t ssd1306_basic_read_point(uint8_t x, uint8_t y, uint8_t *data)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* read point in gram */
     res = ssd1306_read_point(&gs_handle, x, y, data);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: read point failed.\n");
-       
         return 1;
     }
     
@@ -496,19 +488,17 @@ uint8_t ssd1306_basic_read_point(uint8_t x, uint8_t y, uint8_t *data)
  */
 uint8_t ssd1306_basic_string(uint8_t x, uint8_t y, char *str, uint16_t len, uint8_t color, ssd1306_font_t font)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* write stirng in gram */
     res = ssd1306_gram_write_string(&gs_handle, x, y, str, len, color, font);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: gram write string failed.\n");
-       
         return 1;
     }
     
     /* update gram */
-    if (ssd1306_gram_update(&gs_handle))
+    if (ssd1306_gram_update(&gs_handle) != 0)
     {
         return 1;
     }
@@ -532,19 +522,17 @@ uint8_t ssd1306_basic_string(uint8_t x, uint8_t y, char *str, uint16_t len, uint
  */
 uint8_t ssd1306_basic_rect(int8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* fill rect in gram */
     res = ssd1306_gram_fill_rect(&gs_handle, left, top, right, bottom, color);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: gram fill rect failed.\n");
-       
         return 1;
     }
     
     /* update gram */
-    if (ssd1306_gram_update(&gs_handle))
+    if (ssd1306_gram_update(&gs_handle) != 0)
     {
         return 1;
     }
@@ -568,19 +556,17 @@ uint8_t ssd1306_basic_rect(int8_t left, uint8_t top, uint8_t right, uint8_t bott
  */
 uint8_t ssd1306_basic_picture(int8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* draw picture in gram */
     res = ssd1306_gram_draw_picture(&gs_handle, left, top, right, bottom, img);
-    if (res)
+    if (res != 0)
     {
-        ssd1306_interface_debug_print("ssd1306: gram draw picture failed.\n");
-        
         return 1;
     }
     
     /* update gram */
-    if (ssd1306_gram_update(&gs_handle))
+    if (ssd1306_gram_update(&gs_handle) != 0)
     {
         return 1;
     }

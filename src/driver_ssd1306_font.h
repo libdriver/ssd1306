@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1306_FONT_H_
-#define _DRIVER_SSD1306_FONT_H_
+#ifndef DRIVER_SSD1306_FONT_H
+#define DRIVER_SSD1306_FONT_H
 
 #include <stdint.h>
 #include <stdio.h>

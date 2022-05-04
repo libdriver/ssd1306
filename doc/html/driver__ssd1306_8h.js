@@ -116,7 +116,7 @@ var driver__ssd1306_8h =
     [ "ssd1306_set_display_clock", "group__ssd1306__base__driver.html#gaa588c8dc16bd6bfc84fa242910cf7252", null ],
     [ "ssd1306_set_display_mode", "group__ssd1306__base__driver.html#ga8231cf2d7d5e244df0a64c65d5db9aca", null ],
     [ "ssd1306_set_display_offset", "group__ssd1306__base__driver.html#ga86a554181ce9cd671b255443f3076666", null ],
-    [ "ssd1306_set_display_start_line", "group__ssd1306__base__driver.html#ga446b49555b97d5a88e652415d7b19b9c", null ],
+    [ "ssd1306_set_display_start_line", "group__ssd1306__base__driver.html#ga9840154b11ab91249174b79fde6899bd", null ],
     [ "ssd1306_set_entire_display", "group__ssd1306__base__driver.html#gae0a03db84a228eb20b9d3ba0c6624f57", null ],
     [ "ssd1306_set_fade_blinking_mode", "group__ssd1306__base__driver.html#gabd899e41e08e8ce70e14b3718e9cfa2a", null ],
     [ "ssd1306_set_high_column_start_address", "group__ssd1306__base__driver.html#gaa5160b65db212aa7150aa3a00cd3f47c", null ],
