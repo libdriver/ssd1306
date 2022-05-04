@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1306_DISPLAY_TEST_H_
-#define _DRIVER_SSD1306_DISPLAY_TEST_H_
+#ifndef DRIVER_SSD1306_DISPLAY_TEST_H
+#define DRIVER_SSD1306_DISPLAY_TEST_H
 
 #include "driver_ssd1306_interface.h"
 

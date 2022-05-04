@@ -1,7 +1,7 @@
 var group__ssd1306__base__driver =
 [
     [ "ssd1306_handle_s", "structssd1306__handle__s.html", [
-      [ "debug_print", "structssd1306__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2", null ],
+      [ "debug_print", "structssd1306__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
       [ "delay_ms", "structssd1306__handle__s.html#a406c9433252b7366de417b7a60915c81", null ],
       [ "gram", "structssd1306__handle__s.html#ad69f220d63904bed9da62f9af24aaf6f", null ],
       [ "iic_addr", "structssd1306__handle__s.html#ae4fb63dc1b166464d5da3aa753b0805a", null ],
@@ -132,7 +132,7 @@ var group__ssd1306__base__driver =
     [ "ssd1306_set_display_clock", "group__ssd1306__base__driver.html#gaa588c8dc16bd6bfc84fa242910cf7252", null ],
     [ "ssd1306_set_display_mode", "group__ssd1306__base__driver.html#ga8231cf2d7d5e244df0a64c65d5db9aca", null ],
     [ "ssd1306_set_display_offset", "group__ssd1306__base__driver.html#ga86a554181ce9cd671b255443f3076666", null ],
-    [ "ssd1306_set_display_start_line", "group__ssd1306__base__driver.html#ga446b49555b97d5a88e652415d7b19b9c", null ],
+    [ "ssd1306_set_display_start_line", "group__ssd1306__base__driver.html#ga9840154b11ab91249174b79fde6899bd", null ],
     [ "ssd1306_set_entire_display", "group__ssd1306__base__driver.html#gae0a03db84a228eb20b9d3ba0c6624f57", null ],
     [ "ssd1306_set_fade_blinking_mode", "group__ssd1306__base__driver.html#gabd899e41e08e8ce70e14b3718e9cfa2a", null ],
     [ "ssd1306_set_high_column_start_address", "group__ssd1306__base__driver.html#gaa5160b65db212aa7150aa3a00cd3f47c", null ],

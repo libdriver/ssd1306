@@ -1,6 +1,6 @@
 var driver__ssd1306__interface_8h =
 [
-    [ "ssd1306_interface_debug_print", "group__ssd1306__interface__driver.html#ga272eed5335918f04a5eaa72aaf76b693", null ],
+    [ "ssd1306_interface_debug_print", "group__ssd1306__interface__driver.html#ga8bab7b11c6b9ed5a7a58e14911b0e6a2", null ],
     [ "ssd1306_interface_delay_ms", "group__ssd1306__interface__driver.html#gaf6aebd2ef1dcc25a8a046ed67a989495", null ],
     [ "ssd1306_interface_iic_deinit", "group__ssd1306__interface__driver.html#gaae3e98f3b42bffad41438de20585664c", null ],
     [ "ssd1306_interface_iic_init", "group__ssd1306__interface__driver.html#ga33673b85b80570b0c2b157857dc527ff", null ],

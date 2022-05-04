@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _WIRE_H_
-#define _WIRE_H_
+#ifndef WIRE_H
+#define WIRE_H
 
 #include "stm32f4xx_hal.h"
 

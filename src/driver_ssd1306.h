@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1306_H_
-#define _DRIVER_SSD1306_H_
+#ifndef DRIVER_SSD1306_H
+#define DRIVER_SSD1306_H
 
 #include <stdint.h>
 #include <stdio.h>
@@ -228,7 +228,7 @@ typedef struct ssd1306_handle_s
     uint8_t (*reset_gpio_init)(void);                                                   /**< point to a reset_gpio_init function address */
     uint8_t (*reset_gpio_deinit)(void);                                                 /**< point to a reset_gpio_deinit function address */
     uint8_t (*reset_gpio_write)(uint8_t value);                                         /**< point to a reset_gpio_write function address */
-    uint16_t (*debug_print)(char *fmt, ...);                                            /**< point to a debug_print function address */
+    void (*debug_print)(const char *const fmt, ...);                                    /**< point to a debug_print function address */
     void (*delay_ms)(uint32_t ms);                                                      /**< point to a delay_ms function address */
     uint8_t inited;                                                                     /**< inited flag */
     uint8_t iic_addr;                                                                   /**< iic address */
@@ -789,7 +789,7 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle);
 /**
  * @brief     set the display start line
  * @param[in] *handle points to a ssd1306 handle structure
- * @param[in] line is the start line
+ * @param[in] l is the start line
  * @return    status code
  *            - 0 success
  *            - 1 set display start line failed
@@ -797,7 +797,7 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle);
  *            - 3 handle is not initialized
  * @note      line <= 0x3F
  */
-uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t line);
+uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t l);
 
 /**
  * @brief     set the display contrast

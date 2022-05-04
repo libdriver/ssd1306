@@ -152,13 +152,12 @@ void ssd1306_interface_delay_ms(uint32_t ms)
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t ssd1306_interface_debug_print(char *fmt, ...)
+void ssd1306_interface_debug_print(const char *const fmt, ...)
 {
-    volatile char str[256];
-    volatile uint8_t len;
+    char str[256];
+    uint8_t len;
     va_list args;
     
     memset((char *)str, 0, sizeof(char)*256); 
@@ -167,14 +166,7 @@ uint16_t ssd1306_interface_debug_print(char *fmt, ...)
     va_end(args);
         
     len = strlen((char *)str);
-    if (printf((uint8_t *)str, len))
-    {
-        return 0;
-    }
-    else
-    { 
-        return len;
-    }
+    (void)printf((uint8_t *)str, len);
 }
 
 /**

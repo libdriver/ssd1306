@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver SSD1306
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/ssd1306/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/ssd1306/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 SSD1306是一個單芯片CMOS OLED/PLED驅動器，帶有用於有機/聚合物發光的控制器二極管點陣圖形顯示系統。它由128個段和64個公共區組成。這個IC是為普通陰極型OLED面板設計。 SSD1306內置對比度控制、顯示RAM和振盪器，減少了外部組件和功耗。它有256階亮度控制。數據/命令通過硬件可選的6800/8000系列兼容並行接口從通用MCU發送，I2C接口或串行外圍接口。它適用於許多小型便攜式應用，如手機分屏、MP3播放器、計算器等。
 
-LibDriver SSD1306是LibDriver推出的SSD1306的全功能驅動，該驅動提供繪製單點，填充塊，圖片顯示等功能。
+LibDriver SSD1306是LibDriver推出的SSD1306的全功能驅動，該驅動提供繪製單點，填充塊，圖片顯示等功能並且它符合MISRA標準。
 
 ### 目錄
 
@@ -54,28 +54,26 @@ LibDriver SSD1306是LibDriver推出的SSD1306的全功能驅動，該驅動提�
 uint8_t res;
 
 res = ssd1306_basic_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
-if (res)
+if (res != 0)
 {
-    ssd1306_basic_deinit();
-
     return 1;
 }
 
 ...
 
 res = ssd1306_basic_clear();
-if (res)
+if (res != 0)
 {
     ssd1306_interface_debug_print("ssd1306: clear screen failed.\n");
-    ssd1306_basic_deinit();
+    (void)ssd1306_basic_deinit();
 
     return 1;
 }
 res = ssd1306_basic_string(0, 0, "123", 3, 1, SSD1306_FONT_16);
-if (res)
+if (res != 0)
 {
     ssd1306_interface_debug_print("ssd1306: show string failed.\n");
-    ssd1306_basic_deinit();
+    (void)ssd1306_basic_deinit();
 
     return 1;
 }
@@ -83,16 +81,16 @@ if (res)
 ...
 
 res = ssd1306_basic_rect(0, 31, 31, 31, 1);
-if (res)
+if (res != 0)
 {
-    ssd1306_basic_deinit();
+    (void)ssd1306_basic_deinit();
 
     return 1;
 }    
 
 ...
 
-ssd1306_basic_deinit();
+(void)ssd1306_basic_deinit();
 
 return 0;
 ```
@@ -110,28 +108,26 @@ uint8_t res;
 uint8_t image[8192];
 
 res = ssd1306_advance_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
-if (res)
+if (res != 0)
 {
-    ssd1306_advance_deinit();
-
     return 1;
 }
 
 ...
 
 res = ssd1306_advance_clear();
-if (res)
+if (res != 0)
 {
     ssd1306_interface_debug_print("ssd1306: clear screen failed.\n");
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
 res = ssd1306_advance_string(0, 0, "123", 3, 1, SSD1306_FONT_16);
-if (res)
+if (res != 0)
 {
     ssd1306_interface_debug_print("ssd1306: show string failed.\n");
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
@@ -139,9 +135,9 @@ if (res)
 ...
 
 res = ssd1306_advance_write_point(38, 38, 1);
-if (res)
+if (res != 0)
 {
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
@@ -149,9 +145,9 @@ if (res)
 ...
 
 res = ssd1306_advance_rect(0, 31, 31, 31, 1);
-if (res)
+if (res != 0)
 {
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
@@ -159,9 +155,9 @@ if (res)
 ...
 
 res = ssd1306_advance_fade_blinking(SSD1306_FADE_BLINKING_MODE_BLINKING, 0);
-if (res)
+if (res != 0)
 {
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
@@ -169,9 +165,9 @@ if (res)
 ...
 
 res = ssd1306_advance_vertical_left_horizontal_scroll(0, 7, 0, SSD1306_SCROLL_FRAME_2);
-if (res)
+if (res != 0)
 {
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
@@ -179,16 +175,16 @@ if (res)
 ...
 
 res = ssd1306_advance_picture(0, 0, 0, 0, image);
-if (res)
+if (res != 0)
 {
-    ssd1306_advance_deinit();
+    (void)ssd1306_advance_deinit();
 
     return 1;
 }
 
 ...
 
-ssd1306_advance_deinit();
+(void)ssd1306_advance_deinit();
 
 return 0;
 ```

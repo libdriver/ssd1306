@@ -105,30 +105,51 @@
  *            - 1 write failed
  * @note      none
  */
-static uint8_t _ssd1306_write_byte(ssd1306_handle_t *handle, uint8_t data, uint8_t cmd)
+static uint8_t a_ssd1306_write_byte(ssd1306_handle_t *handle, uint8_t data, uint8_t cmd)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle->iic_spi == SSD1306_INTERFACE_IIC)                              /* if iic */
     {
-        if (cmd)                                                               /* if data */
+        if (cmd != 0)                                                          /* if data */
         {
-            return handle->iic_write(handle->iic_addr, 0x40, &data, 1);        /* write data */
+            if (handle->iic_write(handle->iic_addr, 0x40, &data, 1) != 0)      /* write data */
+            {
+                return 1;                                                      /* return error */
+            }
+            else
+            {
+                return 0;                                                      /* success return 0 */
+            }
         }
         else
         {
-            return handle->iic_write(handle->iic_addr, 0x00, &data, 1);        /* write command */
+            if (handle->iic_write(handle->iic_addr, 0x00, &data, 1) != 0)      /* write command */
+            {
+                return 1;                                                      /* return error */
+            }
+            else
+            {
+                return 0;                                                      /* success return 0 */
+            }
         }
     }
     else if (handle->iic_spi == SSD1306_INTERFACE_SPI)                         /* if spi */
     {
         res = handle->spi_cmd_data_gpio_write(cmd);                            /* write data command */
-        if (res)                                                               /* check error */
+        if (res != 0)                                                          /* check error */
         {
             return 1;                                                          /* return error */
         }
-            
-        return handle->spi_write_cmd(&data, 1);                                /* write command */
+        
+        if (handle->spi_write_cmd(&data, 1) != 0)                              /* write command */
+        {
+            return 1;                                                          /* return error */
+        }
+        else
+        {
+            return 0;                                                          /* success return 0 */
+        }
     }
     else
     {
@@ -147,30 +168,51 @@ static uint8_t _ssd1306_write_byte(ssd1306_handle_t *handle, uint8_t data, uint8
  *            - 1 write failed
  * @note      none
  */
-static uint8_t _ssd1306_multiple_write_byte(ssd1306_handle_t *handle, uint8_t *data, uint8_t len, uint8_t cmd)
+static uint8_t a_ssd1306_multiple_write_byte(ssd1306_handle_t *handle, uint8_t *data, uint8_t len, uint8_t cmd)
 {    
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle->iic_spi == SSD1306_INTERFACE_IIC)                               /* if iic */
     {
-        if (cmd)                                                                /* if data */
+        if (cmd != 0)                                                           /* if data */
         {
-            return handle->iic_write(handle->iic_addr, 0x40, data, len);        /* write data */
+            if (handle->iic_write(handle->iic_addr, 0x40, data, len) != 0)      /* write data */
+            {
+                return 1;                                                       /* return error */
+            }
+            else
+            {
+                return 0;                                                       /* success return 0 */
+            }
         }
         else
         {
-            return handle->iic_write(handle->iic_addr, 0x00, data, len);        /* write command */
+            if (handle->iic_write(handle->iic_addr, 0x00, data, len) != 0)      /* write command */
+            {
+                return 1;                                                       /* return error */
+            }
+            else
+            {
+                return 0;                                                       /* success return 0 */
+            }
         }
     }
     else if (handle->iic_spi == SSD1306_INTERFACE_SPI)                          /* if spi */
     {
         res = handle->spi_cmd_data_gpio_write(cmd);                             /* write data command */
-        if (res)                                                                /* check error */
+        if (res != 0)                                                           /* check error */
         {
             return 1;                                                           /* return error */
         }
-            
-        return handle->spi_write_cmd(data, len);                                /* write command */
+        
+        if (handle->spi_write_cmd(data, len) != 0)                              /* write command */
+        {
+            return 1;                                                           /* return error */
+        }
+        else
+        {
+            return 0;                                                           /* success return 0 */
+        }
     }
     else
     {
@@ -189,16 +231,16 @@ static uint8_t _ssd1306_multiple_write_byte(ssd1306_handle_t *handle, uint8_t *d
  *            - 1 gram draw point failed
  * @note      none
  */
-static uint8_t _ssd1306_gram_draw_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data)
+static uint8_t a_ssd1306_gram_draw_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data)
 {
-    volatile uint8_t pos;
-    volatile uint8_t bx;
-    volatile uint8_t temp = 0;
+    uint8_t pos;
+    uint8_t bx;
+    uint8_t temp = 0;
     
     pos = y / 8;                              /* get y page */
     bx = y % 8;                               /* get y point */
     temp = 1 << bx;                           /* set data */
-    if (data)                                 /* if 1  */
+    if (data != 0)                            /* if 1  */
     {
         handle->gram[x][pos] |= temp;         /* set 1 */
     }
@@ -223,11 +265,11 @@ static uint8_t _ssd1306_gram_draw_point(ssd1306_handle_t *handle, uint8_t x, uin
  *            - 1 gram show char failed
  * @note      none
  */
-static uint8_t _ssd1306_gram_show_char(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t chr, uint8_t size, uint8_t mode)
+static uint8_t a_ssd1306_gram_show_char(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t chr, uint8_t size, uint8_t mode)
 {
-    volatile uint8_t temp, t, t1;
-    volatile uint8_t y0 = y;
-    volatile uint8_t csize = (size / 8 + ((size % 8) ? 1 : 0)) * (size / 2);        /* get size */
+    uint8_t temp, t, t1;
+    uint8_t y0 = y;
+    uint8_t csize = (size / 8 + ((size % 8) ? 1 : 0)) * (size / 2);                 /* get size */
     
     chr = chr - ' ';                                                                /* get index */
     for (t = 0; t < csize; t++)                                                     /* write size */
@@ -250,13 +292,19 @@ static uint8_t _ssd1306_gram_show_char(ssd1306_handle_t *handle, uint8_t x, uint
         }
         for (t1 = 0; t1 < 8; t1++)                                                  /* write one line */
         {
-            if (temp & 0x80)                                                        /* if 1 */
+            if ((temp & 0x80) != 0)                                                 /* if 1 */
             {
-                _ssd1306_gram_draw_point(handle, x, y, mode);                       /* draw point */
+                if (a_ssd1306_gram_draw_point(handle, x, y, mode) != 0)             /* draw point */
+                {
+                    return 1;                                                       /* return error */
+                }
             }
             else 
             {
-                _ssd1306_gram_draw_point(handle, x, y, !mode);                      /* draw point */
+                if (a_ssd1306_gram_draw_point(handle, x, y, !mode) != 0)            /* draw point */
+                {
+                    return 1;                                                       /* return error */
+                }
             }
             temp <<= 1;                                                             /* left shift 1 */
             y++;
@@ -285,8 +333,8 @@ static uint8_t _ssd1306_gram_show_char(ssd1306_handle_t *handle, uint8_t x, uint
  */
 uint8_t ssd1306_clear(ssd1306_handle_t *handle)
 {
-    volatile uint8_t i;
-    volatile uint8_t n;
+    uint8_t i;
+    uint8_t n;
     
     if (handle == NULL)                                                                               /* check handle */
     {
@@ -299,19 +347,19 @@ uint8_t ssd1306_clear(ssd1306_handle_t *handle)
     
     for (i = 0; i < 8; i++)                                                                           /* write 8 page */
     {  
-        if (_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR+i, SSD1306_CMD))                        /* set page */
+        if (a_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR+i, SSD1306_CMD) != 0)                  /* set page */
         {
             handle->debug_print("ssd1306: write byte failed.\n");                                     /* write byte failed */
             
             return 1;                                                                                 /* return error */
         }
-        if (_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS, SSD1306_CMD))         /* set lower column 0 */
+        if (a_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS, SSD1306_CMD) != 0)   /* set lower column 0 */
         {
             handle->debug_print("ssd1306: write byte failed.\n");                                     /* write byte failed */
             
             return 1;                                                                                 /* return error */
         }
-        if (_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS, SSD1306_CMD))        /* set higher column 0 */
+        if (a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS, SSD1306_CMD) != 0)  /* set higher column 0 */
         {
             handle->debug_print("ssd1306: write byte failed.\n");                                     /* write byte failed */
             
@@ -320,7 +368,7 @@ uint8_t ssd1306_clear(ssd1306_handle_t *handle)
         for (n = 0; n < 128; n++)                                                                     /* write 128 */
         {
             handle->gram[n][i] = 0x00;                                                                /* set black */
-            if (_ssd1306_write_byte(handle, handle->gram[n][i], SSD1306_DATA))                        /* write data */
+            if (a_ssd1306_write_byte(handle, handle->gram[n][i], SSD1306_DATA) != 0)                  /* write data */
             {
                 handle->debug_print("ssd1306: write byte failed.\n");                                 /* write byte failed */
                 
@@ -344,8 +392,8 @@ uint8_t ssd1306_clear(ssd1306_handle_t *handle)
  */
 uint8_t ssd1306_gram_update(ssd1306_handle_t *handle)
 {
-    volatile uint8_t i;
-    volatile uint8_t n;
+    uint8_t i;
+    uint8_t n;
     
     if (handle == NULL)                                                                               /* check handle */
     {
@@ -358,19 +406,19 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle)
     
     for (i = 0; i < 8; i++)                                                                           /* write 8 page */
     {  
-        if (_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR+i, SSD1306_CMD))                        /* set page */
+        if (a_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR+i, SSD1306_CMD) != 0)                  /* set page */
         {
             handle->debug_print("ssd1306: write byte failed.\n");                                     /* write byte failed */
             
             return 1;                                                                                 /* return error */
         }
-        if (_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS, SSD1306_CMD))         /* set lower column 0 */
+        if (a_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS, SSD1306_CMD) != 0)   /* set lower column 0 */
         {
             handle->debug_print("ssd1306: write byte failed.\n");                                     /* write byte failed */
             
             return 1;                                                                                 /* return error */
         }
-        if (_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS, SSD1306_CMD))        /* set higher column 0 */
+        if (a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS, SSD1306_CMD) != 0)  /* set higher column 0 */
         {
             handle->debug_print("ssd1306: write byte failed.\n");                                     /* write byte failed */
             
@@ -378,7 +426,7 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle)
         }
         for (n = 0; n < 128; n++)                                                                     /* write 128 */
         {
-            if (_ssd1306_write_byte(handle, handle->gram[n][i], SSD1306_DATA))                        /* write data */
+            if (a_ssd1306_write_byte(handle, handle->gram[n][i], SSD1306_DATA) != 0)                  /* write data */
             {
                 handle->debug_print("ssd1306: write byte failed.\n");                                 /* write byte failed */
                 
@@ -405,9 +453,9 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle)
  */
 uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data)
 {
-    volatile uint8_t pos;
-    volatile uint8_t bx;
-    volatile uint8_t temp = 0;
+    uint8_t pos;
+    uint8_t bx;
+    uint8_t temp = 0;
     
     if (handle == NULL)                                                                                        /* check handle */
     {
@@ -427,7 +475,7 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
     pos = y / 8;                                                                                               /* get y page */
     bx = y % 8;                                                                                                /* get y point */
     temp = 1 << bx;                                                                                            /* set data */
-    if (data)
+    if (data != 0)                                                                                             /* check the data */
     {
         handle->gram[x][pos] |= temp;                                                                          /* set 1 */
     }
@@ -435,25 +483,25 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
     {
         handle->gram[x][pos] &= ~temp;                                                                         /* set 0 */
     }
-    if (_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR + pos, SSD1306_CMD))                                 /* write page addr */
+    if (a_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR + pos, SSD1306_CMD) != 0)                           /* write page addr */
     {
         handle->debug_print("ssd1306: write byte failed.\n");                                                  /* write byte failed */
         
         return 1;                                                                                              /* return error */
     }
-    if (_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS|(x&0x0F), SSD1306_CMD))             /* write lower column */
+    if (a_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS|(x&0x0F), SSD1306_CMD) != 0)       /* write lower column */
     {
         handle->debug_print("ssd1306: write byte failed.\n");                                                  /* write byte failed */
         
         return 1;                                                                                              /* return error */
     }
-    if (_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|((x>4)&0x0F), SSD1306_CMD))        /* write higher column */
+    if (a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|((x>4)&0x0F), SSD1306_CMD) != 0)  /* write higher column */
     {
         handle->debug_print("ssd1306: write byte failed.\n");                                                  /* write byte failed */
         
         return 1;                                                                                              /* return error */
     }
-    if (_ssd1306_write_byte(handle, handle->gram[x][pos], SSD1306_DATA))                                       /* write data */
+    if (a_ssd1306_write_byte(handle, handle->gram[x][pos], SSD1306_DATA) != 0)                                 /* write data */
     {
         handle->debug_print("ssd1306: write byte failed.\n");                                                  /* write byte failed */
         
@@ -480,9 +528,9 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
  */
 uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data)
 {
-    volatile uint8_t pos;
-    volatile uint8_t bx;
-    volatile uint8_t temp = 0;
+    uint8_t pos;
+    uint8_t bx;
+    uint8_t temp = 0;
     
     if (handle == NULL)                                              /* check handle */
     {
@@ -502,7 +550,7 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
     pos = y / 8;                                                     /* get y page */
     bx = y % 8;                                                      /* get y point */
     temp = 1 << bx;                                                  /* set data */
-    if (handle->gram[x][pos] & temp)                                 /* get data */
+    if ((handle->gram[x][pos] & temp) != 0)                          /* get data */
     {
         *data = 1;                                                   /* set 1 */
     }
@@ -529,9 +577,9 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
  */
 uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data)
 {
-    volatile uint8_t pos;
-    volatile uint8_t bx;
-    volatile uint8_t temp = 0;
+    uint8_t pos;
+    uint8_t bx;
+    uint8_t temp = 0;
     
     if (handle == NULL)                                              /* check handle */
     {
@@ -551,7 +599,7 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
     pos = y / 8;                                                     /* get y page */
     bx = y % 8;                                                      /* get y point */
     temp = 1 << bx;                                                  /* set data */
-    if (data)                                                        /* if 1 */
+    if (data != 0)                                                   /* if 1 */
     {
         handle->gram[x][pos] |= temp;                                /* set 1 */
     }
@@ -578,9 +626,9 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
  */
 uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data)
 {
-    volatile uint8_t pos;
-    volatile uint8_t bx;
-    volatile uint8_t temp = 0;
+    uint8_t pos;
+    uint8_t bx;
+    uint8_t temp = 0;
     
     if (handle == NULL)                                              /* check handle */
     {
@@ -600,7 +648,7 @@ uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, 
     pos = y / 8;                                                     /* get y page */
     bx = y % 8;                                                      /* get y point */
     temp = 1 << bx;                                                  /* set data */
-    if (handle->gram[x][pos] & temp)                                 /* get data */
+    if ((handle->gram[x][pos] & temp) != 0)                          /* get data */
     {
         *data = 1;                                                   /* set 1 */
     }
@@ -645,22 +693,22 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
         
         return 1;                                                            /* return error */
     }
-    while (len && (*str <= '~') && (*str >= ' '))                            /* write all string */
+    while ((len != 0) && (*str <= '~') && (*str >= ' '))                     /* write all string */
     {       
         if (x > (127 - (font / 2)))                                          /* check x point */
         {
             x = 0;                                                           /* set x */
-            y += font;                                                       /* set next row */
+            y += (uint8_t)font;                                              /* set next row */
         }
         if (y > (63 - font))                                                 /* check y pont */
         {
             y = x = 0;                                                       /* reset to 0,0 */
         }
-        if (_ssd1306_gram_show_char(handle, x, y, *str, font, color))        /* show a char */
+        if (a_ssd1306_gram_show_char(handle, x, y, *str, font, color) != 0)  /* show a char */
         {
             return 1;                                                        /* return error */
         }
-        x += font/2;                                                         /* x + font/2 */
+        x += (uint8_t)(font / 2);                                            /* x + font/2 */
         str++;                                                               /* str address++ */
         len--;                                                               /* str length-- */
     }
@@ -685,7 +733,7 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
  */
 uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color)
 {
-    volatile uint8_t x, y;  
+    uint8_t x, y;  
     
     if (handle == NULL)                                                         /* check handle */
     {
@@ -718,7 +766,10 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
     {
         for (y = top; y <= bottom; y++)                                         /* write y */
         {
-            _ssd1306_gram_draw_point(handle, x, y, color);                      /* draw poit */
+            if (a_ssd1306_gram_draw_point(handle, x, y, color) != 0)            /* draw poit */
+            {
+                return 1;                                                       /* return error */
+            }
         }
     }
     
@@ -742,7 +793,7 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
  */
 uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img)
 {    
-    volatile uint8_t x, y;  
+    uint8_t x, y;  
     
     if (handle == NULL)                                                         /* check handle */
     {
@@ -775,7 +826,10 @@ uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_
     {
         for (y = top; y <= bottom; y++)                                         /* write y */
         {
-            _ssd1306_gram_draw_point(handle, x, y, *img);                       /* draw point */
+            if (a_ssd1306_gram_draw_point(handle, x, y, *img) != 0)             /* draw point */
+            {
+                return 1;                                                       /* return error */
+            }
             img++;                                                              /* img++ */
         }
     }
@@ -885,54 +939,54 @@ uint8_t ssd1306_init(ssd1306_handle_t *handle)
         return 3;                                                                   /* return error */
     }
     
-    if (handle->spi_cmd_data_gpio_init())                                           /* check spi_cmd_data_gpio_init */
+    if (handle->spi_cmd_data_gpio_init() != 0)                                      /* check spi_cmd_data_gpio_init */
     {
         handle->debug_print("ssd1306: spi cmd data gpio init failed.\n");           /* spi cmd data gpio init failed */
         
         return 5;                                                                   /* return error */
     }
-    if (handle->reset_gpio_init())                                                  /* reset gpio init */
+    if (handle->reset_gpio_init() != 0)                                             /* reset gpio init */
     {
         handle->debug_print("ssd1306: reset gpio init failed.\n");                  /* reset gpio init failed */
-        handle->spi_cmd_data_gpio_deinit();                                         /* spi_cmd_data_gpio_deinit */
+        (void)handle->spi_cmd_data_gpio_deinit();                                   /* spi_cmd_data_gpio_deinit */
         
         return 4;                                                                   /* return error */
     }
-    if (handle->reset_gpio_write(0))                                                /* write 0 */
+    if (handle->reset_gpio_write(0) != 0)                                           /* write 0 */
     {
         handle->debug_print("ssd1306: reset gpio write failed.\n");                 /* reset gpio write failed */
-        handle->spi_cmd_data_gpio_deinit();                                         /* spi_cmd_data_gpio_deinit */
-        handle->reset_gpio_deinit();                                                /* reset_gpio_deinit */
+        (void)handle->spi_cmd_data_gpio_deinit();                                   /* spi_cmd_data_gpio_deinit */
+        (void)handle->reset_gpio_deinit();                                          /* reset_gpio_deinit */
         
         return 4;                                                                   /* return error */
     }
     handle->delay_ms(100);                                                          /* delay 100 ms */
-    if (handle->reset_gpio_write(1))                                                /* write 1 */
+    if (handle->reset_gpio_write(1) != 0)                                           /* write 1 */
     {
         handle->debug_print("ssd1306: reset gpio write failed.\n");                 /* reset gpio write failed */
-        handle->spi_cmd_data_gpio_deinit();                                         /* spi_cmd_data_gpio_deinit */
-        handle->reset_gpio_deinit();                                                /* reset_gpio_deinit */
+        (void)handle->spi_cmd_data_gpio_deinit();                                   /* spi_cmd_data_gpio_deinit */
+        (void)handle->reset_gpio_deinit();                                          /* reset_gpio_deinit */
         
         return 4;                                                                   /* return error */
     }
     if (handle->iic_spi == SSD1306_INTERFACE_IIC)                                   /* if iic interface */
     {
-        if (handle->iic_init())                                                     /* iic init */
+        if (handle->iic_init() != 0)                                                /* iic init */
         {
             handle->debug_print("ssd1306: iic init failed.\n");                     /* iic init failed */
-            handle->spi_cmd_data_gpio_deinit();                                     /* spi_cmd_data_gpio_deinit */
-            handle->reset_gpio_deinit();                                            /* reset_gpio_deinit */
+            (void)handle->spi_cmd_data_gpio_deinit();                               /* spi_cmd_data_gpio_deinit */
+            (void)handle->reset_gpio_deinit();                                      /* reset_gpio_deinit */
             
             return 1;                                                               /* return error */
         }
     }
     else if (handle->iic_spi == SSD1306_INTERFACE_SPI)                              /* if spi interface */
     {
-        if (handle->spi_init())                                                     /* spi init */
+        if (handle->spi_init() != 0)                                                /* spi init */
         {
             handle->debug_print("ssd1306: spi init failed.\n");                     /* spi init failed */
-            handle->spi_cmd_data_gpio_deinit();                                     /* spi_cmd_data_gpio_deinit */
-            handle->reset_gpio_deinit();                                            /* reset_gpio_deinit */
+            (void)handle->spi_cmd_data_gpio_deinit();                               /* spi_cmd_data_gpio_deinit */
+            (void)handle->reset_gpio_deinit();                                      /* reset_gpio_deinit */
             
             return 1;                                                               /* return error */
         }
@@ -940,8 +994,8 @@ uint8_t ssd1306_init(ssd1306_handle_t *handle)
     else
     {
         handle->debug_print("ssd1306: interface is invalid.\n");                    /* interface is invalid */
-        handle->spi_cmd_data_gpio_deinit();                                         /* spi_cmd_data_gpio_deinit */
-        handle->reset_gpio_deinit();                                                /* reset_gpio_deinit */
+        (void)handle->spi_cmd_data_gpio_deinit();                                   /* spi_cmd_data_gpio_deinit */
+        (void)handle->reset_gpio_deinit();                                          /* reset_gpio_deinit */
         
         return 6;                                                                   /* return error */
     }
@@ -966,7 +1020,7 @@ uint8_t ssd1306_init(ssd1306_handle_t *handle)
  */
 uint8_t ssd1306_deinit(ssd1306_handle_t *handle)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                              /* check handle */
     {
@@ -979,25 +1033,25 @@ uint8_t ssd1306_deinit(ssd1306_handle_t *handle)
     
     buf[0] = SSD1306_CMD_CHARGE_PUMP_SETTING;                                        /* charge pump off */
     buf[1] = 0x10 | (0 << 2);                                                        /* set charge pump */
-    if (_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD))        /* write command */
+    if (a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD) != 0)  /* write command */
     {
         handle->debug_print("ssd1306: write command failed.\n");                     /* write command failed */
             
         return 4;                                                                    /* return error */
     }
-    if (_ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_OFF, SSD1306_CMD))           /* write display off */
+    if (a_ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_OFF, SSD1306_CMD) != 0)     /* write display off */
     {
         handle->debug_print("ssd1306: write command failed.\n");                     /* write command failed */
             
         return 4;                                                                    /* return error */
     }
-    if (handle->reset_gpio_deinit())                                                 /* reset gpio deinit */
+    if (handle->reset_gpio_deinit() != 0)                                            /* reset gpio deinit */
     {
         handle->debug_print("ssd1306: reset gpio deinit failed.\n");                 /* reset gpio deinit failed */
             
         return 5;                                                                    /* return error */
     }
-    if (handle->spi_cmd_data_gpio_deinit())                                          /* spi cmd data gpio deinit */
+    if (handle->spi_cmd_data_gpio_deinit() != 0)                                     /* spi cmd data gpio deinit */
     {
         handle->debug_print("ssd1306: spi cmd data gpio deinit failed.\n");          /* spi cmd data gpio deinit failed */
             
@@ -1005,7 +1059,7 @@ uint8_t ssd1306_deinit(ssd1306_handle_t *handle)
     }
     if (handle->iic_spi == SSD1306_INTERFACE_IIC)                                    /* if iic interface */
     {
-        if (handle->iic_deinit())                                                    /* iic deinit */
+        if (handle->iic_deinit() != 0)                                               /* iic deinit */
         {
             handle->debug_print("ssd1306: iic deinit failed.\n");                    /* iic deinit failed */
             
@@ -1014,7 +1068,7 @@ uint8_t ssd1306_deinit(ssd1306_handle_t *handle)
     }
     else if (handle->iic_spi == SSD1306_INTERFACE_SPI)                               /* if spi interface */
     {
-        if (handle->spi_deinit())                                                    /* spi deinit */
+        if (handle->spi_deinit() != 0)                                               /* spi deinit */
         {
             handle->debug_print("ssd1306: spi deinit failed.\n");                    /* spi deinit failed */
             
@@ -1043,14 +1097,14 @@ uint8_t ssd1306_deinit(ssd1306_handle_t *handle)
  */
 uint8_t ssd1306_set_interface(ssd1306_handle_t *handle, ssd1306_interface_t interface)
 {
-    if (handle == NULL)                 /* check handle */
+    if (handle == NULL)                          /* check handle */
     {
-        return 2;                       /* return error */
+        return 2;                                /* return error */
     }
     
-    handle->iic_spi = interface;        /* set interface */
+    handle->iic_spi = (uint8_t)interface;        /* set interface */
     
-    return 0;                           /* success return 0 */
+    return 0;                                    /* success return 0 */
 }
 
 /**
@@ -1085,14 +1139,14 @@ uint8_t ssd1306_get_interface(ssd1306_handle_t *handle, ssd1306_interface_t *int
  */
 uint8_t ssd1306_set_addr_pin(ssd1306_handle_t *handle, ssd1306_address_t addr_pin)
 {
-    if (handle == NULL)                 /* check handle */
+    if (handle == NULL)                          /* check handle */
     {
-        return 2;                       /* return error */
+        return 2;                                /* return error */
     }
     
-    handle->iic_addr = addr_pin;        /* set addr pin */
+    handle->iic_addr = (uint8_t)addr_pin;        /* set addr pin */
     
-    return 0;                           /* success return 0 */
+    return 0;                                    /* success return 0 */
 }
 
 /**
@@ -1145,7 +1199,7 @@ uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t a
         return 1;                                                                                               /* return error */
     }
   
-    return _ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS|(addr&0x0F), SSD1306_CMD);        /* write command */
+    return a_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS|(addr&0x0F), SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1177,7 +1231,7 @@ uint8_t ssd1306_set_high_column_start_address(ssd1306_handle_t *handle, uint8_t 
         return 1;                                                                                               /* return error */
     }
   
-    return _ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|(addr&0x0F), SSD1306_CMD);       /* write command */
+    return a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|(addr&0x0F), SSD1306_CMD);      /* write command */
 }
 
 /**
@@ -1193,7 +1247,7 @@ uint8_t ssd1306_set_high_column_start_address(ssd1306_handle_t *handle, uint8_t 
  */
 uint8_t ssd1306_set_memory_addressing_mode(ssd1306_handle_t *handle, ssd1306_memory_addressing_mode_t mode)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1207,7 +1261,7 @@ uint8_t ssd1306_set_memory_addressing_mode(ssd1306_handle_t *handle, ssd1306_mem
     buf[0] = SSD1306_CMD_MEMORY_ADDRESSING_MODE;                                        /* set command mode */
     buf[1] = mode;                                                                      /* set mode */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1224,7 +1278,7 @@ uint8_t ssd1306_set_memory_addressing_mode(ssd1306_handle_t *handle, ssd1306_mem
  */
 uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start_addr, uint8_t end_addr)
 {
-    volatile uint8_t buf[3];
+    uint8_t buf[3];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1251,7 +1305,7 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
     buf[1] = start_addr & 0x7F;                                                         /* set start address */
     buf[2] = end_addr & 0x7F;                                                           /* set end address */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1268,7 +1322,7 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
  */
 uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_addr, uint8_t end_addr)
 {
-    volatile uint8_t buf[3];
+    uint8_t buf[3];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1295,7 +1349,7 @@ uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_a
     buf[1] = start_addr & 0x07;                                                         /* set start address */
     buf[2] = end_addr & 0x07;                                                           /* set end address */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1312,7 +1366,7 @@ uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_a
  */
 uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_blinking_mode_t mode, uint8_t frames)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1330,9 +1384,9 @@ uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_bl
         return 1;                                                                       /* return error */
     }
     buf[0] = SSD1306_CMD_SET_FADE_OUT_AND_BLINKING;                                     /* set command */
-    buf[1] = (mode << 4) | (frames & 0x0F);                                             /* set mode */
+    buf[1] = (uint8_t)((mode << 4) | (frames & 0x0F));                                  /* set mode */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1351,7 +1405,7 @@ uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_bl
 uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
                                             ssd1306_scroll_frame_t frames)
 {
-    volatile uint8_t buf[7];
+    uint8_t buf[7];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1382,7 +1436,7 @@ uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t st
     buf[5] = 0x00;                                                                      /* set null */
     buf[6] = 0xFF;                                                                      /* set frame end */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 7, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 7, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1401,7 +1455,7 @@ uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t st
 uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
                                            ssd1306_scroll_frame_t frames)
 {
-    volatile uint8_t buf[7];
+    uint8_t buf[7];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1432,7 +1486,7 @@ uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t sta
     buf[5] = 0x00;                                                                      /* set null */
     buf[6] = 0xFF;                                                                      /* set frame end */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 7, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 7, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1452,7 +1506,7 @@ uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t sta
 uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
                                                      uint8_t rows, ssd1306_scroll_frame_t frames)
 {
-    volatile uint8_t buf[6];
+    uint8_t buf[6];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1488,7 +1542,7 @@ uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, u
     buf[4] = end_page_addr & 0x07;                                                      /* set end page addr */
     buf[5] = rows & 0x3F;                                                               /* set rows */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 6, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 6, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1508,7 +1562,7 @@ uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, u
 uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
                                                     uint8_t rows, ssd1306_scroll_frame_t frames)
 {
-    volatile uint8_t buf[6];
+    uint8_t buf[6];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1544,7 +1598,7 @@ uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, ui
     buf[4] = end_page_addr & 0x07;                                                      /* set end page addr */
     buf[5] = rows & 0x3F;                                                               /* set rows */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 6, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 6, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1568,7 +1622,7 @@ uint8_t ssd1306_deactivate_scroll(ssd1306_handle_t *handle)
         return 3;                                                                          /* return error */
     }
   
-    return _ssd1306_write_byte(handle, SSD1306_CMD_DEACTIVATE_SCROLL, SSD1306_CMD);        /* write command */
+    return a_ssd1306_write_byte(handle, SSD1306_CMD_DEACTIVATE_SCROLL, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1592,13 +1646,13 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle)
         return 3;                                                                        /* return error */
     }
     
-    return _ssd1306_write_byte(handle, SSD1306_CMD_ACTIVATE_SCROLL, SSD1306_CMD);        /* write command */
+    return a_ssd1306_write_byte(handle, SSD1306_CMD_ACTIVATE_SCROLL, SSD1306_CMD);       /* write command */
 }
 
 /**
  * @brief     set the display start line
  * @param[in] *handle points to a ssd1306 handle structure
- * @param[in] line is the start line
+ * @param[in] l is the start line
  * @return    status code
  *            - 0 success
  *            - 1 set display start line failed
@@ -1606,7 +1660,7 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle)
  *            - 3 handle is not initialized
  * @note      line <= 0x3F
  */
-uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t line)
+uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t l)
 {
     if (handle == NULL)                                                                                 /* check handle */
     {
@@ -1617,14 +1671,14 @@ uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t line)
         return 3;                                                                                       /* return error */
     }
     
-    if (line > 0x3F)                                                                                    /* check line */
+    if (l > 0x3F)                                                                                       /* check line */
     {
         handle->debug_print("ssd1306: line is invalid.\n");                                             /* line is invalid */
         
         return 4;                                                                                       /* return error */
     }
   
-    return _ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_START_LINE|(line&0x3F), SSD1306_CMD);        /* write command */
+    return a_ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_START_LINE|(l&0x3F), SSD1306_CMD);          /* write command */
 }
 
 /**
@@ -1640,7 +1694,7 @@ uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t line)
  */
 uint8_t ssd1306_set_contrast(ssd1306_handle_t *handle, uint8_t contrast)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1654,7 +1708,7 @@ uint8_t ssd1306_set_contrast(ssd1306_handle_t *handle, uint8_t contrast)
     buf[0] = SSD1306_CMD_CONTRAST_CONTROL;                                              /* set command */
     buf[1] = contrast;                                                                  /* set contrast */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1670,7 +1724,7 @@ uint8_t ssd1306_set_contrast(ssd1306_handle_t *handle, uint8_t contrast)
  */
 uint8_t ssd1306_set_charge_pump(ssd1306_handle_t *handle, ssd1306_charge_pump_t enable)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1682,9 +1736,9 @@ uint8_t ssd1306_set_charge_pump(ssd1306_handle_t *handle, ssd1306_charge_pump_t 
     }
     
     buf[0] = SSD1306_CMD_CHARGE_PUMP_SETTING;                                           /* set command */
-    buf[1] = 0x10 | (enable << 2);                                                      /* set charge pump */
+    buf[1] = (uint8_t)(0x10 | (enable << 2));                                           /* set charge pump */
  
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1709,13 +1763,13 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
         return 3;                                                                                      /* return error */
     }
     
-    if (remap)
+    if (remap != 0)                                                                                    /* check remap */
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_COLUMN_127_MAPPED_TO_SEG0, SSD1306_CMD);        /* write remap */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_COLUMN_127_MAPPED_TO_SEG0, SSD1306_CMD);       /* write remap */
     }
     else
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_COLUMN_0_MAPPED_TO_SEG0, SSD1306_CMD);          /* write remap */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_COLUMN_0_MAPPED_TO_SEG0, SSD1306_CMD);         /* write remap */
     }
 }
 
@@ -1733,7 +1787,7 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
  */
 uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t end_row)
 {
-    volatile uint8_t buf[3];
+    uint8_t buf[3];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1766,7 +1820,7 @@ uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start
     buf[1] = start_row;                                                                 /* set start row */
     buf[2] = end_row;                                                                   /* set end row */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1791,13 +1845,13 @@ uint8_t ssd1306_set_entire_display(ssd1306_handle_t *handle, ssd1306_entire_disp
         return 3;                                                                               /* return error */
     }
     
-    if (enable)                                                                                 /* if enable */
+    if (enable != 0)                                                                            /* if enable */
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_ENTIRE_DISPLAY_ON, SSD1306_CMD);         /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_ENTIRE_DISPLAY_ON, SSD1306_CMD);        /* write command */
     }
     else
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_ENTIRE_DISPLAY_OFF, SSD1306_CMD);        /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_ENTIRE_DISPLAY_OFF, SSD1306_CMD);       /* write command */
     }
 }
 
@@ -1823,13 +1877,13 @@ uint8_t ssd1306_set_display_mode(ssd1306_handle_t *handle, ssd1306_display_mode_
         return 3;                                                                               /* return error */
     }
     
-    if (mode)
+    if (mode != 0)                                                                              /* check mode */
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_INVERSE_DISPLAY, SSD1306_CMD);           /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_INVERSE_DISPLAY, SSD1306_CMD);          /* write command */
     }
     else
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_NORMAL_DISPLAY, SSD1306_CMD);            /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_NORMAL_DISPLAY, SSD1306_CMD);           /* write command */
     }
 }
 
@@ -1846,7 +1900,7 @@ uint8_t ssd1306_set_display_mode(ssd1306_handle_t *handle, ssd1306_display_mode_
  */
 uint8_t ssd1306_set_multiplex_ratio(ssd1306_handle_t *handle, uint8_t multiplex)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -1872,7 +1926,7 @@ uint8_t ssd1306_set_multiplex_ratio(ssd1306_handle_t *handle, uint8_t multiplex)
     buf[0] = SSD1306_CMD_MULTIPLEX_RATIO ;                                              /* set command */
     buf[1] = multiplex;                                                                 /* set multiplex */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1897,13 +1951,13 @@ uint8_t ssd1306_set_display(ssd1306_handle_t *handle, ssd1306_display_t on_off)
         return 3;                                                                        /* return error */
     }
     
-    if (on_off)                                                                          /* check on off */
+    if (on_off != 0)                                                                     /* check on off */
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_ON, SSD1306_CMD);         /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_ON, SSD1306_CMD);        /* write command */
     }
     else
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_OFF, SSD1306_CMD);        /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_DISPLAY_OFF, SSD1306_CMD);       /* write command */
     }
 }
 
@@ -1936,7 +1990,7 @@ uint8_t ssd1306_set_page_address(ssd1306_handle_t *handle, uint8_t addr)
         return 1;                                                                              /* return error */
     }
     
-    return _ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR|(addr&0x07), SSD1306_CMD);        /* write command */
+    return a_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR|(addr&0x07), SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -1961,13 +2015,13 @@ uint8_t ssd1306_set_scan_direction(ssd1306_handle_t *handle, ssd1306_scan_direct
         return 3;                                                                                        /* return error */
     }
     
-    if (dir)                                                                                             /* choose dir */
+    if (dir != 0)                                                                                        /* choose dir */
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_SCAN_DIRECTION_COMN_1_START, SSD1306_CMD);        /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_SCAN_DIRECTION_COMN_1_START, SSD1306_CMD);       /* write command */
     }
     else
     {
-        return _ssd1306_write_byte(handle, SSD1306_CMD_SCAN_DIRECTION_COM0_START, SSD1306_CMD);          /* write command */
+        return a_ssd1306_write_byte(handle, SSD1306_CMD_SCAN_DIRECTION_COM0_START, SSD1306_CMD);         /* write command */
     }
 }
 
@@ -1984,7 +2038,7 @@ uint8_t ssd1306_set_scan_direction(ssd1306_handle_t *handle, ssd1306_scan_direct
  */
 uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -2004,7 +2058,7 @@ uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
     buf[0] = SSD1306_CMD_DISPLAY_OFFSET ;                                               /* set command */
     buf[1] = offset;                                                                    /* set offset */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2021,7 +2075,7 @@ uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
  */
 uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_frequency, uint8_t clock_divide)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -2047,7 +2101,7 @@ uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_f
     buf[0] = SSD1306_CMD_DISPLAY_CLOCK_DIVIDE ;                                         /* set command */
     buf[1] = (oscillator_frequency<<4) | clock_divide;                                  /* set oscillator frequency and clock divide */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2063,7 +2117,7 @@ uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_f
  */
 uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -2077,7 +2131,7 @@ uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom)
     buf[0] = SSD1306_CMD_SET_ZOOM_IN ;                                                  /* set command */
     buf[1] = zoom;                                                                      /* set zoom */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2094,7 +2148,7 @@ uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom)
  */
 uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_period, uint8_t phase2_period)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
 
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -2120,7 +2174,7 @@ uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_pe
     buf[0] = SSD1306_CMD_PRE_CHARGE_PERIOD;                                             /* set command */
     buf[1] = (phase2_period<<4) | phase1_period;                                        /* set period */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2137,7 +2191,7 @@ uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_pe
  */
 uint8_t ssd1306_set_com_pins_hardware_conf(ssd1306_handle_t *handle, ssd1306_pin_conf_t conf, ssd1306_left_right_remap_t remap)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -2149,9 +2203,9 @@ uint8_t ssd1306_set_com_pins_hardware_conf(ssd1306_handle_t *handle, ssd1306_pin
     }
     
     buf[0] = SSD1306_CMD_COM_PINS_CONF;                                                 /* set command */
-    buf[1] = (conf<<4) | (remap<<5) |0x02;                                              /* set com pins */
+    buf[1] = (uint8_t)((conf<<4) | (remap<<5) |0x02);                                   /* set com pins */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2167,7 +2221,7 @@ uint8_t ssd1306_set_com_pins_hardware_conf(ssd1306_handle_t *handle, ssd1306_pin
  */
 uint8_t ssd1306_set_deselect_level(ssd1306_handle_t *handle, ssd1306_deselect_level_t level)
 {
-    volatile uint8_t buf[2];
+    uint8_t buf[2];
     
     if (handle == NULL)                                                                 /* check handle */
     {
@@ -2179,9 +2233,9 @@ uint8_t ssd1306_set_deselect_level(ssd1306_handle_t *handle, ssd1306_deselect_le
     }
     
     buf[0] = SSD1306_CMD_COMH_DESLECT_LEVEL;                                            /* set command */
-    buf[1] = level << 4;                                                                /* set level */
+    buf[1] = (uint8_t)(level << 4);                                                     /* set level */
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2207,7 +2261,7 @@ uint8_t ssd1306_write_cmd(ssd1306_handle_t *handle, uint8_t *buf, uint8_t len)
         return 3;                                                                         /* return error */
     }
     
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, len, SSD1306_CMD);        /* write command */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, len, SSD1306_CMD);       /* write command */
 }
 
 /**
@@ -2233,7 +2287,7 @@ uint8_t ssd1306_write_data(ssd1306_handle_t *handle, uint8_t *buf, uint8_t len)
         return 3;                                                                          /* return error */
     }
   
-    return _ssd1306_multiple_write_byte(handle, (uint8_t *)buf, len, SSD1306_DATA);        /* write data */
+    return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, len, SSD1306_DATA);       /* write data */
 }
 
 /**

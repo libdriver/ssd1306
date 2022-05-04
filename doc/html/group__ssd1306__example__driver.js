@@ -57,7 +57,7 @@ var group__ssd1306__example__driver =
     [ "ssd1306_advance_init", "group__ssd1306__example__driver.html#ga00f7376bc972dfa46937f64c7efe6683", null ],
     [ "ssd1306_advance_picture", "group__ssd1306__example__driver.html#ga63d6051817db7dafb29308b8df23152c", null ],
     [ "ssd1306_advance_read_point", "group__ssd1306__example__driver.html#ga48023692dea95d41612e4e47d565f193", null ],
-    [ "ssd1306_advance_rect", "group__ssd1306__example__driver.html#ga550ee67a612dd9c85ca03d32f43607fd", null ],
+    [ "ssd1306_advance_rect", "group__ssd1306__example__driver.html#gab2251ba239b4ce65398e219a04dbbb4f", null ],
     [ "ssd1306_advance_string", "group__ssd1306__example__driver.html#gafb02aebf237c1e24f50252aab525f045", null ],
     [ "ssd1306_advance_vertical_left_horizontal_scroll", "group__ssd1306__example__driver.html#ga1c47572695cfc539ebe9f9f3f4621b45", null ],
     [ "ssd1306_advance_vertical_right_horizontal_scroll", "group__ssd1306__example__driver.html#ga407b64acda9174b5f30a80896ae55c07", null ],

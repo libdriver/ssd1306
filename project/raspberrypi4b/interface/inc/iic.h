@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _IIC_H_
-#define _IIC_H_
+#ifndef IIC_H
+#define IIC_H
 
 #include <linux/i2c.h>
 #include <linux/i2c-dev.h>
