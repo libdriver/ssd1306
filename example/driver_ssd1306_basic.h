@@ -176,7 +176,7 @@ uint8_t ssd1306_basic_string(uint8_t x, uint8_t y, char *str, uint16_t len, uint
  *            - 1 fill rect failed
  * @note      none
  */
-uint8_t ssd1306_basic_rect(int8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color);
+uint8_t ssd1306_basic_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color);
 
 /**
  * @brief     basic example draw a picture
@@ -190,7 +190,7 @@ uint8_t ssd1306_basic_rect(int8_t left, uint8_t top, uint8_t right, uint8_t bott
  *            - 1 draw picture failed
  * @note      none
  */
-uint8_t ssd1306_basic_picture(int8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img);
+uint8_t ssd1306_basic_picture(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img);
 
 /**
  * @}
