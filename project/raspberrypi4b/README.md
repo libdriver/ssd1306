@@ -159,9 +159,9 @@ ssd1306: finish display test.
 ```
 
 ```shell
-./ssd1306 -c basic -str 12345abcdEFGH!@#$<>?{}[];<>
+./ssd1306 -c basic -str 12345abcdEFGH
 
-ssd1306: 12345abcdEFGH!@#$<>?{}[];<>.
+ssd1306: 12345abcdEFGH
 ```
 
 ```shell
@@ -219,9 +219,9 @@ ssd1306: init success.
 ```
 
 ```shell
-./ssd1306 -c advance -str 12345abcdEFGH!@#$<>?{}[];<>
+./ssd1306 -c advance -str 12345abcdEFGH
 
-ssd1306: 12345abcdEFGH!@#$<>?{}[];<>.
+ssd1306: 12345abcdEFGH
 ```
 
 ```shell
