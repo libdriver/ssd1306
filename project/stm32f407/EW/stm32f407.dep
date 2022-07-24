@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>5</fileVersion>
-    <fileChecksum>847486143</fileChecksum>
+    <fileChecksum>2012471335</fileChecksum>
     <configuration>
         <name>Release</name>
         <outputs>
-            <file>$PROJ_DIR$\..\interface\src\uart.c</file>
-            <file>$PROJ_DIR$\..\interface\src\iic.c</file>
-            <file>$PROJ_DIR$\..\interface\src\spi.c</file>
-            <file>$PROJ_DIR$\..\interface\src\clock.c</file>
-            <file>$PROJ_DIR$\..\interface\src\delay.c</file>
-            <file>$PROJ_DIR$\..\driver\src\stm32f407_driver_ssd1306_interface.c</file>
-            <file>$PROJ_DIR$\..\..\..\src\driver_ssd1306.c</file>
             <file>$PROJ_DIR$\..\..\..\test\driver_ssd1306_display_test.c</file>
-            <file>$PROJ_DIR$\..\..\..\example\driver_ssd1306_advance.c</file>
-            <file>$PROJ_DIR$\..\..\..\example\driver_ssd1306_basic.c</file>
-            <file>$PROJ_DIR$\..\interface\src\wire.c</file>
+            <file>$PROJ_DIR$\..\hal\asm\startup_stm32f407xx_ew.s</file>
         </outputs>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
