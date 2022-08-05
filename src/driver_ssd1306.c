@@ -25,7 +25,7 @@
  * @brief     driver ssd1306 source file
  * @version   2.0.0
  * @author    Shifeng Li
- * @date      2021-3-30
+ * @date      2021-03-30
  *
  * <h3>history</h3>
  * <table>
