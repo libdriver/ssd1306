@@ -5,8 +5,11 @@
     <configuration>
         <name>Release</name>
         <outputs>
-            <file>$PROJ_DIR$\..\..\..\test\driver_ssd1306_display_test.c</file>
-            <file>$PROJ_DIR$\..\hal\asm\startup_stm32f407xx_ew.s</file>
+            <file>$PROJ_DIR$\..\usr\src\stm32f4xx_it.c</file>
+            <file>$PROJ_DIR$\..\usr\src\system_stm32f4xx.c</file>
+            <file>$PROJ_DIR$\..\usr\src\shell.c</file>
+            <file>$PROJ_DIR$\..\usr\src\main.c</file>
+            <file>$PROJ_DIR$\..\usr\src\stm32f4xx_hal_msp.c</file>
         </outputs>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
