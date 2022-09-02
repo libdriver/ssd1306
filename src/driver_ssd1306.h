@@ -514,6 +514,7 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle);
  *            - 1 write point failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      none
  */
 uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data);
@@ -529,6 +530,7 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
  *             - 1 read point failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
+ *             - 4 x or y is invalid
  * @note       none
  */
 uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data);
@@ -544,6 +546,7 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
  *            - 1 gram write point failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      none
  */
 uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data);
@@ -559,6 +562,7 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
  *             - 1 gram read point failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
+ *             - 4 x or y is invalid
  * @note       none
  */
 uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data);
@@ -577,6 +581,7 @@ uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, 
  *            - 1 gram write string failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      none
  */
 uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y, char *str, uint16_t len, uint8_t color, ssd1306_font_t font);
@@ -594,6 +599,9 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
  *            - 1 gram fill rect failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left or top is invalid
+ *            - 5 right or bottom is invalid
+ *            - 6 left > right or top > bottom
  * @note      none
  */
 uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color);
@@ -611,6 +619,9 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
  *            - 1 gram draw picture failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left or top is invalid
+ *            - 5 right or bottom is invalid
+ *            - 6 left > right or top > bottom
  * @note      none
  */
 uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img);
@@ -624,6 +635,7 @@ uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_
  *            - 1 set low column start address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 addr is invalid
  * @note      addr <= 0xF
  */
 uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t addr);
@@ -637,6 +649,7 @@ uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t a
  *            - 1 set high column start address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 addr is invalid
  * @note      addr <= 0xF
  */
 uint8_t ssd1306_set_high_column_start_address(ssd1306_handle_t *handle, uint8_t addr);
@@ -664,6 +677,8 @@ uint8_t ssd1306_set_memory_addressing_mode(ssd1306_handle_t *handle, ssd1306_mem
  *            - 1 set column address range failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start addr is invalid
+ *            - 5 end addr is invalid
  * @note      start addr and end addr can't be over 0x7F
  */
 uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start_addr, uint8_t end_addr);
@@ -678,6 +693,8 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
  *            - 1 set page address range failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start addr is invalid
+ *            - 5 end addr is invalid
  * @note      start addr and end addr can't be over 0x07
  */
 uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_addr, uint8_t end_addr);
@@ -692,6 +709,7 @@ uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_a
  *            - 1 set fade blinking mode failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 frames is invalid
  * @note      frames max is 0x0F and div is (frames + 1) * 8
  */
 uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_blinking_mode_t mode, uint8_t frames);
@@ -707,7 +725,9 @@ uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_bl
  *            - 1 set right horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
- * @note      start_page_addr <= 0x07, end_page_addr <= 0x07
+ *            - 4 start page addr is invalid
+ *            - 5 end page addr is invalid
+ * @note       start_page_addr <= 0x07, end_page_addr <= 0x07
  */
 uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
                                             ssd1306_scroll_frame_t frames);
@@ -723,6 +743,8 @@ uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t st
  *            - 1 set left horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_page_addr is invalid
+ *            - 5 end_page_addr is invalid
  * @note      start_page_addr <= 0x07, end_page_addr <= 0x07
  */
 uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
@@ -740,6 +762,9 @@ uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t sta
  *            - 1 set vertical right horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_page_addr is invalid
+ *            - 5 end_page_addr is invalid
+ *            - 6 rows is invalid
  * @note      start_page_addr <= 0x07, end_page_addr <= 0x07, rows <= 0x3F
  */
 uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
@@ -757,6 +782,9 @@ uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, u
  *            - 1 set vertical left horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_page_addr is invalid
+ *            - 5 end_page_addr is invalid
+ *            - 6 rows is invalid
  * @note      start_page_addr <= 0x07, end_page_addr <= 0x07, rows <= 0x3F
  */
 uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
@@ -795,6 +823,7 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle);
  *            - 1 set display start line failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 line is invalid
  * @note      line <= 0x3F
  */
 uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t l);
@@ -848,6 +877,9 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
  *            - 1 set vertical scroll area failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_row is invalid
+ *            - 5 end_row is invalid
+ *            - 6 end_row > start_row
  * @note      start_row <= 0x3F, end_row <= 0x7F, start_row >= end_row
  */
 uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t end_row);
@@ -887,6 +919,8 @@ uint8_t ssd1306_set_display_mode(ssd1306_handle_t *handle, ssd1306_display_mode_
  *            - 1 set multiplex ratio failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 multiplex is too small
+ *            - 5 multiplex is too large
  * @note      multiplex must be over 0x0E and less than 0x40
  */
 uint8_t ssd1306_set_multiplex_ratio(ssd1306_handle_t *handle, uint8_t multiplex);
@@ -913,6 +947,7 @@ uint8_t ssd1306_set_display(ssd1306_handle_t *handle, ssd1306_display_t on_off);
  *            - 1 set page address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 addr is invalid
  * @note      addr <= 0x07
  */
 uint8_t ssd1306_set_page_address(ssd1306_handle_t *handle, uint8_t addr);
@@ -939,19 +974,7 @@ uint8_t ssd1306_set_scan_direction(ssd1306_handle_t *handle, ssd1306_scan_direct
  *            - 1 set display offset failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
- * @note      offset <= 0x3F
- */
-uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset);
-
-/**
- * @brief     set the display offset
- * @param[in] *handle points to a ssd1306 handle structure
- * @param[in] offset is the display offset
- * @return    status code
- *            - 0 success
- *            - 1 set display offset failed
- *            - 2 handle is NULL
- *            - 3 handle is not initialized
+ *            - 4 offset is invalid
  * @note      offset <= 0x3F
  */
 uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset);
@@ -966,6 +989,8 @@ uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset);
  *            - 1 set display clock failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 oscillator frequency is invalid
+ *            - 5 clock divide is invalid
  * @note      oscillator_frequency <= 0x0F, clock_divide <= 0x0F
  */
 uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_frequency, uint8_t clock_divide);
@@ -993,6 +1018,8 @@ uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom);
  *            - 1 set precharge period failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 phase1 period is invalid
+ *            - 5 phase2 period is invalid
  * @note      phase1_period <= 0x0F, phase2_period <= 0x0F
  */
 uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_period, uint8_t phase2_period);

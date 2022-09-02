@@ -822,7 +822,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01638">1638</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01664">1664</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -894,7 +894,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01614">1614</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01640">1640</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -934,7 +934,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01021">1021</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01032">1032</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -979,7 +979,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01161">1161</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01172">1172</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +1024,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01119">1119</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01130">1130</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1094,12 +1094,15 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 gram draw picture failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 left or top is invalid</li>
+<li>5 right or bottom is invalid</li>
+<li>6 left &gt; right or top &gt; bottom </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00794">794</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00805">805</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1169,12 +1172,15 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 gram fill rect failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 left or top is invalid</li>
+<li>5 right or bottom is invalid</li>
+<li>6 left &gt; right or top &gt; bottom </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00734">734</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00742">742</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1230,12 +1236,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 gram read point failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 x or y is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00627">627</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00631">631</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1327,12 +1334,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 gram write point failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 x or y is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00578">578</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00581">581</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1409,12 +1417,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 gram write string failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 x or y is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00679">679</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00684">684</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1448,7 +1457,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02301">2301</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02337">2337</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1487,7 +1496,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00853">853</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00864">864</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1543,12 +1552,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 read point failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 x or y is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00529">529</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00531">531</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1593,7 +1603,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01140">1140</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01151">1151</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1640,7 +1650,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01725">1725</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01751">1751</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1689,12 +1699,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set column address range failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start addr is invalid</li>
+<li>5 end addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start addr and end addr can't be over 0x7F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01279">1279</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01292">1292</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1748,7 +1760,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02192">2192</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02228">2228</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1795,7 +1807,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01695">1695</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01721">1721</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1842,7 +1854,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02222">2222</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02258">2258</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1889,7 +1901,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01943">1943</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01974">1974</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1938,12 +1950,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set display clock failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 oscillator frequency is invalid</li>
+<li>5 clock divide is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>oscillator_frequency &lt;= 0x0F, clock_divide &lt;= 0x0F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02076">2076</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02110">2110</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -1990,7 +2004,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01869">1869</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01898">1898</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2032,12 +2046,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set display offset failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 offset is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>offset &lt;= 0x3F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02039">2039</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02071">2071</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2079,12 +2094,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set display start line failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 line is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>line &lt;= 0x3F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01663">1663</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01690">1690</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2131,7 +2147,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01837">1837</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01866">1866</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2180,12 +2196,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set fade blinking mode failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 frames is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>frames max is 0x0F and div is (frames + 1) * 8 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01367">1367</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01383">1383</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2227,12 +2244,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set high column start address failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>addr &lt;= 0xF </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01216">1216</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01228">1228</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2277,7 +2295,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01098">1098</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01109">1109</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2333,12 +2351,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set left horizontal scroll failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start_page_addr is invalid</li>
+<li>5 end_page_addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_page_addr &lt;= 0x07, end_page_addr &lt;= 0x07 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01455">1455</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01475">1475</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2380,12 +2400,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set low column start address failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>addr &lt;= 0xF </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01184">1184</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01196">1196</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2432,7 +2453,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01248">1248</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01259">1259</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2474,12 +2495,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set multiplex ratio failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 multiplex is too small</li>
+<li>5 multiplex is too large </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>multiplex must be over 0x0E and less than 0x40 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01901">1901</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01932">1932</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2521,12 +2544,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set page address failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>addr &lt;= 0x07 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01975">1975</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02007">2007</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2575,12 +2599,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set page address range failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start addr is invalid</li>
+<li>5 end addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start addr and end addr can't be over 0x07 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01323">1323</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01338">1338</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2629,12 +2655,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set precharge period failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 phase1 period is invalid</li>
+<li>5 phase2 period is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>phase1_period &lt;= 0x0F, phase2_period &lt;= 0x0F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02149">2149</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02185">2185</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2690,12 +2718,14 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set right horizontal scroll failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start page addr is invalid</li>
+<li>5 end page addr is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_page_addr &lt;= 0x07, end_page_addr &lt;= 0x07 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01405">1405</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01423">1423</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2742,7 +2772,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02007">2007</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02038">2038</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2789,7 +2819,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01755">1755</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01781">1781</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2852,12 +2882,15 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set vertical left horizontal scroll failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start_page_addr is invalid</li>
+<li>5 end_page_addr is invalid</li>
+<li>6 rows is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_page_addr &lt;= 0x07, end_page_addr &lt;= 0x07, rows &lt;= 0x3F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01562">1562</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01588">1588</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2920,12 +2953,15 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set vertical right horizontal scroll failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start_page_addr is invalid</li>
+<li>5 end_page_addr is invalid</li>
+<li>6 rows is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_page_addr &lt;= 0x07, end_page_addr &lt;= 0x07, rows &lt;= 0x3F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01506">1506</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01529">1529</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -2974,12 +3010,15 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 set vertical scroll area failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 start_row is invalid</li>
+<li>5 end_row is invalid</li>
+<li>6 end_row &gt; start_row </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_row &lt;= 0x3F, end_row &lt;= 0x7F, start_row &gt;= end_row </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01788">1788</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01817">1817</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -3026,7 +3065,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02118">2118</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l02152">2152</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>
@@ -3082,12 +3121,13 @@ Functions</h2></td></tr>
 <li>0 success</li>
 <li>1 write point failed</li>
 <li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
+<li>3 handle is not initialized</li>
+<li>4 x or y is invalid </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00454">454</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l00455">455</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 
 </div>
 </div>

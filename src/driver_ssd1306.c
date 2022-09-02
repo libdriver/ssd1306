@@ -249,8 +249,8 @@ static uint8_t a_ssd1306_gram_draw_point(ssd1306_handle_t *handle, uint8_t x, ui
         handle->gram[x][pos] &= ~temp;        /* set 0 */
     }
   
-    return 0;
-}                                             /* success return 0 */
+    return 0;                                 /* success return 0 */
+}
 
 /**
  * @brief     draw a char in gram
@@ -449,6 +449,7 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle)
  *            - 1 write point failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      none
  */
 uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data)
@@ -465,13 +466,13 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
     {
         return 3;                                                                                              /* return error */
     }
-    
     if ((x > 127) || (y > 63))                                                                                 /* check x, y */
     {
         handle->debug_print("ssd1306: x or y is invalid.\n");                                                  /* x or y is invalid */
         
-        return 1;                                                                                              /* return error */
+        return 4;                                                                                              /* return error */
     }
+    
     pos = y / 8;                                                                                               /* get y page */
     bx = y % 8;                                                                                                /* get y point */
     temp = 1 << bx;                                                                                            /* set data */
@@ -524,6 +525,7 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
  *             - 1 read point failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
+ *             - 4 x or y is invalid
  * @note       none
  */
 uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data)
@@ -540,13 +542,13 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
     {
         return 3;                                                    /* return error */
     }
-    
     if ((x > 127) || (y > 63))                                       /* check x, y */
     {
         handle->debug_print("ssd1306: x or y is invalid.\n");        /* x or y is invalid */
         
-        return 1;                                                    /* return error */
+        return 4;                                                    /* return error */
     }
+    
     pos = y / 8;                                                     /* get y page */
     bx = y % 8;                                                      /* get y point */
     temp = 1 << bx;                                                  /* set data */
@@ -573,6 +575,7 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
  *            - 1 gram write point failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      none
  */
 uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t data)
@@ -589,13 +592,13 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
     {
         return 3;                                                    /* return error */
     }
-    
     if ((x > 127) || (y > 63))                                       /* check x, y */
     {
         handle->debug_print("ssd1306: x or y is invalid.\n");        /* x or y is invalid */
         
-        return 1;                                                    /* return error */
+        return 4;                                                    /* return error */
     }
+    
     pos = y / 8;                                                     /* get y page */
     bx = y % 8;                                                      /* get y point */
     temp = 1 << bx;                                                  /* set data */
@@ -622,6 +625,7 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
  *             - 1 gram read point failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
+ *             - 4 x or y is invalid
  * @note       none
  */
 uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8_t *data)
@@ -638,13 +642,13 @@ uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, 
     {
         return 3;                                                    /* return error */
     }
-    
     if ((x > 127) || (y > 63))                                       /* check x, y */
     {
         handle->debug_print("ssd1306: x or y is invalid.\n");        /* x or y is invalid */
         
-        return 1;                                                    /* return error */
+        return 4;                                                    /* return error */
     }
+    
     pos = y / 8;                                                     /* get y page */
     bx = y % 8;                                                      /* get y point */
     temp = 1 << bx;                                                  /* set data */
@@ -674,6 +678,7 @@ uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, 
  *            - 1 gram write string failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      none
  */
 uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y, char *str, uint16_t len, uint8_t color, ssd1306_font_t font)
@@ -686,13 +691,13 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
     {
         return 3;                                                            /* return error */
     }
-    
     if((x > 127) || (y > 63))                                                /* check x, y */
     {
         handle->debug_print("ssd1306: x or y is invalid.\n");                /* x or y is invalid */
         
-        return 1;                                                            /* return error */
+        return 4;                                                            /* return error */
     }
+    
     while ((len != 0) && (*str <= '~') && (*str >= ' '))                     /* write all string */
     {       
         if (x > (127 - (font / 2)))                                          /* check x point */
@@ -729,6 +734,9 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
  *            - 1 gram fill rect failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left or top is invalid
+ *            - 5 right or bottom is invalid
+ *            - 6 left > right or top > bottom
  * @note      none
  */
 uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t color)
@@ -743,25 +751,25 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
     {
         return 3;                                                               /* return error */
     }
-    
     if ((left > 127) || (top > 63))                                             /* check left top */
     {
         handle->debug_print("ssd1306: left or top is invalid.\n");              /* left or top is invalid */
         
-        return 1;                                                               /* return error */
+        return 4;                                                               /* return error */
     }
     if ((right > 127) || (bottom > 63))                                         /* check right bottom */
     {
         handle->debug_print("ssd1306: right or bottom is invalid.\n");          /* right or bottom is invalid */
         
-        return 1;                                                               /* return error */
+        return 5;                                                               /* return error */
     }
     if ((left > right) || (top > bottom))                                       /* check left right top bottom */
     {
         handle->debug_print("ssd1306: left > right or top > bottom.\n");        /* left > right or top > bottom */
         
-        return 1;                                                               /* return error */
+        return 6;                                                               /* return error */
     }
+    
     for (x = left; x <= right; x++)                                             /* write x */
     {
         for (y = top; y <= bottom; y++)                                         /* write y */
@@ -789,6 +797,9 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
  *            - 1 gram draw picture failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left or top is invalid
+ *            - 5 right or bottom is invalid
+ *            - 6 left > right or top > bottom
  * @note      none
  */
 uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint8_t *img)
@@ -803,25 +814,25 @@ uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_
     {
         return 3;                                                               /* return error */
     }
-    
     if ((left > 127) || (top > 63))                                             /* check left top */
     {
         handle->debug_print("ssd1306: left or top is invalid.\n");              /* left or top is invalid */
         
-        return 1;                                                               /* return error */
+        return 4;                                                               /* return error */
     }
     if ((right > 127) || (bottom > 63))                                         /* check right bottom */
     {
         handle->debug_print("ssd1306: right or bottom is invalid.\n");          /* right or bottom is invalid */
         
-        return 1;                                                               /* return error */
+        return 5;                                                               /* return error */
     }
     if ((left > right) || (top > bottom))                                       /* check left right top bottom */
     {
         handle->debug_print("ssd1306: left > right or top > bottom.\n");        /* left > right or top > bottom */
         
-        return 1;                                                               /* return error */
+        return 6;                                                               /* return error */
     }
+    
     for (x = left; x <= right; x++)                                             /* write x */
     {
         for (y = top; y <= bottom; y++)                                         /* write y */
@@ -1179,6 +1190,7 @@ uint8_t ssd1306_get_addr_pin(ssd1306_handle_t *handle, ssd1306_address_t *addr_p
  *            - 1 set low column start address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 addr is invalid
  * @note      addr <= 0xF
  */
 uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t addr)
@@ -1191,12 +1203,11 @@ uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t a
     {
         return 3;                                                                                               /* return error */
     }
-    
     if (addr > 0x0F)                                                                                            /* check addr */
     {
         handle->debug_print("ssd1306: addr is invalid.\n");                                                     /* addr is invalid */
         
-        return 1;                                                                                               /* return error */
+        return 4;                                                                                               /* return error */
     }
   
     return a_ssd1306_write_byte(handle, SSD1306_CMD_LOWER_COLUMN_START_ADDRESS|(addr&0x0F), SSD1306_CMD);       /* write command */
@@ -1211,6 +1222,7 @@ uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t a
  *            - 1 set high column start address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 addr is invalid
  * @note      addr <= 0xF
  */
 uint8_t ssd1306_set_high_column_start_address(ssd1306_handle_t *handle, uint8_t addr)
@@ -1223,12 +1235,11 @@ uint8_t ssd1306_set_high_column_start_address(ssd1306_handle_t *handle, uint8_t 
     {
         return 3;                                                                                               /* return error */
     }
-    
     if (addr > 0x0F)                                                                                            /* check addr */
     {
         handle->debug_print("ssd1306: addr is invalid.\n");                                                     /* addr is invalid */
         
-        return 1;                                                                                               /* return error */
+        return 4;                                                                                               /* return error */
     }
   
     return a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|(addr&0x0F), SSD1306_CMD);      /* write command */
@@ -1274,6 +1285,8 @@ uint8_t ssd1306_set_memory_addressing_mode(ssd1306_handle_t *handle, ssd1306_mem
  *            - 1 set column address range failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start addr is invalid
+ *            - 5 end addr is invalid
  * @note      start addr and end addr can't be over 0x7F
  */
 uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start_addr, uint8_t end_addr)
@@ -1288,19 +1301,19 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_addr > 0x7F)                                                              /* check start addr */
     {
         handle->debug_print("ssd1306: start addr is invalid.\n");                       /* start addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_addr > 0x7F)                                                                /* check end addr */
     {
         handle->debug_print("ssd1306: end addr is invalid.\n");                         /* end addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_SET_COLUMN_ADDRESS;                                            /* set commmand */
     buf[1] = start_addr & 0x7F;                                                         /* set start address */
     buf[2] = end_addr & 0x7F;                                                           /* set end address */
@@ -1318,6 +1331,8 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
  *            - 1 set page address range failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start addr is invalid
+ *            - 5 end addr is invalid
  * @note      start addr and end addr can't be over 0x07
  */
 uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_addr, uint8_t end_addr)
@@ -1332,19 +1347,19 @@ uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_a
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_addr > 0x07)                                                              /* check start addr */
     {
         handle->debug_print("ssd1306: start addr is invalid.\n");                       /* start addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_addr > 0x07)                                                                /* check end addr */
     {
         handle->debug_print("ssd1306: end addr is invalid.\n");                         /* end_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_SET_PAGE_ADDRESS;                                              /* set command */
     buf[1] = start_addr & 0x07;                                                         /* set start address */
     buf[2] = end_addr & 0x07;                                                           /* set end address */
@@ -1362,6 +1377,7 @@ uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_a
  *            - 1 set fade blinking mode failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 frames is invalid
  * @note      frames max is 0x0F and div is (frames + 1) * 8
  */
 uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_blinking_mode_t mode, uint8_t frames)
@@ -1376,13 +1392,13 @@ uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_bl
     {
         return 3;                                                                       /* return error */
     }
-    
     if (frames> 0x0F)                                                                   /* check frames */
     {
         handle->debug_print("ssd1306: frames is invalid.\n");                           /* frames is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_SET_FADE_OUT_AND_BLINKING;                                     /* set command */
     buf[1] = (uint8_t)((mode << 4) | (frames & 0x0F));                                  /* set mode */
   
@@ -1400,7 +1416,9 @@ uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_bl
  *            - 1 set right horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
-* @note       start_page_addr <= 0x07, end_page_addr <= 0x07
+ *            - 4 start page addr is invalid
+ *            - 5 end page addr is invalid
+ * @note       start_page_addr <= 0x07, end_page_addr <= 0x07
  */
 uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
                                             ssd1306_scroll_frame_t frames)
@@ -1415,19 +1433,19 @@ uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t st
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_page_addr > 0x07)                                                         /* check start_page_addr */
     {
         handle->debug_print("ssd1306: start page addr is invalid.\n");                  /* start page addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_page_addr > 0x07)                                                           /* check end_page_addr */
     {
         handle->debug_print("ssd1306: end page addr is invalid.\n");                    /* end page addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_RIGHT_HORIZONTAL_SCROLL;                                       /* set command */
     buf[1] = 0x00;                                                                      /* set null */
     buf[2] = start_page_addr & 0x07;                                                    /* set start page address */
@@ -1450,6 +1468,8 @@ uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t st
  *            - 1 set left horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_page_addr is invalid
+ *            - 5 end_page_addr is invalid
  * @note      start_page_addr <= 0x07, end_page_addr <= 0x07
  */
 uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
@@ -1465,19 +1485,19 @@ uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t sta
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_page_addr > 0x07)                                                         /* check start_page_addr */
     {
         handle->debug_print("ssd1306: start_page_addr is invalid.\n");                  /* start_page_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_page_addr > 0x07)                                                           /* check end_page_addr */
     {
         handle->debug_print("ssd1306: end_page_addr is invalid.\n");                    /* end_page_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_LEFT_HORIZONTAL_SCROLL;                                        /* set command */
     buf[1] = 0x00;                                                                      /* set null */
     buf[2] = start_page_addr & 0x07;                                                    /* set end page addr */
@@ -1501,6 +1521,9 @@ uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t sta
  *            - 1 set vertical right horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_page_addr is invalid
+ *            - 5 end_page_addr is invalid
+ *            - 6 rows is invalid
  * @note      start_page_addr <= 0x07, end_page_addr <= 0x07, rows <= 0x3F
  */
 uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
@@ -1516,25 +1539,25 @@ uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, u
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_page_addr > 0x07)                                                         /* check start_page_addr */
     {
         handle->debug_print("ssd1306: start_page_addr is invalid.\n");                  /* start_page_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_page_addr > 0x07)                                                           /* check end page addr */
     {
         handle->debug_print("ssd1306: end_page_addr is invalid.\n");                    /* end_page_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
     if (rows > 0x3F)                                                                    /* check rows */
     {
         handle->debug_print("ssd1306: rows is invalid.\n");                             /* rows is invalid */
        
-        return 1;                                                                       /* return error */
+        return 6;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_VERTICAL_RIGHT_HORIZONTAL_SCROLL;                              /* set command */
     buf[1] = 0x00;                                                                      /* set null */
     buf[2] = start_page_addr & 0x07;                                                    /* set start page addr */
@@ -1557,6 +1580,9 @@ uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, u
  *            - 1 set vertical left horizontal scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_page_addr is invalid
+ *            - 5 end_page_addr is invalid
+ *            - 6 rows is invalid
  * @note      start_page_addr <= 0x07, end_page_addr <= 0x07, rows <= 0x3F
  */
 uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t start_page_addr, uint8_t end_page_addr, 
@@ -1572,25 +1598,25 @@ uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, ui
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_page_addr > 0x07)                                                         /* check start_page_addr */
     {
         handle->debug_print("ssd1306: start_page_addr is invalid.\n");                  /* start_page_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_page_addr > 0x07)                                                           /* check end_page_addr */
     {
         handle->debug_print("ssd1306: end_page_addr is invalid.\n");                    /* end_page_addr is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
     if (rows > 0x3F)                                                                    /* check rows */
     {
         handle->debug_print("ssd1306: rows is invalid.\n");                             /* rows is invalid */
        
-        return 1;                                                                       /* reutrn error */
+        return 6;                                                                       /* reutrn error */
     }
+    
     buf[0] = SSD1306_CMD_VERTICAL_LEFT_HORIZONTAL_SCROLL;                               /* set command */
     buf[1] = 0x00;                                                                      /* set null */
     buf[2] = start_page_addr & 0x07;                                                    /* set start page addr */
@@ -1658,6 +1684,7 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle)
  *            - 1 set display start line failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 line is invalid
  * @note      line <= 0x3F
  */
 uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t l)
@@ -1670,7 +1697,6 @@ uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t l)
     {
         return 3;                                                                                       /* return error */
     }
-    
     if (l > 0x3F)                                                                                       /* check line */
     {
         handle->debug_print("ssd1306: line is invalid.\n");                                             /* line is invalid */
@@ -1783,6 +1809,9 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
  *            - 1 set vertical scroll area failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start_row is invalid
+ *            - 5 end_row is invalid
+ *            - 6 end_row > start_row
  * @note      start_row <= 0x3F, end_row <= 0x7F, start_row >= end_row
  */
 uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t end_row)
@@ -1797,25 +1826,25 @@ uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start
     {
         return 3;                                                                       /* return error */
     }
-    
     if (start_row > 0x3F)                                                               /* check start row */
     {
         handle->debug_print("ssd1306: start_row is invalid.\n");                        /* start_row is invalid */
        
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (end_row > 0x7F)                                                                 /* check end_row */
     {
         handle->debug_print("ssd1306: end_row is invalid.\n");                          /* end_row is invalid */
        
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
     if (end_row > start_row)                                                            /* check start_row and end_row */
     {
         handle->debug_print("ssd1306: end_row > start_row.\n");                         /* end_row > start_row */
        
-        return 1;                                                                       /* return error */
+        return 6;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_VERTICAL_SCROLL_AREA;                                          /* set command */
     buf[1] = start_row;                                                                 /* set start row */
     buf[2] = end_row;                                                                   /* set end row */
@@ -1896,6 +1925,8 @@ uint8_t ssd1306_set_display_mode(ssd1306_handle_t *handle, ssd1306_display_mode_
  *            - 1 set multiplex ratio failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 multiplex is too small
+ *            - 5 multiplex is too large
  * @note      multiplex must be over 0x0E and less than 0x40
  */
 uint8_t ssd1306_set_multiplex_ratio(ssd1306_handle_t *handle, uint8_t multiplex)
@@ -1910,19 +1941,19 @@ uint8_t ssd1306_set_multiplex_ratio(ssd1306_handle_t *handle, uint8_t multiplex)
     {
         return 3;                                                                       /* return error */
     }
-    
     if (multiplex < 0x0F)                                                               /* check multiplex */
     {
         handle->debug_print("ssd1306: multiplex is too small.\n");                      /* multiplex is too small */
        
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (multiplex > 0x3F)                                                               /* check multiplex */
     {
         handle->debug_print("ssd1306: multiplex is too large.\n");                      /* multiplex is too large */
        
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_MULTIPLEX_RATIO ;                                              /* set command */
     buf[1] = multiplex;                                                                 /* set multiplex */
   
@@ -1970,6 +2001,7 @@ uint8_t ssd1306_set_display(ssd1306_handle_t *handle, ssd1306_display_t on_off)
  *            - 1 set page address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 addr is invalid
  * @note      addr <= 0x07
  */
 uint8_t ssd1306_set_page_address(ssd1306_handle_t *handle, uint8_t addr)
@@ -1982,12 +2014,11 @@ uint8_t ssd1306_set_page_address(ssd1306_handle_t *handle, uint8_t addr)
     {
         return 3;                                                                              /* return error */
     }
-    
     if (addr > 0x07)                                                                           /* check addr */
     {
         handle->debug_print("ssd1306: addr is invalid.\n");                                    /* addr is invalid */
         
-        return 1;                                                                              /* return error */
+        return 4;                                                                              /* return error */
     }
     
     return a_ssd1306_write_byte(handle, SSD1306_CMD_PAGE_ADDR|(addr&0x07), SSD1306_CMD);       /* write command */
@@ -2034,6 +2065,7 @@ uint8_t ssd1306_set_scan_direction(ssd1306_handle_t *handle, ssd1306_scan_direct
  *            - 1 set display offset failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 offset is invalid
  * @note      offset <= 0x3F
  */
 uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
@@ -2048,13 +2080,13 @@ uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
     {
         return 3;                                                                       /* return error */
     }
-    
     if (offset > 0x3F)                                                                  /* check offset */
     {
         handle->debug_print("ssd1306: offset is invalid.\n");                           /* offset is invalid */
        
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_DISPLAY_OFFSET ;                                               /* set command */
     buf[1] = offset;                                                                    /* set offset */
   
@@ -2071,6 +2103,8 @@ uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
  *            - 1 set display clock failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 oscillator frequency is invalid
+ *            - 5 clock divide is invalid
  * @note      oscillator_frequency <= 0x0F, clock_divide <= 0x0F
  */
 uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_frequency, uint8_t clock_divide)
@@ -2085,19 +2119,19 @@ uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_f
     {
         return 3;                                                                       /* return error */
     }
-    
     if (oscillator_frequency> 0x0F)                                                     /* check oscillator_frequency */
     {
         handle->debug_print("ssd1306: oscillator frequency is invalid.\n");             /* oscillator frequency is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (clock_divide> 0x0F)                                                             /* check clock_divide */
     {
         handle->debug_print("ssd1306: clock divide is invalid.\n");                     /* clock divide is invalid */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_DISPLAY_CLOCK_DIVIDE ;                                         /* set command */
     buf[1] = (oscillator_frequency<<4) | clock_divide;                                  /* set oscillator frequency and clock divide */
   
@@ -2144,6 +2178,8 @@ uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom)
  *            - 1 set precharge period failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 phase1 period is invalid
+ *            - 5 phase2 period is invalid
  * @note      phase1_period <= 0x0F, phase2_period <= 0x0F
  */
 uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_period, uint8_t phase2_period)
@@ -2158,21 +2194,21 @@ uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_pe
     {
         return 3;                                                                       /* return error */
     }
-    
     if (phase1_period> 0x0F)                                                            /* check phase1 period */
     {
         handle->debug_print("ssd1306: phase1 period is invalid.\n");                    /* phase1 period is invalid */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if (phase2_period> 0x0F)                                                            /* check phase2 period */
     {
         handle->debug_print("ssd1306: phase2 period is invalid.\n");                    /* phase2 period is invalid */
        
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
+    
     buf[0] = SSD1306_CMD_PRE_CHARGE_PERIOD;                                             /* set command */
-    buf[1] = (phase2_period<<4) | phase1_period;                                        /* set period */
+    buf[1] = (phase2_period << 4) | phase1_period;                                      /* set period */
   
     return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
 }
