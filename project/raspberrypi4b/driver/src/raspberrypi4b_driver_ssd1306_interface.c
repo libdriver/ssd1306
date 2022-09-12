@@ -19,10 +19,10 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE. 
+ * SOFTWARE.i 
  *
- * @file      stm32f407_driver_ssd1306_interface.c
- * @brief     stm32f407 driver ssd1306 interface source file
+ * @file      raspberrypi4b_driver_ssd1306_interface.c
+ * @brief     raspberrypi4b driver ssd1306 interface source file
  * @version   2.0.0
  * @author    Shifeng Li
  * @date      2021-03-30
