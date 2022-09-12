@@ -28,15 +28,15 @@ LibDriver SSD1306 is the full function driver of SSD1306 launched by LibDriver.I
 
 /src includes LibDriver SSD1306 source files.
 
-/interface includes LibDriver SSD1306 IIC,SPI platform independent template。
+/interface includes LibDriver SSD1306 IIC,SPI platform independent template.
 
-/test includes LibDriver SSD1306 driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver SSD1306 driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver SSD1306 sample code.
 
 /doc includes LibDriver SSD1306 offline document.
 
-/datasheet includes SSD1306 datasheet。
+/datasheet includes SSD1306 datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
