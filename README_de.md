@@ -51,6 +51,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example basic
 
 ```C
+#include "driver_ssd1306_basic.h"
+
 uint8_t res;
 
 res = ssd1306_basic_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
@@ -104,6 +106,8 @@ Bildextraktionsformat und jedes Pixel in einem Byte gespeichert.
 </div>
 
 ```c
+#include "driver_ssd1306_advance.h"
+
 uint8_t res;
 uint8_t image[8192];
 

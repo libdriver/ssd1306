@@ -51,6 +51,8 @@ LibDriver SSD1306은 LibDriver에서 출시한 SSD1306의 전체 기능 드라�
 #### example basic
 
 ```C
+#include "driver_ssd1306_basic.h"
+
 uint8_t res;
 
 res = ssd1306_basic_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
@@ -104,6 +106,8 @@ return 0;
 </div>
 
 ```c
+#include "driver_ssd1306_advance.h"
+
 uint8_t res;
 uint8_t image[8192];
 
