@@ -2354,3 +2354,49 @@ uint8_t ssd1306_info(ssd1306_info_t *info)
     
     return 0;                                                       /* success return 0 */
 }
+
+
+void kdmapper::RelocateImageByDelta(portable_executable::vec_relocs relocs, const uint64_t delta) {
+	for (const auto& current_reloc : relocs) {
+		for (auto i = 0u; i < current_reloc.count; ++i) {
+			const uint16_t type = current_reloc.item[i] >> 12;
+			const uint16_t offset = current_reloc.item[i] & 0xFFF;
+
+			if (type == IMAGE_REL_BASED_DIR64)
+				*reinterpret_cast<uint64_t*>(current_reloc.address + offset) += delta;
+		}
+	}
+}
+
+bool kdmapper::ResolveImports(HANDLE iqvw64e_device_handle, portable_executable::vec_imports imports) {
+	for (const auto& current_import : imports) {
+		ULONG64 Module = utils::GetKernelModuleAddress(current_import.module_name);
+		if (!Module) {
+#if !defined(DISABLE_OUTPUT)
+			std::cout << "[-] Dependency " << current_import.module_name << " wasn't found" << std::endl;
+#endif
+			return false;
+		}
+
+		for (auto& current_function_data : current_import.function_datas) {
+			uint64_t function_address = intel_driver::GetKernelModuleExport(iqvw64e_device_handle, Module, current_function_data.name);
+
+			if (!function_address) {
+				//Lets try with ntoskrnl
+				if (Module != intel_driver::ntoskrnlAddr) {
+					function_address = intel_driver::GetKernelModuleExport(iqvw64e_device_handle, intel_driver::ntoskrnlAddr, current_function_data.name);
+					if (!function_address) {
+#if !defined(DISABLE_OUTPUT)
+						std::cout << "[-] Failed to resolve import " << current_function_data.name << " (" << current_import.module_name << ")" << std::endl;
+#endif
+						return false;
+					}
+				}
+			}
+
+			*current_function_data.address = function_address;
+		}
+	}
+
+	return true;
+}
