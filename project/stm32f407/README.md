@@ -1,6 +1,6 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
 chip name : STM32F407ZGT6.
 
@@ -14,23 +14,23 @@ spi pin: SCK/MISO/MOSI/CS PA5/PA6/PA7/PA4.
 
 gpio pin: command pin/ reset pin PA8/PB0.
 
-### 2. shell
+### 2. Shell
 
-#### 2.1 shell parameter
+#### 2.1 Shell Parameter
 
-baud rate: 115200
+baud rate: 115200.
 
-data bits : 8
+data bits : 8.
 
-stop bits: 1
+stop bits: 1.
 
-parity: none
+parity: none.
 
-flow control: none
+flow control: none.
 
-### 3. ssd1306
+### 3. SSD1306
 
-#### 3.1 command Instruction
+#### 3.1 Command Instruction
 
 ​          ssd1306 is a basic command which can test all ssd1306 driver function:
 
@@ -101,7 +101,7 @@ flow control: none
 
 ​            -c -advance -vertical_right_horizontal_scroll  <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256)        run ssd1306 setting vertical right horizontal scroll function. startpage means start page and it can be "0"-"7". endpage means end page and it can be "0"-"7". rows means display rows and it can be "0" - "63".
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 ssd1306 -i
