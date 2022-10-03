@@ -28,7 +28,7 @@ LibDriver SSD1306 is the full function driver of SSD1306 launched by LibDriver.I
 
 /src includes LibDriver SSD1306 source files.
 
-/interface includes LibDriver SSD1306 IIC,SPI platform independent template.
+/interface includes LibDriver SSD1306 IIC, SPI platform independent template.
 
 /test includes LibDriver SSD1306 driver test code and this code can test the chip necessary function simply.
 
@@ -42,7 +42,7 @@ LibDriver SSD1306 is the full function driver of SSD1306 launched by LibDriver.I
 
 ### Install
 
-Reference /interface IIC,SPI platform independent template and finish your platform IIC,SPI driver.
+Reference /interface IIC, SPI platform independent template and finish your platform IIC, SPI driver.
 
 Add /src, /interface and /example to your project.
 
@@ -51,6 +51,8 @@ Add /src, /interface and /example to your project.
 #### example basic
 
 ```C
+#include "driver_ssd1306_basic.h"
+
 uint8_t res;
 
 res = ssd1306_basic_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
@@ -104,6 +106,8 @@ Image extraction format and every pixel stored in one byte.
 </div>
 
 ```C
+#include "driver_ssd1306_advance.h"
+
 uint8_t res;
 uint8_t image[8192];
 

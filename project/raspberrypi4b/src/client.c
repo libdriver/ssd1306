@@ -57,6 +57,8 @@ static struct sockaddr_in gs_server_addr;        /**< server address */
  */
 int main(uint8_t argc, char **argv)
 {
+    uint8_t *p;
+
     if ((gs_sock_fd = socket(AF_INET,SOCK_STREAM,0)) == -1) 
     {
         printf("ssd1306: creat socket failed.\n");
@@ -88,9 +90,17 @@ int main(uint8_t argc, char **argv)
         strcat(g_buf, " ");
     }
     g_len = strlen(g_buf);
-    g_len -= 2;
-    printf("ssd1306: send %s\n", g_buf + 2);
-    if (send(gs_sock_fd, g_buf + 2, g_len, 0) <0) 
+    if (strstr(g_buf, "./") != NULL)
+    {
+        g_len -= 2;
+        p = g_buf + 2;
+    }
+    else
+    {
+        p = g_buf;
+    }
+    printf("ssd1306: send %s\n", p);
+    if (send(gs_sock_fd, p, g_len, 0) <0) 
     {
         printf("ssd1306: send failed.\n");
 

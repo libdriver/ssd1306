@@ -1,34 +1,98 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
-chip name : Raspberry Pi 4B
+chip name : Raspberry Pi 4B.
 
-iic pin: SCL/SDA GPIO3/GPIO2
+iic pin: SCL/SDA GPIO3/GPIO2.
 
-spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8
+spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
 
-gpio pin: RESET/CMD_DATA GPIO27/GPIO17
+gpio pin: RESET/CMD_DATA GPIO27/GPIO17.
 
-### 2. install
+### 2. Install
 
-#### 2.1 install info
+#### 2.1 Dependencies
+
+Install the necessary dependencies.
 
 ```shell
-sudo apt-get install libgpiod-dev
+sudo apt-get install libgpiod-dev pkg-config cmake -y
+```
 
+#### 2.2 Makefile
+
+Build the project.
+
+```shell
 make
 ```
 
-#### 2.2 run server
+Install the project and this is optional.
 
 ```shell
-./ssd1306_server 
+sudo make install
 ```
 
-### 3. ssd1306
+Uninstall the project and this is optional.
 
-#### 3.1 command Instruction
+```shell
+sudo make uninstall
+```
+
+#### 2.3 CMake
+
+Build the project.
+
+```shell
+mkdir build && cd build 
+cmake .. 
+make
+```
+
+Install the project and this is optional.
+
+```shell
+sudo make install
+```
+
+Uninstall the project and this is optional.
+
+```shell
+sudo make uninstall
+```
+
+Test the project and this is optional.
+
+```shell
+# open another terminal
+./ssd1306_server 
+
+# use the CMake terminal
+make test
+```
+
+Find the compiled library in CMake. 
+
+```cmake
+find_package(ssd1306 REQUIRED)
+```
+
+#### 2.4 How to run
+
+```shell
+# open one terminal and run the server
+./ssd1306_server 
+```
+```shell
+# open another terminal and sent the command
+./ssd1306 xxx xxx xxx ...
+```
+
+
+### 3. SSD1306
+
+#### 3.1 Command Instruction
 
 ​          ssd1306 is a basic command which can test all ssd1306 driver function:
 
@@ -99,7 +163,7 @@ make
 
 ​            -c -advance -vertical_right_horizontal_scroll  <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256)        run ssd1306 setting vertical right horizontal scroll function. startpage means start page and it can be "0"-"7". endpage means end page and it can be "0"-"7". rows means display rows and it can be "0" - "63".
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 ./ssd1306 -i

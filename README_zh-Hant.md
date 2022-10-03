@@ -51,6 +51,8 @@ LibDriver SSD1306是LibDriver推出的SSD1306的全功能驅動，該驅動提�
 #### example basic
 
 ```C
+#include "driver_ssd1306_basic.h"
+
 uint8_t res;
 
 res = ssd1306_basic_init(SSD1306_INTERFACE_IIC, SSD1306_ADDR_SA0_0);
@@ -104,6 +106,8 @@ return 0;
 </div>
 
 ```C
+#include "driver_ssd1306_advance.h"
+
 uint8_t res;
 uint8_t image[8192];
 
