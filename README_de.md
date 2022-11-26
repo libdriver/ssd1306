@@ -99,7 +99,7 @@ return 0;
 
 #### example advance
 
-Bildextraktionsformat und jedes Pixel in einem Byte gespeichert.
+Das Bildextraktionsformat ist wie folgt und jedes Pixel wird in einem Byte gespeichert
 
 <div align=center>
 <img src="/doc/image/image_format.svg" width="220" height="220"/>

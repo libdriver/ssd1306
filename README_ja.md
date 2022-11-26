@@ -99,7 +99,7 @@ return 0;
 
 #### example advance
 
-画像抽出フォーマットと1バイトに格納されたすべてのピクセル。
+画像抽出フォーマットは次のとおりで、すべてのピクセルが 1 バイトに格納されます。
 
 <div align=center>
 <img src="/doc/image/image_format.svg" width="220" height="220"/>

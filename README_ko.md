@@ -99,7 +99,7 @@ return 0;
 
 #### example advance
 
-이미지 추출 형식 및 모든 픽셀이 1바이트에 저장됩니다.
+이미지 추출 형식은 다음과 같으며 모든 픽셀은 1바이트에 저장됩니다.
 
 <div align=center>
 <img src="/doc/image/image_format.svg" width="220" height="220"/>
