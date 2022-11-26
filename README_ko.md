@@ -1,7 +1,7 @@
 [English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
-<img src="/doc/image/logo.png"/>
+<img src="/doc/image/logo.svg" width="400" height="150"/>
 </div>
 
 ## LibDriver SSD1306
@@ -102,7 +102,7 @@ return 0;
 이미지 추출 형식 및 모든 픽셀이 1바이트에 저장됩니다.
 
 <div align=center>
-<img src="/doc/image/image_format.png"/>
+<img src="/doc/image/image_format.svg" width="220" height="220"/>
 </div>
 
 ```c
