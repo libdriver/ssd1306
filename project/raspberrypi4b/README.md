@@ -235,7 +235,7 @@ find_package(ssd1306 REQUIRED)
 26. Run ssd1306 fade blinking function, f means the running frames.  
 
     ```shell
-    ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<disable | fade_out | blinking>] [--frames=<f>]
+    ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<DISABLE | FADE-OUT | BLINKING>] [--frames=<f>]
     ```
 
 27. Run ssd1306 setting vertical left horizontal scroll function, spage means start page and it can be "0"-"7", epage means end page and it can be "0"-"7", r means display rows and it can be "0" - "63".
@@ -441,7 +441,7 @@ ssd1306: disable zoom in.
 ```
 
 ```shell
-./ssd1306 -e advance-fade-blinking --mode=blinking --frames=0
+./ssd1306 -e advance-fade-blinking --mode=BLINKING --frames=0
 
 ssd1306: set fade blinking blinking mode with 0 frames.
 ```
@@ -491,7 +491,7 @@ Usage:
   ssd1306 (-e advance-enable-zoom | --example=advance-enable-zoom)
   ssd1306 (-e advance-disable-zoom | --example=advance-disable-zoom)
   ssd1306 (-e advance-deactivate-scroll | --example=advance-deactivate-scroll)
-  ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<disable | fade_out | blinking>]
+  ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<DISABLE | FADE-OUT | BLINKING>]
           [--frames=<f>]
   ssd1306 (-e advance-left-scroll | --example=advance-left-scroll) [--start=<spage>] [--stop=<epage>] [--row=<r>]
           [--frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>]
@@ -513,8 +513,8 @@ Options:
   -i, --information       Show the chip information.
       --interface=<iic | spi>
                           Set the chip interface.([default: iic])
-      --mode=<disable | fade-out | blinking>
-                          Set the fade-blinking mode.([default: disable])
+      --mode=<DISABLE | FADE-OUT | BLINKING>
+                          Set the fade-blinking mode.([default: DISABLE])
   -p, --port              Display the pin connections of the current board.
       --row=<r>           Set the scrolling row.([default: 0])
       --start=<spage>     Set the scrolling start page.([default: 0])

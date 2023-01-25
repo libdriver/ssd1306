@@ -203,13 +203,13 @@ uint16_t uart_flush(void)
 uint16_t uart_print(const char *const fmt, ...)
 {
     char str[256];
-    uint8_t len;
+    uint16_t len;
     va_list args;
     
     /* print to the buffer */
     memset((char *)str, 0, sizeof(char) * 256); 
     va_start(args, fmt);
-    vsnprintf((char *)str, 256, (char const *)fmt, args);
+    vsnprintf((char *)str, 255, (char const *)fmt, args);
     va_end(args);
     
     /* send the data */
