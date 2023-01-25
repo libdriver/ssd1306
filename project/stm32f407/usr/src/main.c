@@ -303,15 +303,15 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 6 :
             {
                 /* set the mode */
-                if (strcmp("disable", optarg) == 0)
+                if (strcmp("DISABLE", optarg) == 0)
                 {
                     mode = SSD1306_FADE_BLINKING_MODE_DISABLE;
                 }
-                else if (strcmp("fade-out", optarg) == 0)
+                else if (strcmp("FADE-OUT", optarg) == 0)
                 {
                     mode = SSD1306_FADE_BLINKING_MODE_FADE_OUT;
                 }
-                else if (strcmp("blinking", optarg) == 0)
+                else if (strcmp("BLINKING", optarg) == 0)
                 {
                     mode = SSD1306_FADE_BLINKING_MODE_BLINKING;
                 }
@@ -962,7 +962,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
         ssd1306_interface_debug_print("  ssd1306 (-e advance-enable-zoom | --example=advance-enable-zoom)\n");
         ssd1306_interface_debug_print("  ssd1306 (-e advance-disable-zoom | --example=advance-disable-zoom)\n");
         ssd1306_interface_debug_print("  ssd1306 (-e advance-deactivate-scroll | --example=advance-deactivate-scroll)\n");
-        ssd1306_interface_debug_print("  ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<disable | fade_out | blinking>]\n");
+        ssd1306_interface_debug_print("  ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<DISABLE | FADE-OUT | BLINKING>]\n");
         ssd1306_interface_debug_print("          [--frames=<f>]\n");
         ssd1306_interface_debug_print("  ssd1306 (-e advance-left-scroll | --example=advance-left-scroll) [--start=<spage>] [--stop=<epage>] [--row=<r>]\n");
         ssd1306_interface_debug_print("          [--frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>]\n");
@@ -984,8 +984,8 @@ uint8_t ssd1306(uint8_t argc, char** argv)
         ssd1306_interface_debug_print("  -i, --information       Show the chip information.\n");
         ssd1306_interface_debug_print("      --interface=<iic | spi>\n");
         ssd1306_interface_debug_print("                          Set the chip interface.([default: iic])\n");
-        ssd1306_interface_debug_print("      --mode=<disable | fade-out | blinking>\n");
-        ssd1306_interface_debug_print("                          Set the fade-blinking mode.([default: disable])\n");
+        ssd1306_interface_debug_print("      --mode=<DISABLE | FADE-OUT | BLINKING>\n");
+        ssd1306_interface_debug_print("                          Set the fade-blinking mode.([default: DISABLE])\n");
         ssd1306_interface_debug_print("  -p, --port              Display the pin connections of the current board.\n");
         ssd1306_interface_debug_print("      --row=<r>           Set the scrolling row.([default: 0])\n");
         ssd1306_interface_debug_print("      --start=<spage>     Set the scrolling start page.([default: 0])\n");
