@@ -1,14 +1,14 @@
-### 1. Chip
+### 1. Board
 
-#### 1.1 Chip Info
+#### 1.1 Board Info
 
-chip name : Raspberry Pi 4B.
+Board Name: Raspberry Pi 4B.
 
-iic pin: SCL/SDA GPIO3/GPIO2.
+IIC Pin: SCL/SDA GPIO3/GPIO2.
 
-spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
+SPI Pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
 
-gpio pin: RESET/CMD_DATA GPIO27/GPIO17.
+GPIO Pin: RESET/CMD_DATA GPIO27/GPIO17.
 
 ### 2. Install
 
@@ -78,7 +78,179 @@ Find the compiled library in CMake.
 find_package(ssd1306 REQUIRED)
 ```
 
-#### 2.4 How to run
+### 3. SSD1306
+
+#### 3.1 Command Instruction
+
+1. Show ssd1306 chip and driver information.
+
+   ```shell
+   ssd1306 (-i | --information)
+   ```
+
+2. Show ssd1306 help.
+
+   ```shell
+   ssd1306 (-h | --help)
+   ```
+
+3. Show ssd1306 pin connections of the current board.
+
+   ```shell
+   ssd1306 (-p | --port)
+   ```
+
+4. Run ssd1306 display test. 
+
+   ```shell
+   ssd1306 (-t display | --test=display) [--addr=<0 | 1>] [--interface=<iic | spi>]
+   ```
+
+5. Run ssd1306 init function.
+
+   ```shell
+   ssd1306 (-e basic-init | --example=basic-init) [--addr=<0 | 1>] [--interface=<iic | spi>]
+   ```
+
+6. Run ssd1306 deinit function.
+
+   ```shell
+   ssd1306 (-e basic-deinit | --example=basic-deinit)
+   ```
+
+7. Run ssd1306 show string function, string is the shown string. 
+
+   ```shell
+   ssd1306 (-e basic-str | --example=basic-str) [--str=<string>]
+   ```
+
+8. Run ssd1306 display on function.
+
+   ```shell
+   ssd1306 (-e basic-display-on | --example=basic-display-on)
+   ```
+
+9. Run ssd1306 display off function.
+
+   ```shell
+   ssd1306 (-e basic-display-off | --example=basic-display-off)
+   ```
+
+10. Run ssd1306 clear screen function.
+
+    ```shell
+    ssd1306 (-e basic-clear | --example=basic-clear)
+    ```
+
+11. Run ssd1306 writepoint function, x0 is the x of the point and y0 is the y of the point.
+
+    ```shell
+    ssd1306 (-e basic-point | --example=basic-point) --x0=<x0> --y0=<y0> [--color=<0 | 1>]
+    ```
+
+12. Run ssd1306 readpoint function, x0 is the x of the point and y0 is the y of the point.
+
+    ```shell
+    ssd1306 (-e basic-point | --example=basic-point) --x0=<x0> --y0=<y0>
+    ```
+
+13. Run ssd1306 drawing rectangle function, x1 is the top left x of the rect, y1 is the top left y of the rect, x2 is the bottom right x of the rect and y2 is the bottom right y of the rect.
+
+    ```shell
+    ssd1306 (-e basic-rect | --example=basic-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<0 | 1>]
+    ```
+
+14. Run ssd1306 init function. 
+
+    ```shell
+    ssd1306 (-e advance-init | --example=advance-init) [--addr=<0 | 1>] [--interface=<iic | spi>]
+    ```
+
+15. Run ssd1306 deinit function.
+
+    ```shell
+    ssd1306 (-e advance-deinit | --example=advance-deinit)
+    ```
+
+16. Run ssd1306 show string function, string is the shown string.
+
+    ```shell
+    ssd1306 (-e advance-str | --example=advance-str) [--str=<string>]
+    ```
+
+17. Run ssd1306 display on function. 
+
+    ```shell
+    ssd1306 (-e advance-display-on | --example=advance-display-on)
+    ```
+
+18. Run ssd1306 display off function.
+
+    ```shell
+    ssd1306 (-e advance-display-off | --example=advance-display-off)
+    ```
+
+19. Run ssd1306 clear screen function. 
+
+    ```shell
+    ssd1306 (-e advance-clear | --example=advance-clear)
+    ```
+
+20. Run ssd1306 writepoint function, x0 is the x of the point and y0 is the y of the point.
+
+    ```shell
+    ssd1306 (-e advance-point | --example=advance-point) --x0=<x0> --y0=<y0> [--color=<0 | 1>]
+    ```
+
+21. Run ssd1306 readpoint function, x0 is the x of the point and y0 is the y of the point.
+
+    ```shell
+    ssd1306 (-e advance-point | --example=advance-point) --x0=<x0> --y0=<y0>
+    ```
+
+22. Run ssd1306 drawing rectangle function, x1 is the top left x of the rect, y1 is the top left y of the rect, x2 is the bottom right x of the rect and y2 is the bottom right y of the rect.
+
+    ```shell
+    ssd1306 (-e advance-rect | --example=advance-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<0 | 1>]
+    ```
+
+23. Run ssd1306 enable zoom function.
+
+    ```shell
+    ssd1306 (-e advance-enable-zoom | --example=advance-enable-zoom)
+    ```
+
+24. Run ssd1306 disable zoom function.
+
+    ```shell
+    ssd1306 (-e advance-disable-zoom | --example=advance-disable-zoom)
+    ```
+
+25. Run ssd1306 deactivate scroll function.
+
+    ```shell
+    ssd1306 (-e advance-deactivate-scroll | --example=advance-deactivate-scroll)
+    ```
+
+26. Run ssd1306 fade blinking function, f means the running frames.  
+
+    ```shell
+    ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<disable | fade_out | blinking>] [--frames=<f>]
+    ```
+
+27. Run ssd1306 setting vertical left horizontal scroll function, spage means start page and it can be "0"-"7", epage means end page and it can be "0"-"7", r means display rows and it can be "0" - "63".
+
+    ```shell
+    ssd1306 (-e advance-left-scroll | --example=advance-left-scroll) [--start=<spage>] [--stop=<epage>] [--row=<r>] [--frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>]
+    ```
+
+28. Run ssd1306 setting vertical right horizontal scroll function, spage means start page and it can be "0"-"7", epage means end page and it can be "0"-"7", r means display rows and it can be "0" - "63".
+
+    ```shell
+    ssd1306 (-e advance-right-scroll | --example=advance-right-scroll) [--start=<spage>] [--stop=<epage>] [--row=<r>] [--frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>]
+    ```
+
+#### 3.2 How to run
 
 ```shell
 # open one terminal and run the server
@@ -89,81 +261,7 @@ find_package(ssd1306 REQUIRED)
 ./ssd1306 xxx xxx xxx ...
 ```
 
-
-### 3. SSD1306
-
-#### 3.1 Command Instruction
-
-​          ssd1306 is a basic command which can test all ssd1306 driver function:
-
-​           -i        show ssd1306 chip and driver information.
-
-​           -h       show ssd1306 help.
-
-​           -p       show ssd1306 pin connections of the current board.
-
-​           -t display (-spi | -iic  -a (0 | 1))
-
-​           -t display -spi        run ssd1306 display test by spi interface. 
-
-​           -t display -iic -a (0 | 1)        run ssd1306 display test by iic interface. 0 or 1 means the iic address pin level.
-
-​           -c (basic (-spi -init | -iic -a (0 | 1) | -deinit | -str <string> | -displayon | -displayoff | -clear | -writepoint <x> <y> <data> | -readpoint <x> <y> | -rect <x1> <y1> <x2> <y2>) | advance (-spi -init | -iic -a (0 | 1) | -deinit | -str <string> | -displayon | -displayoff | -clear | -writepoint <x> <y> <data> | -readpoint <x> <y> | -rect <x1> <y1> <x2> <y2> | -enable_zoom | -disable_zoom |  -deactivate_scroll | advance -fade_blinking (disable | fade_out | blinking) <frame> | -vertical_left_horizontal_scroll  <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 
- FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256) |  -vertical_right_horizontal_scroll <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 |  FRAME_4 | FRAME_5 | FRAME_25 |FRAME_64 | FRAME_128 | FRAME_256) )
-
-​            -c basic -spi -init        run ssd1306 init by spi interface. 
-
-​            -c basic -iic -a (0 | 1)        run ssd1306 init by iic interface. 0 or 1 means the iic address pin level.
-
-​            -c basic -deinit        run ssd1306 deinit function. 
-
-​            -c basic -str <string>        run ssd1306 show string function. string is the shown string. 
-
-​            -c basic -displayon        run ssd1306 display on function. 
-
-​            -c basic -displayoff        run ssd1306 display off function. 
-
-​            -c basic -clear        run ssd1306 clear screen function. 
-
-​            -c basic -writepoint <x> <y> <data>        run ssd1306 writepoint function. 
-
-​            -c basic -readpoint <x> <y>        run ssd1306 readpoint function.
-
-​            -c basic -rect <x1> <y1> <x2> <y2>        run ssd1306 drawing rectangle function. x1 means x start. y1 means y start. x2 means x end. y2 means y end.
-
-​            -c advance -spi -init        run ssd1306 init by spi interface. 
-
-​            -c advance -iic -a (0 | 1)        run ssd1306 init by iic interface. 0 or 1 means the iic address pin level.
-
-​            -c advance -deinit        run ssd1306 deinit function. 
-
-​            -c advance  -str <string>        run ssd1306 show string function. string is the shown string. 
-
-​            -c advance -displayon        run ssd1306 display on function. 
-
-​            -c advance  -displayoff        run ssd1306 display off function. 
-
-​            -c advance  -clear        run ssd1306 clear screen function. 
-
-​            -c advance -writepoint <x> <y> <data>        run ssd1306 writepoint function. 
-
-​            -c advance -readpoint <x> <y>        run ssd1306 readpoint function.
-
-​            -c advance -rect <x1> <y1> <x2> <y2>        run ssd1306 drawing rectangle function. x1 means x start. y1 means y start. x2 means x end. y2 means y end.
-
-​            -c advance -enable_zoom        run ssd1306 enable zoom function. 
-
-​            -c advance -disable_zoom        run ssd1306 disable zoom function. 
-
-​            -c advance -deactivate_scroll        run ssd1306 deactivate scroll function. 
-
-​            -c advance -fade_blinking (disable | fade_out | blinking) <frame>        run ssd1306 fade blinking function. frames means the running frames.  
-
-​            -c advance -vertical_left_horizontal_scroll  <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256)        run ssd1306 setting vertical left horizontal scroll function. startpage means start page and it can be "0"-"7". endpage means end page and it can be "0"-"7". rows means display rows and it can be "0" - "63".
-
-​            -c -advance -vertical_right_horizontal_scroll  <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256)        run ssd1306 setting vertical right horizontal scroll function. startpage means start page and it can be "0"-"7". endpage means end page and it can be "0"-"7". rows means display rows and it can be "0" - "63".
-
-#### 3.2 Command Example
+#### 3.3 Command Example
 
 ```shell
 ./ssd1306 -i
@@ -193,7 +291,7 @@ ssd1306: IIC interface SDA connected to GPIO2(BCM).
 ```
 
 ```shell
-./ssd1306 -t display -iic -a 0
+./ssd1306 -t display --addr=0 --interface=iic
 
 ssd1306: chip is Solomon Systech SSD1306.
 ssd1306: manufacturer is Solomon Systech.
@@ -223,145 +321,145 @@ ssd1306: finish display test.
 ```
 
 ```shell
-./ssd1306 -c basic -str 12345abcdEFGH
+./ssd1306 -e basic-str --str=12345abcdEFGH
 
-ssd1306: 12345abcdEFGH
+ssd1306: 12345abcdEFGH.
 ```
 
 ```shell
-./ssd1306 -c basic -iic -a 0 -init
+./ssd1306 -e basic-init --addr=0 --interface=iic
 
-ssd1306: init success.
+ssd1306: ssd1306: init success.
 ```
 
 ```shell
-./ssd1306 -c basic -displayoff
+./ssd1306 -e basic-display-off
 
 ssd1306: display off.
 ```
 
 ```shell
-./ssd1306 -c basic -displayon
+./ssd1306 -e basic-display-on
 
 ssd1306: display on.
 ```
 
 ```shell
-./ssd1306 -c basic -clear
+./ssd1306 -e basic-clear
 
 ssd1306: clear screen.
 ```
 
 ```shell
-./ssd1306 -c basic -deinit
+./ssd1306 -e basic-deinit
 
 ssd1306: deinit ssd1306.
 ```
 
 ```shell
-./ssd1306 -c basic -writepoint 16 16 1
+./ssd1306 -e basic-point --x0=16 --y0=16 --color=1
 
 ssd1306: write point 16 16 1.
 ```
 
 ```shell
-./ssd1306 -c basic -readpoint 16 16
+./ssd1306 -e basic-point --x0=16 --y0=16
 
 ssd1306: read point 16 16 is 1.
 ```
 
 ```shell
-./ssd1306 -c basic -rect 0 0 32 32
+./ssd1306 -e basic-rect --x1=0 --y1=0 --x2=32 --y2=32 --color=1
 
 ssd1306: draw rect 0 0 32 32.
 ```
 
 ```shell
-./ssd1306 -c advance -iic -a 0 -init
+./ssd1306 -e advance-init --addr=0 --interface=iic
 
-ssd1306: init success.
+ssd1306: ssd1306: init success.
 ```
 
 ```shell
-./ssd1306 -c advance -str 12345abcdEFGH
+./ssd1306 -e advance-str --str=12345abcdEFGH
 
-ssd1306: 12345abcdEFGH
+ssd1306: 12345abcdEFGH.
 ```
 
 ```shell
-./ssd1306 -c advance -displayoff
+./ssd1306 -e advance-display-off
 
 ssd1306: display off.
 ```
 
 ```shell
-./ssd1306 -c advance -displayon
+./ssd1306 -e advance-display-on
 
 ssd1306: display on.
 ```
 
 ```shell
-./ssd1306 -c advance -clear
+./ssd1306 -e advance-clear
 
 ssd1306: clear screen.
 ```
 
 ```shell
-./ssd1306 -c advance -writepoint 16 16 1
+./ssd1306 -e advance-point --x0=16 --y0=16 --color=1
 
 ssd1306: write point 16 16 1.
 ```
 
 ```shell
-./ssd1306 -c advance -readpoint 16 16
+./ssd1306 -e advance-point --x0=16 --y0=16
 
 ssd1306: read point 16 16 is 1.
 ```
 
 ```shell
-./ssd1306 -c advance -rect 0 0 32 32
+./ssd1306 -e advance-rect --x1=0 --y1=0 --x2=32 --y2=32 --color=1
 
 ssd1306: draw rect 0 0 32 32.
 ```
 
 ```shell
-./ssd1306 -c advance -deinit
+./ssd1306 -e advance-deinit
 
 ssd1306: deinit ssd1306.
 ```
 
 ```shell
-./ssd1306 -c advance -enable_zoom
+./ssd1306 -e advance-enable-zoom
 
 ssd1306: enable zoom in.
 ```
 
 ```shell
-./ssd1306 -c advance -disable_zoom
+./ssd1306 -e advance-disable-zoom
 
 ssd1306: disable zoom in.
 ```
 
 ```shell
-./ssd1306 -c advance -fade_blinking blinking 0
+./ssd1306 -e advance-fade-blinking --mode=blinking --frames=0
 
 ssd1306: set fade blinking blinking mode with 0 frames.
 ```
 
 ```shell
-./ssd1306 -c advance -deactivate_scroll
+./ssd1306 -e advance-deactivate-scroll
 
 ssd1306: deactivate scroll.
 ```
 
 ```shell
-./ssd1306 -c advance -vertical_left_horizontal_scroll 0 7 0 FRAME_2
+./ssd1306 -e advance-left-scroll --start=0 --stop=7 --row=0 --frame=FRAME_2
 
 ssd1306: vertical left horizontal scroll start stop rows frames 0 7 0.
 ```
 
 ```shell
-./ssd1306 -c advance -vertical_right_horizontal_scroll 0 7 0 FRAME_2
+./ssd1306 -e advance-right-scroll --start=0 --stop=7 --row=0 --frame=FRAME_2
 
 ssd1306: vertical right horizontal scroll start stop rows frames 0 7 0.
 ```
@@ -369,67 +467,66 @@ ssd1306: vertical right horizontal scroll start stop rows frames 0 7 0.
 ```shell
 ./ssd1306 -h
 
-ssd1306 -i
-	show ssd1306 chip and driver information.
-ssd1306 -h
-	show ssd1306 help.
-ssd1306 -p
-	show ssd1306 pin connections of the current board.
-ssd1306 -t display -spi
-	run ssd1306 display test by spi interface.
-ssd1306 -t display -iic -a (0 | 1)
-	run ssd1306 display test by iic interface.0 or 1 means the iic address pin level.
-ssd1306 -c basic -spi -init
-	run ssd1306 init by spi interface.
-ssd1306 -c basic -iic -a (0 | 1)
-	run ssd1306 init by iic interface.0 or 1 means the iic address pin level.
-ssd1306 -c basic -deinit
-	run ssd1306 deinit function.
-ssd1306 -c basic -str <string>
-	run ssd1306 show string function.string is the shown string.
-ssd1306 -c basic -displayon
-	run ssd1306 display on function.
-ssd1306 -c basic -displayoff
-	run ssd1306 display off function.
-ssd1306 -c basic -clear
-	run ssd1306 clear screen function.
-ssd1306 -c basic -writepoint <x> <y> <data>
-	run ssd1306 writepoint function.
-ssd1306 -c basic -readpoint <x> <y>
-	run ssd1306 readpoint function.
-ssd1306 -c basic -rect <x1> <y1> <x2> <y2>
-	run ssd1306 drawing rectangle function.x1 means x start.y1 means y start.x2 means x end.y2 means y end.
-ssd1306 -c advance -spi -init
-	run ssd1306 init by spi interface.
-ssd1306 -c advance -iic -a (0 | 1)
-	run ssd1306 init by iic interface.0 or 1 means the iic address pin level.
-ssd1306 -c advance -deinit
-	run ssd1306 deinit function.
-ssd1306 -c advance -str <string>
-	run ssd1306 show string function.string is the shown string.
-ssd1306 -c advance -displayon
-	run ssd1306 display on function.
-ssd1306 -c advance -displayoff
-	run ssd1306 display off function.
-ssd1306 -c advance -clear
-	run ssd1306 clear screen function.
-ssd1306 -c advance -writepoint <x> <y> <data>
-	run ssd1306 writepoint function.
-ssd1306 -c advance -readpoint <x> <y>
-	run ssd1306 readpoint function.
-ssd1306 -c advance -rect <x1> <y1> <x2> <y2>
-	run ssd1306 drawing rectangle function.x1 means x start.y1 means y start.x2 means x end.y2 means y end.
-ssd1306 -c advance -enable_zoom
-	run ssd1306 enable zoom function.
-ssd1306 -c advance -disable_zoom
-	run ssd1306 disable zoom function.
-ssd1306 -c advance -deactivate_scroll
-	run ssd1306 deactivate scroll function.
-ssd1306 -c advance -fade_blinking (disable | fade_out | blinking) <frame>
-	run ssd1306 fade blinking function.frames means the running frames.
-ssd1306 -c advance -vertical_left_horizontal_scroll <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256)
-	run ssd1306 setting vertical left horizontal scroll function.startpage means start page andit can be "0"-"7".endpage means end page and it can be "0"-"7".rows means display rowsand it can be "0" - "63".
-ssd1306 -c advance -vertical_right_horizontal_scroll <startpage> <endpage> <rows> (FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256)
-	run ssd1306 setting vertical right horizontal scroll function.startpage means start page andit can be "0"-"7".endpage means end page and it can be "0"-"7".rows means display rowsand it can be "0" - "63".
+Usage:
+  ssd1306 (-i | --information)
+  ssd1306 (-h | --help)
+  ssd1306 (-p | --port)
+  ssd1306 (-t display | --test=display) [--addr=<0 | 1>] [--interface=<iic | spi>]
+  ssd1306 (-e basic-init | --example=basic-init) [--addr=<0 | 1>] [--interface=<iic | spi>]
+  ssd1306 (-e basic-deinit | --example=basic-deinit)
+  ssd1306 (-e basic-str | --example=basic-str) [--str=<string>]
+  ssd1306 (-e basic-display-on | --example=basic-display-on)
+  ssd1306 (-e basic-display-off | --example=basic-display-off)
+  ssd1306 (-e basic-clear | --example=basic-clear)
+  ssd1306 (-e basic-point | --example=basic-point) --x0=<x0> --y0=<y0> [--color=<0 | 1>]
+  ssd1306 (-e basic-rect | --example=basic-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<0 | 1>]
+  ssd1306 (-e advance-init | --example=advance-init) [--addr=<0 | 1>] [--interface=<iic | spi>]
+  ssd1306 (-e advance-deinit | --example=advance-deinit)
+  ssd1306 (-e advance-str | --example=advance-str) [--str=<string>]
+  ssd1306 (-e advance-display-on | --example=advance-display-on)
+  ssd1306 (-e advance-display-off | --example=advance-display-off)
+  ssd1306 (-e advance-clear | --example=advance-clear)
+  ssd1306 (-e advance-point | --example=advance-point) --x0=<x0> --y0=<y0> [--color=<0 | 1>]
+  ssd1306 (-e advance-rect | --example=advance-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<0 | 1>]
+  ssd1306 (-e advance-enable-zoom | --example=advance-enable-zoom)
+  ssd1306 (-e advance-disable-zoom | --example=advance-disable-zoom)
+  ssd1306 (-e advance-deactivate-scroll | --example=advance-deactivate-scroll)
+  ssd1306 (-e advance-fade-blinking | --example=advance-fade-blinking) [--mode=<disable | fade_out | blinking>]
+          [--frames=<f>]
+  ssd1306 (-e advance-left-scroll | --example=advance-left-scroll) [--start=<spage>] [--stop=<epage>] [--row=<r>]
+          [--frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>]
+  ssd1306 (-e advance-right-scroll | --example=advance-right-scroll) [--start=<spage>] [--stop=<epage>] [--row=<r>]
+          [--frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>]
+
+Options:
+      --addr=<0 | 1>      Set the iic addr pin.([default: 0])
+      --color=<0 | 1>     Set the chip color.([default: 1])
+  -e <basic-init | basic-deinit | basic-str | basic-display-on | basic-display-off | basic-clear 
+     | basic-point | basic-rect>, --example=<advance-init | advance-deinit | advance-str | advance-display-on
+     | advance-display-off | advance-clear | advance-point | advance-rect | advance-enable-zoom | advance-disable-zoom
+     | advance-fade-blinking | advance-left-scroll | advance-right-scroll | advance-deactivate-scroll>
+                          Run the driver example.
+      --frame=<FRAME_2 | FRAME_3 | FRAME_4 | FRAME_5 | FRAME_25 | FRAME_64 | FRAME_128 | FRAME_256>
+                          Set the scrolling frame.([default: FRAME_2])
+      --frames=<f>        Se the fade-blinking frames.([default: 0])
+  -h, --help              Show the help.
+  -i, --information       Show the chip information.
+      --interface=<iic | spi>
+                          Set the chip interface.([default: iic])
+      --mode=<disable | fade-out | blinking>
+                          Set the fade-blinking mode.([default: disable])
+  -p, --port              Display the pin connections of the current board.
+      --row=<r>           Set the scrolling row.([default: 0])
+      --start=<spage>     Set the scrolling start page.([default: 0])
+      --stop=<epage>      Set the scrolling stop page.([default: 7])
+      --str=<string>      Set the display string.([default: libdriver])
+  -t <display>, --test=<display>
+                          Run the driver test.
+      --x0=<x0>           Set the x0 and it is the x of the point.
+      --x1=<x1>           Set the x1 and it is the top left x of the rect.
+      --x2=<x2>           Set the x2 and it is the bottom right x of the rect.
+      --y0=<y0>           Set the y0 and it is the y of the point.
+      --y1=<y1>           Set the y1 and it is the top left y of the rect.
+      --y2=<y2>           Set the y2 and it is the bottom right y of the rect.
 ```
 

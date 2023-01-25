@@ -97,8 +97,8 @@
 
 /**
  * @brief     write one byte
- * @param[in] *handle points to a ssd1306 handle structure
- * @param[in] data is the written data
+ * @param[in] *handle points to an ssd1306 handle structure
+ * @param[in] data is the write data
  * @param[in] cmd is the command or data type
  * @return    status code
  *            - 0 success
@@ -159,7 +159,7 @@ static uint8_t a_ssd1306_write_byte(ssd1306_handle_t *handle, uint8_t data, uint
 
 /**
  * @brief     write multiple bytes
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] *data points to a data buffer
  * @param[in] len is the data length
  * @param[in] cmd is the command or data type
@@ -222,10 +222,10 @@ static uint8_t a_ssd1306_multiple_write_byte(ssd1306_handle_t *handle, uint8_t *
 
 /**
  * @brief     draw a point in gram
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] x is the coordinate x
  * @param[in] y is the coordinate y
- * @param[in] data is the written data
+ * @param[in] data is the write data
  * @return    status code
  *            - 0 success
  *            - 1 gram draw point failed
@@ -254,10 +254,10 @@ static uint8_t a_ssd1306_gram_draw_point(ssd1306_handle_t *handle, uint8_t x, ui
 
 /**
  * @brief     draw a char in gram
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] x is the coordinate x
  * @param[in] y is the coordinate y
- * @param[in] chr is the written char
+ * @param[in] chr is the write char
  * @param[in] size is the char size
  * @param[in] mode is the display mode
  * @return    status code
@@ -323,7 +323,7 @@ static uint8_t a_ssd1306_gram_show_char(ssd1306_handle_t *handle, uint8_t x, uin
 
 /**
  * @brief     clear the screen
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 clear failed
@@ -382,7 +382,7 @@ uint8_t ssd1306_clear(ssd1306_handle_t *handle)
 
 /**
  * @brief     update the gram data
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 gram update failed
@@ -440,10 +440,10 @@ uint8_t ssd1306_gram_update(ssd1306_handle_t *handle)
 
 /**
  * @brief     write a point
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] x is the coordinate x
  * @param[in] y is the coordinate y
- * @param[in] data is the written data
+ * @param[in] data is the write data
  * @return    status code
  *            - 0 success
  *            - 1 write point failed
@@ -516,7 +516,7 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
 
 /**
  * @brief      read a point
- * @param[in]  *handle points to a ssd1306 handle structure
+ * @param[in]  *handle points to an ssd1306 handle structure
  * @param[in]  x is the coordinate x
  * @param[in]  y is the coordinate y
  * @param[out] *data points to a data buffer
@@ -566,10 +566,10 @@ uint8_t ssd1306_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint8
 
 /**
  * @brief     write a point in the gram
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] x is the coordinate x
  * @param[in] y is the coordinate y
- * @param[in] data is the written data
+ * @param[in] data is the write data
  * @return    status code
  *            - 0 success
  *            - 1 gram write point failed
@@ -616,7 +616,7 @@ uint8_t ssd1306_gram_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y,
 
 /**
  * @brief      read a point from the gram
- * @param[in]  *handle points to a ssd1306 handle structure
+ * @param[in]  *handle points to an ssd1306 handle structure
  * @param[in]  x is the coordinate x
  * @param[in]  y is the coordinate y
  * @param[out] *data points to a data buffer
@@ -666,10 +666,10 @@ uint8_t ssd1306_gram_read_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, 
 
 /**
  * @brief     draw a string in the gram
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] x is the coordinate x
  * @param[in] y is the coordinate y
- * @param[in] *str points to a written string address
+ * @param[in] *str points to a write string address
  * @param[in] len is the length of the string
  * @param[in] color is the display color
  * @param[in] font is the display font size
@@ -723,7 +723,7 @@ uint8_t ssd1306_gram_write_string(ssd1306_handle_t *handle, uint8_t x, uint8_t y
 
 /**
  * @brief     fill a rectangle in the gram
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] left is the left coordinate x
  * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
@@ -786,12 +786,12 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
 
 /**
  * @brief     draw a picture in the gram
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] left is the left coordinate x
  * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
  * @param[in] bottom is the bottom coordinate y
- * @param[in] *img points to a image buffer
+ * @param[in] *img points to an image buffer
  * @return    status code
  *            - 0 success
  *            - 1 gram draw picture failed
@@ -850,7 +850,7 @@ uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic or spi initialization failed
@@ -1017,7 +1017,7 @@ uint8_t ssd1306_init(ssd1306_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic or spi deinit failed
@@ -1099,7 +1099,7 @@ uint8_t ssd1306_deinit(ssd1306_handle_t *handle)
 
 /**
  * @brief     set the chip interface
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] interface is the chip interface
  * @return    status code
  *            - 0 success
@@ -1120,7 +1120,7 @@ uint8_t ssd1306_set_interface(ssd1306_handle_t *handle, ssd1306_interface_t inte
 
 /**
  * @brief      get the chip interface
- * @param[in]  *handle points to a ssd1306 handle structure
+ * @param[in]  *handle points to an ssd1306 handle structure
  * @param[out] *interface points to a chip interface buffer
  * @return     status code
  *             - 0 success
@@ -1141,7 +1141,7 @@ uint8_t ssd1306_get_interface(ssd1306_handle_t *handle, ssd1306_interface_t *int
 
 /**
  * @brief     set the chip iic address
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] addr_pin is the iic address
  * @return    status code
  *            - 0 success
@@ -1162,8 +1162,8 @@ uint8_t ssd1306_set_addr_pin(ssd1306_handle_t *handle, ssd1306_address_t addr_pi
 
 /**
  * @brief      get the chip iic address
- * @param[in]  *handle points to a ssd1306 handle structure
- * @param[out] *addr_pin points to a iic address buffer
+ * @param[in]  *handle points to an ssd1306 handle structure
+ * @param[out] *addr_pin points to an iic address buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -1183,7 +1183,7 @@ uint8_t ssd1306_get_addr_pin(ssd1306_handle_t *handle, ssd1306_address_t *addr_p
 
 /**
  * @brief     set the low column start address
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] addr is the low column start address
  * @return    status code
  *            - 0 success
@@ -1215,7 +1215,7 @@ uint8_t ssd1306_set_low_column_start_address(ssd1306_handle_t *handle, uint8_t a
 
 /**
  * @brief     set the high column start address
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] addr is the high column start address
  * @return    status code
  *            - 0 success
@@ -1247,7 +1247,7 @@ uint8_t ssd1306_set_high_column_start_address(ssd1306_handle_t *handle, uint8_t 
 
 /**
  * @brief     set the memory addressing mode
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] mode is the memory addressing mode
  * @return    status code
  *            - 0 success
@@ -1277,7 +1277,7 @@ uint8_t ssd1306_set_memory_addressing_mode(ssd1306_handle_t *handle, ssd1306_mem
 
 /**
  * @brief     set the column address range
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_addr is the column start address
  * @param[in] end_addr is the column end address
  * @return    status code
@@ -1323,7 +1323,7 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
 
 /**
  * @brief     set the page address range
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_addr is the page start address
  * @param[in] end_addr is the page end address
  * @return    status code
@@ -1369,7 +1369,7 @@ uint8_t ssd1306_set_page_address_range(ssd1306_handle_t *handle, uint8_t start_a
 
 /**
  * @brief     set the fade blinking mode
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] mode is the fade blinking mode
  * @param[in] frames is the fade or blinking frames
  * @return    status code
@@ -1407,7 +1407,7 @@ uint8_t ssd1306_set_fade_blinking_mode(ssd1306_handle_t *handle, ssd1306_fade_bl
 
 /**
  * @brief     set the right horizontal scroll
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_page_addr is the start page address
  * @param[in] end_page_addr is the end page address
  * @param[in] frames is the scroll frames
@@ -1459,7 +1459,7 @@ uint8_t ssd1306_set_right_horizontal_scroll(ssd1306_handle_t *handle, uint8_t st
 
 /**
  * @brief     set the left horizontal scroll
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_page_addr is the start page address
  * @param[in] end_page_addr is the end page address
  * @param[in] frames is the scroll frames
@@ -1511,7 +1511,7 @@ uint8_t ssd1306_set_left_horizontal_scroll(ssd1306_handle_t *handle, uint8_t sta
 
 /**
  * @brief     set the vertical right horizontal scroll
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_page_addr is the start page address
  * @param[in] end_page_addr is the end page address
  * @param[in] rows is the row address
@@ -1570,7 +1570,7 @@ uint8_t ssd1306_set_vertical_right_horizontal_scroll(ssd1306_handle_t *handle, u
 
 /**
  * @brief     set the vertical left horizontal scroll
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_page_addr is the start page address
  * @param[in] end_page_addr is the end page address
  * @param[in] rows is the row address
@@ -1629,7 +1629,7 @@ uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, ui
 
 /**
  * @brief     deactivate the scroll
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 deactivate scroll failed
@@ -1653,7 +1653,7 @@ uint8_t ssd1306_deactivate_scroll(ssd1306_handle_t *handle)
 
 /**
  * @brief     activate the scroll
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 activate scroll failed
@@ -1677,7 +1677,7 @@ uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle)
 
 /**
  * @brief     set the display start line
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] l is the start line
  * @return    status code
  *            - 0 success
@@ -1709,7 +1709,7 @@ uint8_t ssd1306_set_display_start_line(ssd1306_handle_t *handle, uint8_t l)
 
 /**
  * @brief     set the display contrast
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] contrast is the display contrast
  * @return    status code
  *            - 0 success
@@ -1739,7 +1739,7 @@ uint8_t ssd1306_set_contrast(ssd1306_handle_t *handle, uint8_t contrast)
 
 /**
  * @brief     enable or disable the charge pump
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -1769,7 +1769,7 @@ uint8_t ssd1306_set_charge_pump(ssd1306_handle_t *handle, ssd1306_charge_pump_t 
 
 /**
  * @brief     set the segment remap
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] remap is the segment remap param
  * @return    status code
  *            - 0 success
@@ -1801,7 +1801,7 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
 
 /**
  * @brief     set the vertical scroll area
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] start_row is the start row
  * @param[in] end_row is the end row
  * @return    status code
@@ -1854,7 +1854,7 @@ uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start
 
 /**
  * @brief     enable or disable the entire display
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
@@ -1886,7 +1886,7 @@ uint8_t ssd1306_set_entire_display(ssd1306_handle_t *handle, ssd1306_entire_disp
 
 /**
  * @brief     set the display mode
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] mode is the display mode
  * @return    status code
  *            - 0 success
@@ -1918,7 +1918,7 @@ uint8_t ssd1306_set_display_mode(ssd1306_handle_t *handle, ssd1306_display_mode_
 
 /**
  * @brief     set the multiplex ratio
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] multiplex is the multiplex ratio
  * @return    status code
  *            - 0 success
@@ -1962,7 +1962,7 @@ uint8_t ssd1306_set_multiplex_ratio(ssd1306_handle_t *handle, uint8_t multiplex)
 
 /**
  * @brief     enable or disable the display
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] on_off is a bool value
  * @return    status code
  *            - 0 success
@@ -1994,7 +1994,7 @@ uint8_t ssd1306_set_display(ssd1306_handle_t *handle, ssd1306_display_t on_off)
 
 /**
  * @brief     set the page address
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] addr is the page address
  * @return    status code
  *            - 0 success
@@ -2026,7 +2026,7 @@ uint8_t ssd1306_set_page_address(ssd1306_handle_t *handle, uint8_t addr)
 
 /**
  * @brief     set the scan direction
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] dir is the scan direction
  * @return    status code
  *            - 0 success
@@ -2058,7 +2058,7 @@ uint8_t ssd1306_set_scan_direction(ssd1306_handle_t *handle, ssd1306_scan_direct
 
 /**
  * @brief     set the display offset
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] offset is the display offset
  * @return    status code
  *            - 0 success
@@ -2095,7 +2095,7 @@ uint8_t ssd1306_set_display_offset(ssd1306_handle_t *handle, uint8_t offset)
 
 /**
  * @brief     set the display clock
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] oscillator_frequency is the oscillator frequency
  * @param[in] clock_divide is the clock divide
  * @return    status code
@@ -2140,7 +2140,7 @@ uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_f
 
 /**
  * @brief     set the display zoom in
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] zoom is the display zoom in
  * @return    status code
  *            - 0 success
@@ -2170,7 +2170,7 @@ uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom)
 
 /**
  * @brief     set the precharge period
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] phase1_period is the phase1 period
  * @param[in] phase2_period is the phase2 period
  * @return    status code
@@ -2215,7 +2215,7 @@ uint8_t ssd1306_set_precharge_period(ssd1306_handle_t *handle, uint8_t phase1_pe
 
 /**
  * @brief     set the hardware com pins
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] conf is the pin conf
  * @param[in] remap is the left right remap
  * @return    status code
@@ -2246,7 +2246,7 @@ uint8_t ssd1306_set_com_pins_hardware_conf(ssd1306_handle_t *handle, ssd1306_pin
 
 /**
  * @brief     set the deselect level
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] level is the deselect level
  * @return    status code
  *            - 0 success
@@ -2276,7 +2276,7 @@ uint8_t ssd1306_set_deselect_level(ssd1306_handle_t *handle, ssd1306_deselect_le
 
 /**
  * @brief     write the register command
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] *buf points to a data buffer
  * @param[in] len is the data length
  * @return    status code
@@ -2302,7 +2302,7 @@ uint8_t ssd1306_write_cmd(ssd1306_handle_t *handle, uint8_t *buf, uint8_t len)
 
 /**
  * @brief     write the register data
- * @param[in] *handle points to a ssd1306 handle structure
+ * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] *buf points to a data buffer
  * @param[in] len is the data length
  * @return    status code
@@ -2328,7 +2328,7 @@ uint8_t ssd1306_write_data(ssd1306_handle_t *handle, uint8_t *buf, uint8_t len)
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a ssd1306 info structure
+ * @param[out] *info points to an ssd1306 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

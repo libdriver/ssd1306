@@ -605,7 +605,7 @@ uint8_t ssd1306_display_test(ssd1306_interface_t interface, ssd1306_address_t ad
         ssd1306_interface_debug_print("ssd1306: chip is %s.\n", info.chip_name);
         ssd1306_interface_debug_print("ssd1306: manufacturer is %s.\n", info.manufacturer_name);
         ssd1306_interface_debug_print("ssd1306: interface is %s.\n", info.interface);
-        ssd1306_interface_debug_print("ssd1306: driver version is %d.%d.\n", info.driver_version/1000, (info.driver_version%1000)/100);
+        ssd1306_interface_debug_print("ssd1306: driver version is %d.%d.\n", info.driver_version / 1000, (info.driver_version % 1000) / 100);
         ssd1306_interface_debug_print("ssd1306: min supply voltage is %0.1fV.\n", info.supply_voltage_min_v);
         ssd1306_interface_debug_print("ssd1306: max supply voltage is %0.1fV.\n", info.supply_voltage_max_v);
         ssd1306_interface_debug_print("ssd1306: max current is %0.2fmA.\n", info.max_current_ma);

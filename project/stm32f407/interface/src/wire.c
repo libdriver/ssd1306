@@ -25,12 +25,12 @@
  * @brief     wire source file
  * @version   1.0.0
  * @author    Shifeng Li
- * @date      2021-2-12
+ * @date      2022-11-11
  *
  * <h3>history</h3>
  * <table>
  * <tr><th>Date        <th>Version  <th>Author      <th>Description
- * <tr><td>2021/02/12  <td>1.0      <td>Shifeng Li  <td>first upload
+ * <tr><td>2022/11/11  <td>1.0      <td>Shifeng Li  <td>first upload
  * </table>
  */
 
@@ -40,20 +40,20 @@
  * @brief bit operate definition
  */
 #define BITBAND(addr, bitnum)    ((addr & 0xF0000000) + 0x2000000 + ((addr & 0xFFFFF) << 5) + (bitnum << 2)) 
-#define MEM_ADDR(addr)           *((unsigned long  *)(addr)) 
+#define MEM_ADDR(addr)           *((uint32_t *)(addr)) 
 #define BIT_ADDR(addr, bitnum)   MEM_ADDR(BITBAND(addr, bitnum)) 
 
 /**
  * @brief wire gpio operate definition
  */
-#define GPIOA_ODR_Addr           (GPIOA_BASE + 0x14)
-#define GPIOA_IDR_Addr           (GPIOA_BASE + 0x10)
-#define PAout(n)                 BIT_ADDR(GPIOA_ODR_Addr, n)
-#define PAin(n)                  BIT_ADDR(GPIOA_IDR_Addr, n)
-#define IO_IN()                  {GPIOA->MODER &= ~(3 << (8 * 2)); GPIOA->MODER |= 0 << (8 * 2);}
-#define IO_OUT()                 {GPIOA->MODER &= ~(3 << (8 * 2)); GPIOA->MODER |= 1 << (8 * 2);} 
-#define DQ_OUT                   PAout(8)
-#define DQ_IN                    PAin(8)
+#define GPIOA_ODR_Addr        (GPIOA_BASE + 0x14)
+#define GPIOA_IDR_Addr        (GPIOA_BASE + 0x10)
+#define PAout(n)               BIT_ADDR(GPIOA_ODR_Addr, n)
+#define PAin(n)                BIT_ADDR(GPIOA_IDR_Addr, n)
+#define IO_IN()               {GPIOA->MODER &= ~(3 << (8 * 2)); GPIOA->MODER |= 0 << (8 * 2);}
+#define IO_OUT()              {GPIOA->MODER &= ~(3 << (8 * 2)); GPIOA->MODER |= 1 << (8 * 2);} 
+#define DQ_OUT                 PAout(8)
+#define DQ_IN                  PAin(8)
 
 /**
  * @brief  wire bus init
@@ -64,17 +64,24 @@
 uint8_t wire_init(void)
 {
     GPIO_InitTypeDef GPIO_Initure;
-        
+    
+    /* enable gpio clock */
     __HAL_RCC_GPIOA_CLK_ENABLE();
     
+    /* gpio init */
     GPIO_Initure.Pin = GPIO_PIN_8;
     GPIO_Initure.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_Initure.Pull = GPIO_PULLUP;
     GPIO_Initure.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(GPIOA, &GPIO_Initure);
-  
+    
+    /* output mode */
     IO_OUT();
+    
+    /* set high */
     DQ_OUT = 1;
+    
+    /* input mode */
     IO_IN();
  
     return 0;
@@ -84,10 +91,11 @@ uint8_t wire_init(void)
  * @brief  wire bus deint
  * @return status code
  *         - 0 success
- * @note   IO is PA8
+ * @note   none
  */
 uint8_t wire_deinit(void)
 {
+    /* gpio deinit */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_8);
     
     return 0; 
@@ -95,29 +103,35 @@ uint8_t wire_deinit(void)
 
 /**
  * @brief      wire bus read data
- * @param[out] *value points to a written data buffer
+ * @param[out] *value points to a read data buffer
  * @return     status code
  *             - 0 success
  * @note       none
  */
 uint8_t wire_read(uint8_t *value)
 {
+    /* input mode */
     IO_IN();
+    
+    /* read the data */
     *value = DQ_IN;
-       
+    
     return 0;
 }
 
 /**
  * @brief     wire bus write data
- * @param[in] value is the written data
+ * @param[in] value is the write data
  * @return    status code
  *            - 0 success
  * @note      none
  */
 uint8_t wire_write(uint8_t value)
 {
+    /* output mode */
     IO_OUT();
+    
+    /* set the data */
     DQ_OUT = value;
   
     return 0;
@@ -127,19 +141,21 @@ uint8_t wire_write(uint8_t value)
  * @brief  wire bus init
  * @return status code
  *         - 0 success
- * @note   IO is PB0
+ * @note   IO is PA0
  */
 uint8_t wire_clock_init(void)
 {
     GPIO_InitTypeDef GPIO_Initure;
     
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-
+    /* enable gpio clock */
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    
+    /* gpio init */
     GPIO_Initure.Pin = GPIO_PIN_0;
     GPIO_Initure.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_Initure.Pull = GPIO_PULLUP;
     GPIO_Initure.Speed = GPIO_SPEED_FREQ_HIGH;
-    HAL_GPIO_Init(GPIOB, &GPIO_Initure); 
+    HAL_GPIO_Init(GPIOA, &GPIO_Initure); 
     
     return 0;
 }
@@ -148,32 +164,35 @@ uint8_t wire_clock_init(void)
  * @brief  wire bus deint
  * @return status code
  *         - 0 success
- * @note   IO is PB0
+ * @note   none
  */
 uint8_t wire_clock_deinit(void)
 {
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0);
+    /* gpio deinit */
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0);
     
     return 0;
 }
 
 /**
- * @brief     wire bus write data
- * @param[in] value is the written data
+ * @brief     wire bus write the data
+ * @param[in] value is the write data
  * @return    status code
  *            - 0 success
- * @note      IO is PB0
+ * @note      none
  */
 uint8_t wire_clock_write(uint8_t value)
 {
-    if (value)
+    if (value != 0)
     {
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+        /* set high */
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
     }
     else
     {
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+        /* set low */
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
     }
-        
+    
     return 0;
 }

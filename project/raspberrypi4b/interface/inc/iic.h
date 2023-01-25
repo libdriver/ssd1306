@@ -25,22 +25,18 @@
  * @brief     iic header file
  * @version   1.0.0
  * @author    Shifeng Li
- * @date      2021-2-12
+ * @date      2022-11-11
  *
  * <h3>history</h3>
  * <table>
  * <tr><th>Date        <th>Version  <th>Author      <th>Description
- * <tr><td>2021/02/12  <td>1.0      <td>Shifeng Li  <td>first upload
+ * <tr><td>2022/11/11  <td>1.0      <td>Shifeng Li  <td>first upload
  * </table>
  */
 
 #ifndef IIC_H
 #define IIC_H
 
-#include <linux/i2c.h>
-#include <linux/i2c-dev.h>
-#include <sys/ioctl.h>
-#include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -59,8 +55,8 @@ extern "C" {
 
 /**
  * @brief      iic bus init
- * @param[in]  *name points to a iic device name buffer
- * @param[out] *fd points to a iic device handle buffer
+ * @param[in]  *name points to an iic device name buffer
+ * @param[out] *fd points to an iic device handle buffer
  * @return     status code
  *             - 0 success
  *             - 1 init failed
@@ -79,86 +75,86 @@ uint8_t iic_init(char *name, int *fd);
 uint8_t iic_deinit(int fd);
 
 /**
- * @brief     iic bus write command
- * @param[in] fd is the iic handle
- * @param[in] addr is iic device write address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
- * @return    status code
- *            - 0 success
- *            - 1 write failed
- * @note      none
- */
-uint8_t iic_write_cmd(int fd, uint8_t addr, uint8_t *buf, uint16_t len);
-
-/**
- * @brief     iic bus write
- * @param[in] fd is the iic handle
- * @param[in] addr is iic device write address
- * @param[in] reg is iic register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
- * @return    status code
- *            - 0 success
- *            - 1 write failed
- * @note      none
- */
-uint8_t iic_write(int fd, uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
-
-/**
- * @brief     iic bus write with 16 bits register address
- * @param[in] fd is the iic handle
- * @param[in] addr is iic device write address
- * @param[in] reg is iic register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
- * @return    status code
- *            - 0 success
- *            - 1 write failed
- * @note      none
- */
-uint8_t iic_write_address16(int fd, uint8_t addr, uint16_t reg, uint8_t *buf, uint16_t len);
-
-/**
  * @brief      iic bus read command
  * @param[in]  fd is the iic handle
- * @param[in]  addr is iic device write address
+ * @param[in]  addr is the iic device write address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
- * @note       none
+ * @note       addr = device_address_7bits << 1
  */
 uint8_t iic_read_cmd(int fd, uint8_t addr, uint8_t *buf, uint16_t len);
 
 /**
  * @brief      iic bus read
  * @param[in]  fd is the iic handle
- * @param[in]  addr is iic device write address
- * @param[in]  reg is iic register address
+ * @param[in]  addr is the iic device write address
+ * @param[in]  reg is the iic register address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
- * @note       none
+ * @note       addr = device_address_7bits << 1
  */
 uint8_t iic_read(int fd, uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
 
 /**
  * @brief      iic bus read with 16 bits register address
  * @param[in]  fd is the iic handle
- * @param[in]  addr is iic device write address
- * @param[in]  reg is iic register address
+ * @param[in]  addr is the iic device write address
+ * @param[in]  reg is the iic register address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
- * @note       none
+ * @note       addr = device_address_7bits << 1
  */
 uint8_t iic_read_address16(int fd, uint8_t addr, uint16_t reg, uint8_t *buf, uint16_t len);
+
+/**
+ * @brief     iic bus write command
+ * @param[in] fd is the iic handle
+ * @param[in] addr is the iic device write address
+ * @param[in] *buf points to a data buffer
+ * @param[in] len is the length of the data buffer
+ * @return    status code
+ *            - 0 success
+ *            - 1 write failed
+ * @note      addr = device_address_7bits << 1
+ */
+uint8_t iic_write_cmd(int fd, uint8_t addr, uint8_t *buf, uint16_t len);
+
+/**
+ * @brief     iic bus write
+ * @param[in] fd is the iic handle
+ * @param[in] addr is the iic device write address
+ * @param[in] reg is the iic register address
+ * @param[in] *buf points to a data buffer
+ * @param[in] len is the length of the data buffer
+ * @return    status code
+ *            - 0 success
+ *            - 1 write failed
+ * @note      addr = device_address_7bits << 1
+ */
+uint8_t iic_write(int fd, uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);
+
+/**
+ * @brief     iic bus write with 16 bits register address
+ * @param[in] fd is the iic handle
+ * @param[in] addr is the iic device write address
+ * @param[in] reg is the iic register address
+ * @param[in] *buf points to a data buffer
+ * @param[in] len is the length of the data buffer
+ * @return    status code
+ *            - 0 success
+ *            - 1 write failed
+ * @note      addr = device_address_7bits << 1
+ */
+uint8_t iic_write_address16(int fd, uint8_t addr, uint16_t reg, uint8_t *buf, uint16_t len);
 
 /**
  * @}
