@@ -47,8 +47,9 @@
  * @brief global var definition
  */
 uint8_t g_buf[256];                              /**< uart buffer */
-uint16_t g_len;                                  /**< uart buffer length */
-static int gs_sock_fd, gs_conn_fd;               /**< network handle */
+volatile uint16_t g_len;                         /**< uart buffer length */
+static int gs_sock_fd;                           /**< network handle */
+static int gs_conn_fd;                           /**< network handle */
 static struct sockaddr_in gs_server_addr;        /**< server address */
 
 /**
@@ -58,37 +59,48 @@ static struct sockaddr_in gs_server_addr;        /**< server address */
 int main(uint8_t argc, char **argv)
 {
     uint8_t *p;
-
-    if ((gs_sock_fd = socket(AF_INET,SOCK_STREAM,0)) == -1) 
+    
+    /* creat a socket */
+    gs_sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (gs_sock_fd < 0) 
     {
         printf("ssd1306: creat socket failed.\n");
        
         return 1;
     }
     
+    /* set the connect port */
     memset(&gs_server_addr,0,sizeof(gs_server_addr));
     gs_server_addr.sin_family = AF_INET;
     gs_server_addr.sin_port = htons(6666);
-
-    if (inet_pton(AF_INET, "127.0.0.1", &gs_server_addr.sin_addr) <=0 ) 
+    
+    /* set the server address */
+    if (inet_pton(AF_INET, "127.0.0.1", &gs_server_addr.sin_addr) < 0) 
     {
         printf("ssd1306: set address failed.\n");
-        
+        (void)close(gs_sock_fd);
+
         return 1;
     }
+    
+    /* connect to the server */
     if (connect(gs_sock_fd, (struct sockaddr*)&gs_server_addr, sizeof(gs_server_addr)) <0) 
     {
         printf("ssd1306: connect failed.\n");
-        
+        (void)close(gs_sock_fd);
+
         return 1;
     }
-
+    
+    /* cat the full command */
     memset(g_buf, 0, 256);
     for (int i = 0; i < argc; i++)
     {
         strcat(g_buf, argv[i]);
         strcat(g_buf, " ");
     }
+    
+    /* adjust the command */
     g_len = strlen(g_buf);
     if (strstr(g_buf, "./") != NULL)
     {
@@ -99,15 +111,21 @@ int main(uint8_t argc, char **argv)
     {
         p = g_buf;
     }
+    
+    /* output */
     printf("ssd1306: send %s\n", p);
+    
+    /* send data */
     if (send(gs_sock_fd, p, g_len, 0) <0) 
     {
         printf("ssd1306: send failed.\n");
+        (void)close(gs_sock_fd);
 
         return 1;
     }
-
-    close(gs_sock_fd);
+    
+    /* close the socket */
+    (void)close(gs_sock_fd);
     
     return 0;
 }
