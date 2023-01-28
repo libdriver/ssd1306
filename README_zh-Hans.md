@@ -40,6 +40,8 @@ LibDriver SSD1306是LibDriver推出的SSD1306的全功能驱动，该驱动提�
 
 /project目录包含了常用Linux与单片机开发板的工程样例。所有工程均采用shell脚本作为调试方法，详细内容可参考每个工程里面的README.md。
 
+/misra目录包含了LibDriver MISRA代码扫描结果。
+
 ### 安装
 
 参考/interface目录下与平台无关的IIC、SPI总线模板，完成指定平台的IIC、SPI总线驱动。
