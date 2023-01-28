@@ -95,7 +95,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
         {"y2", required_argument, NULL, 16},
         {NULL, 0, NULL, 0},
     };
-    char type[32] = "unknow";
+    char type[33] = "unknow";
     ssd1306_address_t addr = SSD1306_ADDR_SA0_0;
     ssd1306_scroll_frame_t frame = SSD1306_SCROLL_FRAME_2;
     ssd1306_interface_t interface = SSD1306_INTERFACE_IIC;
@@ -118,7 +118,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
     uint8_t y1_flag = 0;
     uint8_t y2_flag = 0;
     uint8_t color_flag = 0;
-    char str[48] = "libdriver";
+    char str[49] = "libdriver";
     
     /* if no params */
     if (argc == 1)
@@ -143,7 +143,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 'h' :
             {
                 /* set the type */
-                memset(type, 0, sizeof(char) * 32);
+                memset(type, 0, sizeof(char) * 33);
                 snprintf(type, 32, "h");
                 
                 break;
@@ -153,7 +153,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 'i' :
             {
                 /* set the type */
-                memset(type, 0, sizeof(char) * 32);
+                memset(type, 0, sizeof(char) * 33);
                 snprintf(type, 32, "i");
                 
                 break;
@@ -163,7 +163,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 'p' :
             {
                 /* set the type */
-                memset(type, 0, sizeof(char) * 32);
+                memset(type, 0, sizeof(char) * 33);
                 snprintf(type, 32, "p");
                 
                 break;
@@ -173,7 +173,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 'e' :
             {
                 /* set the type */
-                memset(type, 0, sizeof(char) * 32);
+                memset(type, 0, sizeof(char) * 33);
                 snprintf(type, 32, "e_%s", optarg);
                 
                 break;
@@ -183,7 +183,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 't' :
             {
                 /* set the type */
-                memset(type, 0, sizeof(char) * 32);
+                memset(type, 0, sizeof(char) * 33);
                 snprintf(type, 32, "t_%s", optarg);
                 
                 break;
@@ -359,7 +359,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             case 10 :
             {
                 /* set the str */
-                memset(str, 0, sizeof(char) * 48);
+                memset(str, 0, sizeof(char) * 49);
                 strncpy(str, optarg, 48);
                 
                 break;

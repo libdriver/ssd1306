@@ -65,11 +65,12 @@ static uint8_t a_spi_cs_init(void)
 }
 
 /**
- * @brief  spi bus init
- * @return status code
- *         - 0 success
- *         - 1 init failed
- * @note   SCLK is PA5, MOSI is PA7 MISO is PA6 and CS is PA4
+ * @brief     spi bus init
+ * @param[in] mode is the spi mode
+ * @return    status code
+ *            - 0 success
+ *            - 1 init failed
+ * @note      SCLK is PA5, MOSI is PA7 MISO is PA6 and CS is PA4
  */
 uint8_t spi_init(spi_mode_t mode)
 {
