@@ -45,7 +45,7 @@ var driver__ssd1306_8c =
     [ "SUPPLY_VOLTAGE_MIN", "driver__ssd1306_8c.html#aac8d8cbd899667d609787ef4cf37054d", null ],
     [ "TEMPERATURE_MAX", "driver__ssd1306_8c.html#a90c0b20d54005712fcc8cb01281360e9", null ],
     [ "TEMPERATURE_MIN", "driver__ssd1306_8c.html#aab353db5bf4eb787f86a2080f609a551", null ],
-    [ "ssd1306_ativate_scroll", "group__ssd1306__base__driver.html#gab5bbbcdca2459cc4ca04db1bfdc88a58", null ],
+    [ "ssd1306_activate_scroll", "group__ssd1306__base__driver.html#ga931e1af4eef39b43a262040931c062d9", null ],
     [ "ssd1306_clear", "group__ssd1306__base__driver.html#gabdb73f24b43dcd93775ea24702b938d4", null ],
     [ "ssd1306_deactivate_scroll", "group__ssd1306__base__driver.html#ga99842fb1e272b67cfc055d373f89749b", null ],
     [ "ssd1306_deinit", "group__ssd1306__base__driver.html#gaa6ab33cbbce1ee0b495abf2fe5b208f0", null ],

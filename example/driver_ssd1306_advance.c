@@ -256,7 +256,7 @@ uint8_t ssd1306_advance_init(ssd1306_interface_t interface, ssd1306_address_t ad
         return 1;
     }
     
-    /* set precharge period */
+    /* set pre charge period */
     res = ssd1306_set_precharge_period(&gs_handle, SSD1306_ADVANCE_DEFAULT_PHASE1_PERIOD, SSD1306_ADVANCE_DEFAULT_PHASE2_PERIOD);
     if (res != 0)
     {
@@ -490,7 +490,7 @@ uint8_t ssd1306_advance_string(uint8_t x, uint8_t y, char *str, uint16_t len, ui
 {
     uint8_t res;
     
-    /* write stirng in gram */
+    /* write string in gram */
     res = ssd1306_gram_write_string(&gs_handle, x, y, str, len, color, font);
     if (res != 0)
     {
@@ -692,8 +692,8 @@ uint8_t ssd1306_advance_vertical_left_horizontal_scroll(uint8_t start_page_addr,
         return 1;
     }
     
-    /* ativate scroll */
-    res = ssd1306_ativate_scroll(&gs_handle);
+    /* activate scroll */
+    res = ssd1306_activate_scroll(&gs_handle);
     if (res != 0)
     {
         return 1;
@@ -732,8 +732,8 @@ uint8_t ssd1306_advance_vertical_right_horizontal_scroll(uint8_t start_page_addr
         return 1;
     }
     
-    /* ativate scroll */
-    res = ssd1306_ativate_scroll(&gs_handle);
+    /* activate scroll */
+    res = ssd1306_activate_scroll(&gs_handle);
     if (res != 0)
     {
         return 1;

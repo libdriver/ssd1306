@@ -90,7 +90,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
         {"y2", required_argument, NULL, 16},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     ssd1306_address_t addr = SSD1306_ADDR_SA0_0;
     ssd1306_scroll_frame_t frame = SSD1306_SCROLL_FRAME_2;
     ssd1306_interface_t interface = SSD1306_INTERFACE_IIC;
@@ -857,7 +857,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
             return 1;
         }
         
-        /* ouptut */
+        /* output */
         ssd1306_interface_debug_print("ssd1306: disable zoom in.\n");
         
         return 0;
@@ -865,7 +865,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
     else if (strcmp("e_advance-fade-blinking", type) == 0)
     {
         uint8_t res;
-        char str[4][16] = { "disable", "", "fade out", "blinking" };
+        char str_s[4][16] = { "disable", "", "fade out", "blinking" };
         
         /* fade blinking */
         res = ssd1306_advance_fade_blinking(mode, frames);
@@ -877,7 +877,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
         }
         
         /* output */
-        ssd1306_interface_debug_print("ssd1306: set fade blinking %s mode with %d frames.\n", str[(uint8_t)mode], frames);
+        ssd1306_interface_debug_print("ssd1306: set fade blinking %s mode with %d frames.\n", str_s[(uint8_t)mode], frames);
         
         return 0;
     }
@@ -1058,7 +1058,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
     
-    /* shell init && register ssd1306 fuction */
+    /* shell init && register ssd1306 function */
     shell_init();
     shell_register("ssd1306", ssd1306);
     uart_print("ssd1306: welcome to libdriver ssd1306.\n");
@@ -1081,7 +1081,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("ssd1306: unknow command.\n");
+                uart_print("ssd1306: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -1097,7 +1097,7 @@ int main(void)
             }
             else
             {
-                uart_print("ssd1306: unknow status code.\n");
+                uart_print("ssd1306: unknown status code.\n");
             }
             uart_flush();
         }

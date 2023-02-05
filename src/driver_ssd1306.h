@@ -812,7 +812,7 @@ uint8_t ssd1306_deactivate_scroll(ssd1306_handle_t *handle);
  *            - 3 handle is not initialized
  * @note      none
  */
-uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle);
+uint8_t ssd1306_activate_scroll(ssd1306_handle_t *handle);
 
 /**
  * @brief     set the display start line
@@ -1009,13 +1009,13 @@ uint8_t ssd1306_set_display_clock(ssd1306_handle_t *handle, uint8_t oscillator_f
 uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom);
 
 /**
- * @brief     set the precharge period
+ * @brief     set the pre charge period
  * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] phase1_period is the phase1 period
  * @param[in] phase2_period is the phase2 period
  * @return    status code
  *            - 0 success
- *            - 1 set precharge period failed
+ *            - 1 set pre charge period failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 phase1 period is invalid

@@ -53,7 +53,7 @@
 /**
  * @brief chip command data definition
  */
-#define SSD1306_CMD          0        /**< commmand */
+#define SSD1306_CMD          0        /**< command */
 #define SSD1306_DATA         1        /**< data */
 
 /**
@@ -774,7 +774,7 @@ uint8_t ssd1306_gram_fill_rect(ssd1306_handle_t *handle, uint8_t left, uint8_t t
     {
         for (y = top; y <= bottom; y++)                                         /* write y */
         {
-            if (a_ssd1306_gram_draw_point(handle, x, y, color) != 0)            /* draw poit */
+            if (a_ssd1306_gram_draw_point(handle, x, y, color) != 0)            /* draw point */
             {
                 return 1;                                                       /* return error */
             }
@@ -845,7 +845,7 @@ uint8_t ssd1306_gram_draw_picture(ssd1306_handle_t *handle, uint8_t left, uint8_
         }
     }
     
-    return 0;                                                                   /* succee return 0 */
+    return 0;                                                                   /* succeed return 0 */
 }
 
 /**
@@ -1314,7 +1314,7 @@ uint8_t ssd1306_set_column_address_range(ssd1306_handle_t *handle, uint8_t start
         return 5;                                                                       /* return error */
     }
     
-    buf[0] = SSD1306_CMD_SET_COLUMN_ADDRESS;                                            /* set commmand */
+    buf[0] = SSD1306_CMD_SET_COLUMN_ADDRESS;                                            /* set command */
     buf[1] = start_addr & 0x7F;                                                         /* set start address */
     buf[2] = end_addr & 0x7F;                                                           /* set end address */
   
@@ -1614,7 +1614,7 @@ uint8_t ssd1306_set_vertical_left_horizontal_scroll(ssd1306_handle_t *handle, ui
     {
         handle->debug_print("ssd1306: rows is invalid.\n");                             /* rows is invalid */
        
-        return 6;                                                                       /* reutrn error */
+        return 6;                                                                       /* return error */
     }
     
     buf[0] = SSD1306_CMD_VERTICAL_LEFT_HORIZONTAL_SCROLL;                               /* set command */
@@ -1661,7 +1661,7 @@ uint8_t ssd1306_deactivate_scroll(ssd1306_handle_t *handle)
  *            - 3 handle is not initialized
  * @note      none
  */
-uint8_t ssd1306_ativate_scroll(ssd1306_handle_t *handle)
+uint8_t ssd1306_activate_scroll(ssd1306_handle_t *handle)
 {
     if (handle == NULL)                                                                  /* check handle */
     {
@@ -2169,13 +2169,13 @@ uint8_t ssd1306_set_zoom_in(ssd1306_handle_t *handle, ssd1306_zoom_in_t zoom)
 }
 
 /**
- * @brief     set the precharge period
+ * @brief     set the pre charge period
  * @param[in] *handle points to an ssd1306 handle structure
  * @param[in] phase1_period is the phase1 period
  * @param[in] phase2_period is the phase2 period
  * @return    status code
  *            - 0 success
- *            - 1 set precharge period failed
+ *            - 1 set pre charge period failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 phase1 period is invalid
@@ -2350,7 +2350,7 @@ uint8_t ssd1306_info(ssd1306_info_t *info)
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
     info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
     info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
-    info->driver_version = DRIVER_VERSION;                          /* set driver verison */
+    info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
 }

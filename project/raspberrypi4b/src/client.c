@@ -69,7 +69,7 @@ int main(uint8_t argc, char **argv)
         return 1;
     }
     
-    /* set the connect port */
+    /* set connect port */
     memset(&gs_server_addr,0,sizeof(gs_server_addr));
     gs_server_addr.sin_family = AF_INET;
     gs_server_addr.sin_port = htons(6666);

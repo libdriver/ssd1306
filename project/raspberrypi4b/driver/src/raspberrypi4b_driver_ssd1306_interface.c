@@ -52,12 +52,12 @@
 #define SPI_DEVICE_NAME "/dev/spidev0.0"    /**< spi device name */
 
 /**
- * @brief iic device hanble definition
+ * @brief iic device handle definition
  */
 static int gs_iic_fd;                       /**< iic handle */
 
 /**
- * @brief spi device hanble definition
+ * @brief spi device handle definition
  */
 static int gs_spi_fd;                       /**< spi handle */
 
