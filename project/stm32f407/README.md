@@ -18,7 +18,7 @@ GPIO Pin: command pin/ reset pin PA8/PB0.
 
 #### 2.1 Integrated Development Environment
 
-LidDriver provides both Keil and IAR integrated development environment projects.
+LibDriver provides both Keil and IAR integrated development environment projects.
 
 MDK is the Keil ARM project and your Keil version must be 5 or higher.Keil ARM project needs STMicroelectronics STM32F4 Series Device Family Pack and you can download from https://www.keil.com/dd2/stmicroelectronics/stm32f407zgtx.
 
