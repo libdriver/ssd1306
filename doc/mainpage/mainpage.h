@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver SSD1306
- * @brief     libdriver ssd1306 is a full function driver of ssd1306 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver SSD1306 is a full function driver of SSD1306 and it can run in both MCU and Linux platform.
  * @version   2.0.0
  * @author    Shifeng Li
  *
