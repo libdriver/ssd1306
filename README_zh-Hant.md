@@ -8,7 +8,7 @@
 
 [![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/ssd1306/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
-SSD1306是一個單芯片CMOS OLED/PLED驅動器，帶有用於有機/聚合物發光的控制器二極管點陣圖形顯示系統。它由128個段和64個公共區組成。這個IC是為普通陰極型OLED面板設計。 SSD1306內置對比度控制、顯示RAM和振盪器，減少了外部組件和功耗。它有256階亮度控制。數據/命令通過硬件可選的6800/8000系列兼容並行接口從通用MCU發送，I2C接口或串行外圍接口。它適用於許多小型便攜式應用，如手機分屏、MP3播放器、計算器等。
+SSD1306是一個單晶片CMOS OLED/PLED驅動器，帶有用於有機/聚合物發光的控制器二極體點陣圖形顯示系統。 它由128個段和64個公共區組成。 這個IC是為普通陰極型OLED面板設計。 SSD1306內寘對比度控制、顯示RAM和振盪器，减少了外部組件和功耗。 它有256階亮度控制。 數據/命令通過硬體可選的6800/8000平行介面、I2C介面或串列週邊介面發送。 它適用於許多小型可擕式應用，如手機分屏、MP3播放機、小算盘等。
 
 LibDriver SSD1306是LibDriver推出的SSD1306的全功能驅動，該驅動提供繪製單點，填充塊，圖片顯示等功能並且它符合MISRA標準。
 

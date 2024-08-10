@@ -253,4 +253,4 @@ SOFTWARE.
 
 ### Contact Us
 
-Please sent an e-mail to lishifenging@outlook.com.
+Please send an e-mail to lishifenging@outlook.com.
