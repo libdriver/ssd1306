@@ -1031,7 +1031,7 @@ uint8_t ssd1306(uint8_t argc, char** argv)
         ssd1306_interface_debug_print("ssd1306: SPI interface reset GPIO connected to GPIOA PIN0.\n");
         ssd1306_interface_debug_print("ssd1306: IIC interface SCL connected to GPIOB PIN8.\n");
         ssd1306_interface_debug_print("ssd1306: IIC interface SDA connected to GPIOB PIN9.\n");
-        ssd1306_interface_debug_print("ssd1306: IIC interface reset GPIO connected to GPIOB PIN0.\n");
+        ssd1306_interface_debug_print("ssd1306: IIC interface reset GPIO connected to GPIOA PIN0.\n");
         
         return 0;
     }
