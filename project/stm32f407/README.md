@@ -12,7 +12,7 @@ IIC Pin: SCL/SDA PB8/PB9.
 
 SPI Pin: SCK/MISO/MOSI/CS PA5/PA6/PA7/PA4.
 
-GPIO Pin: command pin/ reset pin PA8/PB0.
+GPIO Pin: command pin/ reset pin PA8/PA0.
 
 ### 2. Development and Debugging
 
@@ -239,7 +239,7 @@ ssd1306: SPI interface cmd data gpio GPIO connected to GPIOA PIN8.
 ssd1306: SPI interface reset GPIO connected to GPIOA PIN0.
 ssd1306: IIC interface SCL connected to GPIOB PIN8.
 ssd1306: IIC interface SDA connected to GPIOB PIN9.
-ssd1306: IIC interface reset GPIO connected to GPIOB PIN0.
+ssd1306: IIC interface reset GPIO connected to GPIOA PIN0.
 ```
 
 ```shell
