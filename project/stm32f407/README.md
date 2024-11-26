@@ -265,7 +265,7 @@ ssd1306: graphic acceleration test.
 ssd1306: right horizontal scroll.
 ssd1306: left horizontal scroll.
 ssd1306: vertical right horizontal scroll.
-ssd1306: set vertical left horizontal scroll.
+ssd1306: vertical left horizontal scroll.
 ssd1306: advance graphic test.
 ssd1306: zoom in.
 ssd1306: fade mode.
