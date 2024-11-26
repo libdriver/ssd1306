@@ -1390,8 +1390,8 @@ uint8_t ssd1306_display_test(ssd1306_interface_t interface, ssd1306_address_t ad
         return 1;
     }
 
-    /* set vertical left horizontal scroll */
-    ssd1306_interface_debug_print("ssd1306: set vertical left horizontal scroll.\n");
+    /* vertical left horizontal scroll */
+    ssd1306_interface_debug_print("ssd1306: vertical left horizontal scroll.\n");
 
     /* clear screen */
     res = ssd1306_clear(&gs_handle);
