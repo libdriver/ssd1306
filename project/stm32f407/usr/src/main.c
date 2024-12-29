@@ -52,8 +52,8 @@ volatile uint16_t g_len;   /**< uart buffer length */
 
 /**
  * @brief     ssd1306 full function
- * @param[in] argc is arg numbers
- * @param[in] **argv is the arg address
+ * @param[in] argc arg numbers
+ * @param[in] **argv arg address
  * @return    status code
  *             - 0 success
  *             - 1 run failed

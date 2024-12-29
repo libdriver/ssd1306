@@ -1,3 +1,9 @@
+## 2.0.5 (2024-12-28)
+
+## Bug Fixes
+
+- fix doc errors
+
 ## 2.0.4 (2024-11-27)
 
 ## Bug Fixes

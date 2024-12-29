@@ -53,8 +53,8 @@ extern "C"{
 
 /**
  * @brief     display test
- * @param[in] interface is the interface type
- * @param[in] addr is the iic device address
+ * @param[in] interface interface type
+ * @param[in] addr iic device address
  * @return    status code
  *            - 0 success
  *            - 1 test failed

@@ -557,8 +557,8 @@ static uint8_t gs_image[8192] =           /**< test image */
 
 /**
  * @brief     display test
- * @param[in] interface is the interface type
- * @param[in] addr is the iic device address
+ * @param[in] interface interface type
+ * @param[in] addr iic device address
  * @return    status code
  *            - 0 success
  *            - 1 test failed
