@@ -53,8 +53,13 @@ static int gs_conn_fd;                           /**< network handle */
 static struct sockaddr_in gs_server_addr;        /**< server address */
 
 /**
- * @brief main function
- * @note  none
+ * @brief     main function
+ * @param[in] argc arg numbers
+ * @param[in] **argv arg address
+ * @return    status code
+ *            - 0 success
+ *            - 1 run failed
+ * @note      none
  */
 int main(uint8_t argc, char **argv)
 {
