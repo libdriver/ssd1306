@@ -70,7 +70,7 @@ uint8_t wire_deinit(void);
 
 /**
  * @brief      wire bus read data
- * @param[out] *value points to a data buffer
+ * @param[out] *value pointer to a data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -80,7 +80,7 @@ uint8_t wire_read(uint8_t *value);
 
 /**
  * @brief     wire bus write data
- * @param[in] value is the write data
+ * @param[in] value write data
  * @return    status code
  *            - 0 success
  *             - 1 write failed
@@ -107,7 +107,7 @@ uint8_t wire_clock_deinit(void);
 
 /**
  * @brief     wire bus write data
- * @param[in] value is the write data
+ * @param[in] value write data
  * @return    status code
  *            - 0 success
  *            - 1 write failed
