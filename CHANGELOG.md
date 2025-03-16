@@ -1,3 +1,9 @@
+## 2.0.9 (2025-03-16)
+
+## Bug Fixes
+
+- fix shell errors
+
 ## 2.0.8 (2025-03-15)
 
 ## Bug Fixes
