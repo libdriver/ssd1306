@@ -80,7 +80,7 @@ static uint8_t a_shell_pretreatment(char *buf, uint16_t in_len, char *buf_out, u
         {
             if (flag == 0)
             {
-                buf_out[(*out_len)] = NULL;
+                buf_out[(*out_len)] = 0;
                 (*out_len)++;
                 flag = 1;
             }
