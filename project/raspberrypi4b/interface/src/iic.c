@@ -42,8 +42,8 @@
 
 /**
  * @brief      iic bus init
- * @param[in]  *name points to an iic device name buffer
- * @param[out] *fd points to an iic device handle buffer
+ * @param[in]  *name pointer to an iic device name buffer
+ * @param[out] *fd pointer to an iic device handle buffer
  * @return     status code
  *             - 0 success
  *             - 1 init failed
@@ -69,7 +69,7 @@ uint8_t iic_init(char *name, int *fd)
 
 /**
  * @brief     iic bus deinit
- * @param[in] fd is the iic handle
+ * @param[in] fd iic handle
  * @return    status code
  *            - 0 success
  *            - 1 deinit failed
@@ -92,10 +92,10 @@ uint8_t iic_deinit(int fd)
 
 /**
  * @brief      iic bus read command
- * @param[in]  fd is the iic handle
- * @param[in]  addr is the iic device write address
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the length of the data buffer
+ * @param[in]  fd iic handle
+ * @param[in]  addr iic device write address
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -133,11 +133,11 @@ uint8_t iic_read_cmd(int fd, uint8_t addr, uint8_t *buf, uint16_t len)
 
 /**
  * @brief      iic bus read
- * @param[in]  fd is the iic handle
- * @param[in]  addr is the iic device write address
- * @param[in]  reg is the iic register address
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the length of the data buffer
+ * @param[in]  fd iic handle
+ * @param[in]  addr iic device write address
+ * @param[in]  reg iic register address
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -179,11 +179,11 @@ uint8_t iic_read(int fd, uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 
 /**
  * @brief      iic bus read with 16 bits register address
- * @param[in]  fd is the iic handle
- * @param[in]  addr is the iic device write address
- * @param[in]  reg is the iic register address
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the length of the data buffer
+ * @param[in]  fd iic handle
+ * @param[in]  addr iic device write address
+ * @param[in]  reg iic register address
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len length of the data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -228,10 +228,10 @@ uint8_t iic_read_address16(int fd, uint8_t addr, uint16_t reg, uint8_t *buf, uin
 
 /**
  * @brief     iic bus write command
- * @param[in] fd is the iic handle
- * @param[in] addr is the iic device write address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
+ * @param[in] fd iic handle
+ * @param[in] addr iic device write address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len length of the data buffer
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -269,11 +269,11 @@ uint8_t iic_write_cmd(int fd, uint8_t addr, uint8_t *buf, uint16_t len)
 
 /**
  * @brief     iic bus write
- * @param[in] fd is the iic handle
- * @param[in] addr is the iic device write address
- * @param[in] reg is the iic register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
+ * @param[in] fd iic handle
+ * @param[in] addr iic device write address
+ * @param[in] reg iic register address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len length of the data buffer
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -317,11 +317,11 @@ uint8_t iic_write(int fd, uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len)
 
 /**
  * @brief     iic bus write with 16 bits register address
- * @param[in] fd is the iic handle
- * @param[in] addr is the iic device write address
- * @param[in] reg is the iic register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the length of the data buffer
+ * @param[in] fd iic handle
+ * @param[in] addr iic device write address
+ * @param[in] reg iic register address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len length of the data buffer
  * @return    status code
  *            - 0 success
  *            - 1 write failed
