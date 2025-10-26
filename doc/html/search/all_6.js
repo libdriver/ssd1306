@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['reset_5fgpio_5fdeinit_46',['reset_gpio_deinit',['../structssd1306__handle__s.html#a69c42ff05fc69e3f1621f3c0347a840b',1,'ssd1306_handle_s']]],
-  ['reset_5fgpio_5finit_47',['reset_gpio_init',['../structssd1306__handle__s.html#aa264e23f5c4ddd7a9bfa5cd9e387e013',1,'ssd1306_handle_s']]],
-  ['reset_5fgpio_5fwrite_48',['reset_gpio_write',['../structssd1306__handle__s.html#af0011f96a61e36716a376f2a427fdd27',1,'ssd1306_handle_s']]]
+  ['iic_5faddr_0',['iic_addr',['../structssd1306__handle__s.html#ae4fb63dc1b166464d5da3aa753b0805a',1,'ssd1306_handle_s']]],
+  ['iic_5fdeinit_1',['iic_deinit',['../structssd1306__handle__s.html#af6963bbad902ca6e43942b48c07986c3',1,'ssd1306_handle_s']]],
+  ['iic_5finit_2',['iic_init',['../structssd1306__handle__s.html#a8826dd07625f8d90859ce9bd09628d61',1,'ssd1306_handle_s']]],
+  ['iic_5fspi_3',['iic_spi',['../structssd1306__handle__s.html#a00209e629162307269baa592e51144ac',1,'ssd1306_handle_s']]],
+  ['iic_5fwrite_4',['iic_write',['../structssd1306__handle__s.html#adca3ee7a793bbf510d5267daf0fcf1c5',1,'ssd1306_handle_s']]],
+  ['inited_5',['inited',['../structssd1306__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f',1,'ssd1306_handle_s']]],
+  ['interface_6',['interface',['../structssd1306__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28',1,'ssd1306_info_s']]],
+  ['interface_20driver_20function_7',['ssd1306 interface driver function',['../group__ssd1306__interface__driver.html',1,'']]]
 ];

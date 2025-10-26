@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "LibDriver SSD1306", "index.html", [
-    [ "Modules", "modules.html", "modules" ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -51,9 +51,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__ssd1306__base__driver.html#gae16b5d9bf74880764864f71793583ba1",
-"group__ssd1306__example__driver.html#gaf44d63282936dd825739535240cc15fc"
+"group__ssd1306__example__driver.html#gac5698439fde88636166aaa60563af8e4"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';
