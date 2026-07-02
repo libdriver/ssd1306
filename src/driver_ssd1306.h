@@ -871,18 +871,18 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
  * @brief     set the vertical scroll area
  * @param[in] *handle pointer to an ssd1306 handle structure
  * @param[in] start_row start row
- * @param[in] end_row end row
+ * @param[in] scroll_row scroll row
  * @return    status code
  *            - 0 success
  *            - 1 set vertical scroll area failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 start_row is invalid
- *            - 5 end_row is invalid
- *            - 6 end_row > start_row
- * @note      start_row <= 0x3F, end_row <= 0x7F, start_row >= end_row
+ *            - 5 scroll_row is invalid
+ *            - 6 start_row + scroll_row > 64
+* @note       start_row <= 0x3F, scroll_row <= 0x7F, start_row + scroll_row <= 64
  */
-uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t end_row);
+uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t scroll_row);
 
 /**
  * @brief     enable or disable the entire display

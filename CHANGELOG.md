@@ -1,3 +1,9 @@
+## 2.0.12 (2026-07-02)
+
+## Bug Fixes
+
+- fix write bugs
+
 ## 2.0.11 (2025-10-26)
 
 ## Features

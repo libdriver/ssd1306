@@ -87,7 +87,7 @@ var driver__ssd1306_8c =
     [ "ssd1306_set_segment_remap", "group__ssd1306__base__driver.html#gaa897931b4f2650d9fcf4edea9dadea48", null ],
     [ "ssd1306_set_vertical_left_horizontal_scroll", "group__ssd1306__base__driver.html#gad0ae391a2f3d129fce7675d50b00b0f3", null ],
     [ "ssd1306_set_vertical_right_horizontal_scroll", "group__ssd1306__base__driver.html#gaea216cd13fddc019b6f76a78c561cc07", null ],
-    [ "ssd1306_set_vertical_scroll_area", "group__ssd1306__base__driver.html#ga5e26eba85db0554f1a5457e7014e1998", null ],
+    [ "ssd1306_set_vertical_scroll_area", "group__ssd1306__base__driver.html#gae9a94623c7bbb8b13f05a304cd1345a3", null ],
     [ "ssd1306_set_zoom_in", "group__ssd1306__base__driver.html#ga1b1cda97c2bbcf0de6e84d6a499be103", null ],
     [ "ssd1306_write_cmd", "group__ssd1306__extend__driver.html#gae7e83bf4fa2b4edefda280b0ebc75042", null ],
     [ "ssd1306_write_data", "group__ssd1306__extend__driver.html#ga9cca12cd680a5956ba27f6b05c0c0f94", null ],
