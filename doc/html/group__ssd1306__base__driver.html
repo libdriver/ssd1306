@@ -263,8 +263,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga6dd49e731a0256e5556c11992bf065ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable or disable the charge pump  <br /></td></tr>
 <tr class="memitem:gaa897931b4f2650d9fcf4edea9dadea48" id="r_gaa897931b4f2650d9fcf4edea9dadea48"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa897931b4f2650d9fcf4edea9dadea48">ssd1306_set_segment_remap</a> (<a class="el" href="#ga2f305a04236fd311fe5cd221b4ceba00">ssd1306_handle_t</a> *handle, <a class="el" href="#ga5da594f6b24ff418db03afd08b77d0aa">ssd1306_segment_column_remap_t</a> remap)</td></tr>
 <tr class="memdesc:gaa897931b4f2650d9fcf4edea9dadea48"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the segment remap  <br /></td></tr>
-<tr class="memitem:ga5e26eba85db0554f1a5457e7014e1998" id="r_ga5e26eba85db0554f1a5457e7014e1998"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5e26eba85db0554f1a5457e7014e1998">ssd1306_set_vertical_scroll_area</a> (<a class="el" href="#ga2f305a04236fd311fe5cd221b4ceba00">ssd1306_handle_t</a> *handle, uint8_t start_row, uint8_t end_row)</td></tr>
-<tr class="memdesc:ga5e26eba85db0554f1a5457e7014e1998"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the vertical scroll area  <br /></td></tr>
+<tr class="memitem:gae9a94623c7bbb8b13f05a304cd1345a3" id="r_gae9a94623c7bbb8b13f05a304cd1345a3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gae9a94623c7bbb8b13f05a304cd1345a3">ssd1306_set_vertical_scroll_area</a> (<a class="el" href="#ga2f305a04236fd311fe5cd221b4ceba00">ssd1306_handle_t</a> *handle, uint8_t start_row, uint8_t scroll_row)</td></tr>
+<tr class="memdesc:gae9a94623c7bbb8b13f05a304cd1345a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the vertical scroll area  <br /></td></tr>
 <tr class="memitem:gae0a03db84a228eb20b9d3ba0c6624f57" id="r_gae0a03db84a228eb20b9d3ba0c6624f57"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gae0a03db84a228eb20b9d3ba0c6624f57">ssd1306_set_entire_display</a> (<a class="el" href="#ga2f305a04236fd311fe5cd221b4ceba00">ssd1306_handle_t</a> *handle, <a class="el" href="#ga4f2e9ce796f09700bb37da338ad5a504">ssd1306_entire_display_t</a> enable)</td></tr>
 <tr class="memdesc:gae0a03db84a228eb20b9d3ba0c6624f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable or disable the entire display  <br /></td></tr>
 <tr class="memitem:ga8231cf2d7d5e244df0a64c65d5db9aca" id="r_ga8231cf2d7d5e244df0a64c65d5db9aca"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8231cf2d7d5e244df0a64c65d5db9aca">ssd1306_set_display_mode</a> (<a class="el" href="#ga2f305a04236fd311fe5cd221b4ceba00">ssd1306_handle_t</a> *handle, <a class="el" href="#gaa7749f3ab39bbbdc7a7e899d355a72de">ssd1306_display_mode_t</a> mode)</td></tr>
@@ -2619,8 +2619,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga5e26eba85db0554f1a5457e7014e1998" name="ga5e26eba85db0554f1a5457e7014e1998"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5e26eba85db0554f1a5457e7014e1998">&#9670;&#160;</a></span>ssd1306_set_vertical_scroll_area()</h2>
+<a id="gae9a94623c7bbb8b13f05a304cd1345a3" name="gae9a94623c7bbb8b13f05a304cd1345a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae9a94623c7bbb8b13f05a304cd1345a3">&#9670;&#160;</a></span>ssd1306_set_vertical_scroll_area()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2638,7 +2638,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>end_row</em></span>&#160;)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>scroll_row</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2648,7 +2648,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an ssd1306 handle structure </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">start_row</td><td>start row </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end_row</td><td>end row </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">scroll_row</td><td>scroll row </td></tr>
   </table>
   </dd>
 </dl>
@@ -2658,11 +2658,11 @@ Functions</h2></td></tr>
 <li>2 handle is NULL</li>
 <li>3 handle is not initialized</li>
 <li>4 start_row is invalid</li>
-<li>5 end_row is invalid</li>
-<li>6 end_row &gt; start_row </li>
+<li>5 scroll_row is invalid</li>
+<li>6 start_row + scroll_row &gt; 64 </li>
 </ul>
 </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>start_row &lt;= 0x3F, end_row &lt;= 0x7F, start_row &gt;= end_row </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>start_row &lt;= 0x3F, scroll_row &lt;= 0x7F, start_row + scroll_row &lt;= 64 </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="driver__ssd1306_8c_source.html#l01817">1817</a> of file <a class="el" href="driver__ssd1306_8c_source.html">driver_ssd1306.c</a>.</p>
 

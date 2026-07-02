@@ -496,7 +496,7 @@ uint8_t ssd1306_write_point(ssd1306_handle_t *handle, uint8_t x, uint8_t y, uint
         
         return 1;                                                                                              /* return error */
     }
-    if (a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|((x>4)&0x0F), SSD1306_CMD) != 0)  /* write higher column */
+    if (a_ssd1306_write_byte(handle, SSD1306_CMD_HIGHER_COLUMN_START_ADDRESS|((x>>4)&0x0F), SSD1306_CMD) != 0) /* write higher column */
     {
         handle->debug_print("ssd1306: write byte failed.\n");                                                  /* write byte failed */
         
@@ -1803,18 +1803,18 @@ uint8_t ssd1306_set_segment_remap(ssd1306_handle_t *handle, ssd1306_segment_colu
  * @brief     set the vertical scroll area
  * @param[in] *handle pointer to an ssd1306 handle structure
  * @param[in] start_row start row
- * @param[in] end_row end row
+ * @param[in] scroll_row scroll row
  * @return    status code
  *            - 0 success
  *            - 1 set vertical scroll area failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 start_row is invalid
- *            - 5 end_row is invalid
- *            - 6 end_row > start_row
- * @note      start_row <= 0x3F, end_row <= 0x7F, start_row >= end_row
+ *            - 5 scroll_row is invalid
+ *            - 6 start_row + scroll_row > 64
+* @note       start_row <= 0x3F, scroll_row <= 0x7F, start_row + scroll_row <= 64
  */
-uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t end_row)
+uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start_row, uint8_t scroll_row)
 {
     uint8_t buf[3];
     
@@ -1832,22 +1832,22 @@ uint8_t ssd1306_set_vertical_scroll_area(ssd1306_handle_t *handle, uint8_t start
        
         return 4;                                                                       /* return error */
     }
-    if (end_row > 0x7F)                                                                 /* check end_row */
+    if (scroll_row > 0x7F)                                                              /* check scroll row */
     {
-        handle->debug_print("ssd1306: end_row is invalid.\n");                          /* end_row is invalid */
+        handle->debug_print("ssd1306: scroll_row is invalid.\n");                       /* scroll_row is invalid */
        
         return 5;                                                                       /* return error */
     }
-    if (end_row > start_row)                                                            /* check start_row and end_row */
+    if (start_row + scroll_row > 64)                                                    /* check start_row and scroll_row */
     {
-        handle->debug_print("ssd1306: end_row > start_row.\n");                         /* end_row > start_row */
+        handle->debug_print("ssd1306: start_row + scroll_row > 64.\n");                 /* start_row + scroll_row > 64 */
        
         return 6;                                                                       /* return error */
     }
     
     buf[0] = SSD1306_CMD_VERTICAL_SCROLL_AREA;                                          /* set command */
     buf[1] = start_row;                                                                 /* set start row */
-    buf[2] = end_row;                                                                   /* set end row */
+    buf[2] = scroll_row;                                                                /* set scroll row */
   
     return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 3, SSD1306_CMD);       /* write command */
 }
