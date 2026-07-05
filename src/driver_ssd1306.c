@@ -92,7 +92,7 @@
 #define SSD1306_CMD_SET_ZOOM_IN                             0xD6        /**< command set zoom in */ 
 #define SSD1306_CMD_PRE_CHARGE_PERIOD                       0xD9        /**< command pre charge period */ 
 #define SSD1306_CMD_COM_PINS_CONF                           0xDA        /**< command com pins conf */ 
-#define SSD1306_CMD_COMH_DESLECT_LEVEL                      0xDB        /**< command comh deslect level */ 
+#define SSD1306_CMD_COMH_DESELECT_LEVEL                     0xDB        /**< command comh deselect level */ 
 #define SSD1306_CMD_NOP                                     0xE3        /**< command nop */ 
 
 /**
@@ -2268,7 +2268,7 @@ uint8_t ssd1306_set_deselect_level(ssd1306_handle_t *handle, ssd1306_deselect_le
         return 3;                                                                       /* return error */
     }
     
-    buf[0] = SSD1306_CMD_COMH_DESLECT_LEVEL;                                            /* set command */
+    buf[0] = SSD1306_CMD_COMH_DESELECT_LEVEL;                                           /* set command */
     buf[1] = (uint8_t)(level << 4);                                                     /* set level */
   
     return a_ssd1306_multiple_write_byte(handle, (uint8_t *)buf, 2, SSD1306_CMD);       /* write command */
