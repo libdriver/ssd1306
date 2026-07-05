@@ -1,3 +1,9 @@
+## 2.0.13 (2026-07-05)
+
+## Bug Fixes
+
+- fix doc errors
+
 ## 2.0.12 (2026-07-02)
 
 ## Bug Fixes

@@ -10,7 +10,7 @@ var driver__ssd1306_8c =
     [ "SSD1306_CMD_COLUMN_0_MAPPED_TO_SEG0", "driver__ssd1306_8c.html#ade986acc63982722bce05cd09d75999f", null ],
     [ "SSD1306_CMD_COLUMN_127_MAPPED_TO_SEG0", "driver__ssd1306_8c.html#aee5b34051613c523a64364dec0eef423", null ],
     [ "SSD1306_CMD_COM_PINS_CONF", "driver__ssd1306_8c.html#a9a6f73ae653ccc996d6be732089a6f7c", null ],
-    [ "SSD1306_CMD_COMH_DESLECT_LEVEL", "driver__ssd1306_8c.html#a2b08b935af91cf4f6e82b7f4811ea6e6", null ],
+    [ "SSD1306_CMD_COMH_DESELECT_LEVEL", "driver__ssd1306_8c.html#a37e64c887219ede737a465a0d1f2d953", null ],
     [ "SSD1306_CMD_CONTRAST_CONTROL", "driver__ssd1306_8c.html#ac98ec036aa0aa3cc9026150d0f502301", null ],
     [ "SSD1306_CMD_DEACTIVATE_SCROLL", "driver__ssd1306_8c.html#a074e764098ee802c358a74b75df95287", null ],
     [ "SSD1306_CMD_DISPLAY_CLOCK_DIVIDE", "driver__ssd1306_8c.html#a32fbe598dff46ab1bd2d9cb444027edb", null ],
